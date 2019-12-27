@@ -1,5 +1,14 @@
 # vue-select-sides
 
+## To work
+
+- Add support to selected first
+- Add mirror type
+- Organization of styles
+- Get data selected
+- Create docs
+- Publish github public + npm repo
+
 ## Project setup
 
 ```

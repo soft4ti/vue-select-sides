@@ -1,38 +1,48 @@
 <template>
-  <div class="thebody">
-    <div class="vm2s">
-      <div class="vm2s-list">
-        <search class="vm2s-list-search" v-model="searchL"></search>
-        <list
-          :hasChildren="false"
-          :items="filteredListL"
-          @updated-item="updateItem"
-        ></list>
-        <selectAll
-          :items="listLeft"
-          @update-select-all="updateLeftSelectAll"
-        ></selectAll>
-        <deselectAll
-          :items="listLeft"
-          @update-deselect-all="updateLeftDeselectAll"
-        ></deselectAll>
+  <div class="vm2s">
+    <div class="vm2s-list">
+      <search class="vm2s-list-search " v-model="searchL"></search>
+      <list
+        :hasChildren="false"
+        :items="filteredListL"
+        @updated-item="updateItem"
+      ></list>
+      <div class="vm2s-footer">
+        <div>
+          <selectAll
+            :items="listLeft"
+            @update-select-all="updateLeftSelectAll"
+          ></selectAll>
+          <div class="vm2s-footer-separator">/</div>
+          <deselectAll
+            :items="listLeft"
+            @update-deselect-all="updateLeftDeselectAll"
+          ></deselectAll>
+        </div>
       </div>
-      <div class="vm2s-span"></div>
-      <div class="vm2s-list">
-        <search class="vm2s-list-search" v-model="searchR"></search>
-        <list
-          :hasChildren="true"
-          :items="filteredListR"
-          @updated-item="updateItem"
-        ></list>
-        <selectAll
-          :items="listRight"
-          @update-select-all="updateRightSelectAll"
-        ></selectAll>
-        <deselectAll
-          :items="listRight"
-          @update-deselect-all="updateRightDeselectAll"
-        ></deselectAll>
+    </div>
+    <div class="vm2s-span">
+      &lsaquo; &rsaquo;
+    </div>
+    <div class="vm2s-list">
+      <search class="vm2s-list-search" v-model="searchR"></search>
+      <list
+        :hasChildren="true"
+        :items="filteredListR"
+        @updated-item="updateItem"
+      ></list>
+      <div class="vm2s-footer">
+        <div>
+          <selectAll
+            :items="listRight"
+            @update-select-all="updateRightSelectAll"
+          ></selectAll>
+          <div class="vm2s-footer-separator">/</div>
+          <deselectAll
+            :items="listRight"
+            @update-deselect-all="updateRightDeselectAll"
+          ></deselectAll>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +84,7 @@ export default {
       // console.log("============================");
 
       data2.map(item => {
-        console.log(JSON.stringify(item));
+        // console.log(JSON.stringify(item));
         if (item.children) {
           item.children.sort(sortBy("-selectedDefault", "label"));
         }
@@ -92,7 +102,7 @@ export default {
 
       vm.listLeft.map(item => {
         if (item.visible === true) {
-          vm.updateItem(item, true, item.children);
+          vm.updateItem(item, {}, true);
         }
       });
     },
@@ -101,7 +111,7 @@ export default {
 
       vm.listLeft.map(item => {
         if (item.visible === true) {
-          vm.updateItem(item, false, item.children);
+          vm.updateItem(item, {}, false);
         }
       });
     },
@@ -111,7 +121,7 @@ export default {
       vm.listRight.map(item => {
         item.children.map(children => {
           if (item.selected === true) {
-            vm.updateItem(children, true, []);
+            vm.updateItem(children, item, true);
           }
         });
       });
@@ -122,7 +132,7 @@ export default {
       vm.listRight.map(item => {
         item.children.map(children => {
           if (item.selected === true) {
-            vm.updateItem(children, false, []);
+            vm.updateItem(children, item, false);
           }
         });
       });
@@ -130,7 +140,10 @@ export default {
     removeItemArray(array, value) {
       return array.filter(e => String(e) !== String(value));
     },
-    updateItem(item, selected, children) {
+    updateItem(item, parent, selected) {
+      // updateItem(item, selected, children) {
+
+      /*
       let list = [];
 
       if (children.length === 0) {
@@ -146,6 +159,39 @@ export default {
         this[list].push(item.value);
       } else {
         this[list] = this.removeItemArray(this[list], item.value);
+      }
+
+      */
+
+      // ATENCAOOOOOOOOOOOOO
+      // NO MOUNTED, É NECESSARIO CRIAR O SELECTEDGROUPED COM BASE NOS "SELECTEDS" DO JSON
+      // E DESBINDAR O  this.selectedParent &&&&&& this.selected
+
+      // console.log(this.selectedGrouped);
+      // console.log(this.selectedGrouped[parent.value] === undefined);
+
+      if (Object.keys(parent).length > 0) {
+        /// ja é filho e adiciona no escopo do pai
+        if (this.selectedGrouped[parent.value] === undefined) {
+          this.selectedGrouped[parent.value] = [];
+        }
+
+        if (selected) {
+          console.log(this.selectedGrouped);
+          this.selectedGrouped[parent.value].push(item.value);
+          console.log(this.selectedGrouped);
+        } else {
+          this.selectedGrouped[parent.value] = this.removeItemArray(
+            this.selectedGrouped[parent.value],
+            item.value
+          );
+        }
+      } else {
+        if (selected) {
+          this.selectedGrouped[parent.value] = [];
+        } else {
+          delete this.selectedGrouped[parent.value];
+        }
       }
     },
     getSelectedParent() {
@@ -236,7 +282,7 @@ export default {
       // }
 
       // return data;
-      console.log(JSON.stringify(listLeft));
+      // console.log(JSON.stringify(listLeft));
       this.$set(this, "listLeft", this.reorder(listLeft));
 
       return this.listLeft;
@@ -289,7 +335,7 @@ export default {
   updated() {},
   data() {
     return {
-      lang: "pt_BR",
+      lang: "en_US",
       searchL: "",
       searchR: "",
       selectedGrouped: {},
@@ -433,6 +479,22 @@ export default {
             {
               value: "maranhao",
               label: "Maranhão"
+            },
+            {
+              value: "mato-grosso",
+              label: "Mato Grosso"
+            },
+            {
+              value: "mato-grosso-do-sul",
+              label: "Mato Grosso do Sul"
+            },
+            {
+              value: "goias",
+              label: "Goiás"
+            },
+            {
+              value: "distrito-federal",
+              label: "Distrito Federal"
             }
           ]
         }
@@ -444,9 +506,14 @@ export default {
 
 <style>
 .vm2s,
+.vm2s ul,
 .vm2s ul li {
-  padding: 0px;
+  list-style-type: none;
   margin: 0px;
+}
+
+.vm2s ul ul {
+  padding: 0px;
 }
 
 .vm2s,
@@ -459,9 +526,14 @@ export default {
   text-decoration: none;
 }
 
+.vm2s * {
+  font-size: 0.9rem;
+}
+
 .vm2s {
   /* temp */
   width: 600px;
+  height: 500px;
   margin: 0 auto;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -469,18 +541,145 @@ export default {
   /* temp */
 
   display: flex;
+  align-items: stretch;
+  align-content: stretch;
   justify-content: space-between;
 }
 
 .vm2s-list {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.vm2s-list-ul {
+  overflow-y: auto;
+  padding: 8px 10px 10px 10px;
+}
+
+.vm2s-list-ul li {
+  line-height: 1.5;
+}
+
+.vm2s-list-ul li span {
+  padding: 5px 12px;
+  margin-top: 2px;
+}
+
+.vm2s-list-ul > li:not(.is-parent) > span {
+  /* background-color: red; */
+}
+
+.vm2s-list-ul > li.is-parent > span {
+  /* background-color: #e01111cc; */
+  font-weight: bold;
+  padding-left: 0px;
+}
+
+.vm2s-list-ul li span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vm2s-list-ul li.active:not(.is-parent) > span {
+  background-color: #f57f1e;
+  border-color: transparent;
+  color: white;
+}
+
+.vm2s-list-ul li:not(.is-parent) > span {
+  cursor: pointer;
+  background-color: #fafafa;
+  border: 1px solid #f4f4f4;
+}
+
+.vm2s-list-ul li.no-results > span {
+  cursor: default;
+  background-color: #fafafa;
+  border-color: transparent;
+}
+
+.vm2s-list-ul > li > ul > li span {
+  /*background-color: purple;*/
+}
+
+.vm2s-list-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: white;
+  padding: 2px 4px 0px 4px;
+  border-radius: 20px;
+  min-width: 14px;
+  height: 14px;
+  background: rgba(0, 0, 0, 0.15);
+  font-weight: bold;
 }
 
 .vm2s-span {
-  width: 10%;
+  width: 15%;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .vm2s-list-search {
   width: 100%;
 }
+
+/* PRIVATE */
+.vm2s-list {
+  box-shadow: 0px 0px 10px #e1e1e1;
+  border-radius: 4px;
+}
+.vm2s-list-search {
+  border: none;
+  padding: 12px 14px;
+  border-bottom: 2px solid #f1f1f1;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  outline: none;
+}
+
+.vm2s-list-search:focus {
+  border-color: #f57f1e;
+}
+
+.vm2s-footer {
+  align-items: flex-end;
+  display: flex;
+  flex: 1 0 auto;
+}
+.vm2s-footer > div {
+  display: flex;
+  padding: 10px;
+  background-color: #242934;
+  width: 100%;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.vm2s-footer > div * {
+  color: white;
+  font-size: 0.7rem;
+}
+.vm2s-footer .vm2s-footer-separator {
+  margin: 0px 6px;
+}
+
+.vm2s-span {
+  color: #e1e1e1;
+}
+
+.vm2s-list-ul li span {
+  border-radius: 4px;
+}
+
+/*
+vm2s-footer vm2s-list vm2s-list-search vm2s-list-ul
+*/
 </style>

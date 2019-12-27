@@ -1,37 +1,41 @@
 <template>
-  <ul>
+  <ul class="vm2s-list-ul">
     <li
       v-for="(item, index) in items"
       :key="index"
       v-show="hasChildren ? item.selected : item.visible"
-      @click="
-        !hasChildren ? toggleItem(item, item.selected, item.children) : false
-      "
+      @click="!hasChildren ? toggleItem(item, {}, item.selected) : false"
+      :class="liClass(item, hasChildren)"
     >
-      <strong
-        style="display: flex; align-items: center; justify-content: space-between"
-      >
-        {{ item.selectedDefault }} - {{ item.label }}
+      <span style="">
+        {{ item.label }}
         <small
           v-if="!hasChildren && totalSelected(item.children) !== 0"
-          style="display: flex; align-items: center; justify-content: center; font-size: 7px; color: white; border-radius: 50%; width: 10px; height: 10px; background: green;padding: 2px;"
+          class="vm2s-list-badge"
         >
           {{ totalSelected(item.children) }}
         </small>
-      </strong>
+      </span>
 
       <ul v-if="hasChildren">
         <li
           v-for="(children, indexChild) in item.children"
           :key="index + indexChild"
-          @click="toggleItem(children, children.selected, [])"
+          @click="toggleItem(children, item, children.selected)"
           v-show="children.visible"
+          :class="liClass(children, false)"
         >
-          {{ children.selected }}: {{ children.label }}
+          <span>
+            {{ children.label }}
+          </span>
         </li>
         <no-results v-show="totalChildren(item.children) === 0"></no-results>
       </ul>
     </li>
+    <no-selection
+      v-show="(totalSelected(items) === 0 && hasChildren) || items.length === 0"
+    ></no-selection>
+
     <no-results
       v-show="totalChildren(items) === 0 && !hasChildren"
     ></no-results>
@@ -41,6 +45,7 @@
 <script>
 const { clone } = require("../utils");
 const noResults = require("./noResults.vue").default;
+const noSelection = require("./noSelection.vue").default;
 
 export default {
   name: "list",
@@ -49,13 +54,28 @@ export default {
     this.$set(this, "itemsClone", clone(this.items));
   },
   components: {
-    noResults
+    noResults,
+    noSelection
   },
   props: {
     hasChildren: Boolean,
     items: Array
   },
   methods: {
+    liClass(item, hasChildren) {
+      let output = [];
+
+      if (hasChildren) {
+        output.push("is-parent");
+      }
+
+      if (item.selected) {
+        output.push("active");
+      }
+
+      return output;
+      //  ? `is-parent` : ``
+    },
     totalChildren(o) {
       return o.filter(function(a) {
         return a.visible === true;
@@ -67,8 +87,8 @@ export default {
       }).length;
     },
 
-    toggleItem(item, isSelected, children) {
-      this.$emit("updated-item", item, !isSelected, children);
+    toggleItem(item, parent, isSelected) {
+      this.$emit("updated-item", item, parent, !isSelected);
     }
   },
   data() {
@@ -78,11 +98,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-ul {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-</style>

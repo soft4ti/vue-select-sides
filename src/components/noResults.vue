@@ -1,6 +1,6 @@
 <template>
-  <li>
-    {{ $t("searchNoResult") }}
+  <li class="no-results">
+    <span>{{ $t("searchNoResult") }}</span>
   </li>
 </template>
 
