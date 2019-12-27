@@ -11,7 +11,7 @@
       <strong
         style="display: flex; align-items: center; justify-content: space-between"
       >
-        {{ item.label }}
+        {{ item.selectedDefault }} - {{ item.label }}
         <small
           v-if="!hasChildren && totalSelected(item.children) !== 0"
           style="display: flex; align-items: center; justify-content: center; font-size: 7px; color: white; border-radius: 50%; width: 10px; height: 10px; background: green;padding: 2px;"

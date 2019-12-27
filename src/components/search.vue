@@ -1,5 +1,9 @@
 <template>
-  <input type="text" v-model="inputVal" />
+  <input
+    type="text"
+    v-model="inputVal"
+    :placeholder="$t('searchPlaceholder')"
+  />
 </template>
 
 <script>

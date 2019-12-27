@@ -1,6 +1,6 @@
 <template>
   <li>
-    No have nada aqui...
+    {{ $t("searchNoResult") }}
   </li>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-  <a href="#" @click="toggleAll(items)">
-    Select All
+  <a href="javascript:void(0)" @click="$emit('update-select-all')">
+    {{ $t("selectAll") }}
   </a>
 </template>
 
@@ -10,17 +10,6 @@ export default {
   display: "selectAll",
   props: {
     items: Array
-  },
-  methods: {
-    toggleAll(items) {
-      console.log(items);
-      // return items.map(item => {
-      //   if (item.visible === true) {
-      //     item.selected = true;
-      //   }
-      //   return item;
-      // });
-    }
   }
 };
 </script>
