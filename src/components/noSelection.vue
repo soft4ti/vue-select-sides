@@ -1,6 +1,6 @@
 <template>
   <li class="no-selection">
-    <span>Por favor selecione uma bagaça</span>
+    <span>{{ $t("searchParentSelected") }}</span>
   </li>
 </template>
 

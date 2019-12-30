@@ -2,5 +2,6 @@
   "selectAll": "Select all",
   "deselectAll": "Deselect all",
   "searchPlaceholder": "Search...",
-  "searchNoResult": "No result..."
+  "searchNoResult": "No result...",
+  "searchParentSelected": "No items selected..."
 }

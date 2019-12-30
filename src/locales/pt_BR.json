@@ -2,5 +2,6 @@
   "selectAll": "Selecionar todos",
   "deselectAll": "Remover todos",
   "searchPlaceholder": "Pesquisar...",
-  "searchNoResult": "Sem nenhum resultado..."
+  "searchNoResult": "Sem nenhum resultado...",
+  "searchParentSelected": "Nenhum item selecionado..."
 }

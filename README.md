@@ -2,7 +2,7 @@
 
 ## To work
 
-- Add support to selected first
+- OK - Add support to selected first
 - Add mirror type
 - Organization of styles
 - Get data selected

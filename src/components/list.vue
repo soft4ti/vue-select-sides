@@ -10,10 +10,10 @@
       <span style="">
         {{ item.label }}
         <small
-          v-if="!hasChildren && totalSelected(item.children) !== 0"
+          v-if="!hasChildren && item.totalChildrenSelected !== 0"
           class="vm2s-list-badge"
         >
-          {{ totalSelected(item.children) }}
+          {{ item.totalChildrenSelected }}
         </small>
       </span>
 
@@ -33,7 +33,9 @@
       </ul>
     </li>
     <no-selection
-      v-show="(totalSelected(items) === 0 && hasChildren) || items.length === 0"
+      v-show="
+        (totalParentSelected(items) === 0 && hasChildren) || items.length === 0
+      "
     ></no-selection>
 
     <no-results
@@ -43,16 +45,13 @@
 </template>
 
 <script>
-const { clone } = require("../utils");
 const noResults = require("./noResults.vue").default;
 const noSelection = require("./noSelection.vue").default;
 
 export default {
   name: "list",
   display: "List",
-  mounted() {
-    this.$set(this, "itemsClone", clone(this.items));
-  },
+  mounted() {},
   components: {
     noResults,
     noSelection
@@ -74,14 +73,13 @@ export default {
       }
 
       return output;
-      //  ? `is-parent` : ``
     },
     totalChildren(o) {
       return o.filter(function(a) {
         return a.visible === true;
       }).length;
     },
-    totalSelected(o) {
+    totalParentSelected(o) {
       return o.filter(function(a) {
         return a.selected === true;
       }).length;
@@ -92,9 +90,7 @@ export default {
     }
   },
   data() {
-    return {
-      itemsClone: []
-    };
+    return {};
   }
 };
 </script>

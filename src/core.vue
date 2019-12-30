@@ -1,23 +1,23 @@
 <template>
   <div class="vm2s">
     <div class="vm2s-list">
-      <search class="vm2s-list-search " v-model="searchL"></search>
-      <list
+      <v-search class="vm2s-list-search" v-model="searchL"></v-search>
+      <v-list
         :hasChildren="false"
         :items="filteredListL"
         @updated-item="updateItem"
-      ></list>
+      ></v-list>
       <div class="vm2s-footer">
         <div>
-          <selectAll
+          <v-selectAll
             :items="listLeft"
             @update-select-all="updateLeftSelectAll"
-          ></selectAll>
+          ></v-selectAll>
           <div class="vm2s-footer-separator">/</div>
-          <deselectAll
+          <v-deselectAll
             :items="listLeft"
             @update-deselect-all="updateLeftDeselectAll"
-          ></deselectAll>
+          ></v-deselectAll>
         </div>
       </div>
     </div>
@@ -25,23 +25,23 @@
       &lsaquo; &rsaquo;
     </div>
     <div class="vm2s-list">
-      <search class="vm2s-list-search" v-model="searchR"></search>
-      <list
+      <v-search class="vm2s-list-search" v-model="searchR"></v-search>
+      <v-list
         :hasChildren="true"
         :items="filteredListR"
         @updated-item="updateItem"
-      ></list>
+      ></v-list>
       <div class="vm2s-footer">
         <div>
-          <selectAll
+          <v-selectAll
             :items="listRight"
             @update-select-all="updateRightSelectAll"
-          ></selectAll>
+          ></v-selectAll>
           <div class="vm2s-footer-separator">/</div>
-          <deselectAll
+          <v-deselectAll
             :items="listRight"
             @update-deselect-all="updateRightDeselectAll"
-          ></deselectAll>
+          ></v-deselectAll>
         </div>
       </div>
     </div>
@@ -50,52 +50,32 @@
 
 <script>
 import { normalizeText, clone } from "./utils";
-// clone
-const selectAll = require("./components/selectAll.vue").default;
-const deselectAll = require("./components/deselectAll.vue").default;
-const search = require("./components/search.vue").default;
-const list = require("./components/list.vue").default;
+
+const vSelectAll = require("./components/selectAll.vue").default;
+const vDeselectAll = require("./components/deselectAll.vue").default;
+const vSearch = require("./components/search.vue").default;
+const vList = require("./components/list.vue").default;
 const sortBy = require("sort-by");
 
 export default {
   name: "multi-sides",
   display: "Multi-sides",
   components: {
-    selectAll,
-    deselectAll,
-    search,
-    list
+    vSelectAll,
+    vDeselectAll,
+    vSearch,
+    vList
   },
   methods: {
     reorder(data) {
-      let data2 = clone(data);
-      // data.sort(sortBy("-children.valueasads"));
-      // data.sort(sortBy("-selectedDefault", "label", "children.label"));
+      let orderBy = ["-selectedDefault", "label"];
 
-      // data.filter(() => {
-
-      // })
-      data2.sort(sortBy("-selectedDefault", "label"));
-
-      // data2.forEach(item => {
-      //   item.children.sort(sortBy("-selectedDefault", "label"));
-      //   console.log(item.children);
-      // });
-      // console.log("============================");
-
-      data2.map(item => {
-        // console.log(JSON.stringify(item));
-        if (item.children) {
-          item.children.sort(sortBy("-selectedDefault", "label"));
-        }
-
+      data.sort(sortBy(...orderBy)).map(item => {
+        if (item.children) item.children.sort(sortBy(...orderBy));
         return item;
       });
 
-      return data2;
-
-      // return data2;
-      // return data;
+      return data;
     },
     updateLeftSelectAll() {
       let vm = this;
@@ -141,122 +121,159 @@ export default {
       return array.filter(e => String(e) !== String(value));
     },
     updateItem(item, parent, selected) {
-      // updateItem(item, selected, children) {
-
-      /*
-      let list = [];
-
-      if (children.length === 0) {
-        list = "selected";
-      } else {
-        list = "selectedParent";
-        if (selected === false) {
-          children.forEach(v => this.updateItem(v, selected, []));
-        }
-      }
-
-      if (selected) {
-        this[list].push(item.value);
-      } else {
-        this[list] = this.removeItemArray(this[list], item.value);
-      }
-
-      */
-
-      // ATENCAOOOOOOOOOOOOO
-      // NO MOUNTED, É NECESSARIO CRIAR O SELECTEDGROUPED COM BASE NOS "SELECTEDS" DO JSON
-      // E DESBINDAR O  this.selectedParent &&&&&& this.selected
-
-      // console.log(this.selectedGrouped);
-      // console.log(this.selectedGrouped[parent.value] === undefined);
+      let selectedItems = clone(this.selectedItems);
 
       if (Object.keys(parent).length > 0) {
-        /// ja é filho e adiciona no escopo do pai
-        if (this.selectedGrouped[parent.value] === undefined) {
-          this.selectedGrouped[parent.value] = [];
+        if (selectedItems[parent.value] === undefined) {
+          if (parent.visible) {
+            selectedItems[parent.value] = [];
+          }
         }
 
         if (selected) {
-          console.log(this.selectedGrouped);
-          this.selectedGrouped[parent.value].push(item.value);
-          console.log(this.selectedGrouped);
+          if (item.visible) {
+            selectedItems[parent.value].push(item.value);
+          }
         } else {
-          this.selectedGrouped[parent.value] = this.removeItemArray(
-            this.selectedGrouped[parent.value],
-            item.value
-          );
+          if (item.visible) {
+            selectedItems[parent.value] = this.removeItemArray(
+              selectedItems[parent.value],
+              item.value
+            );
+          }
         }
       } else {
         if (selected) {
-          this.selectedGrouped[parent.value] = [];
+          if (selectedItems[item.value] === undefined) {
+            selectedItems[item.value] = [];
+          }
         } else {
-          delete this.selectedGrouped[parent.value];
+          delete selectedItems[item.value];
         }
       }
+
+      this.$set(this, "selectedItems", selectedItems);
     },
     getSelectedParent() {
-      let selectedGrouped = Object.keys(this.selectedGrouped);
-      let concat = [...selectedGrouped, ...this.selectedParent];
+      let propsSelectedGrouped = Object.keys(this.propsSelectedGrouped);
+      let concat = [...propsSelectedGrouped, ...this.propsSelectedParent];
 
       return [...new Set(concat)];
     },
     getSelectedItem() {
       let vm = this;
-      let selectedGrouped = [];
+      let propsSelectedGrouped = [];
       let concat = [];
 
-      Object.keys(vm.selectedGrouped).forEach(parent => {
-        vm.selectedGrouped[parent].forEach(child => {
-          selectedGrouped.push(child);
+      Object.keys(vm.propsSelectedGrouped).forEach(parent => {
+        vm.propsSelectedGrouped[parent].forEach(child => {
+          propsSelectedGrouped.push(child);
         });
       });
 
-      concat = [...selectedGrouped, ...vm.selected];
+      concat = [...propsSelectedGrouped, ...vm.propsSelectedItem];
 
       return [...new Set(concat)];
     }
   },
   beforeMount() {
+    // Languages
     const enabledLangs = ["pt_BR", "en_US"];
 
     if (enabledLangs.indexOf(this.lang) >= 0) {
       this.$i18n.locale = this.lang;
     }
+
+    // Organize selecteds
+    let selectedsParent = this.getSelectedParent();
+    let selectedsItem = this.getSelectedItem();
+
+    this.propsList.filter(item => {
+      let value = item.value;
+
+      if (selectedsParent.indexOf(value) >= 0) {
+        item.selectedDefault = true;
+      } else {
+        item.selectedDefault = false;
+      }
+
+      if (item.children) {
+        item.children.filter(item => {
+          let valueChildren = item.value;
+
+          // Has selected
+          if (selectedsItem.indexOf(valueChildren) >= 0) {
+            item.selectedDefault = true;
+          } else {
+            item.selectedDefault = false;
+          }
+        });
+      }
+
+      this.propsList = this.reorder(this.propsList);
+
+      return item;
+    });
+  },
+  mounted() {
+    let vm = this;
+
+    // Organiza o array de selecionados
+    this.propsList.map(item => {
+      if (item.selectedDefault) {
+        if (this.selectedItems[item.value] === undefined) {
+          this.selectedItems[item.value] = [];
+        }
+      }
+
+      if (item.children) {
+        item.children.map(children => {
+          if (children.selectedDefault) {
+            this.selectedItems[item.value].push(children.value);
+          }
+        });
+      }
+    });
+
+    // Organiza a listLeft
+    this.listLeft = this.propsList.filter(item => {
+      item.visible = true;
+
+      if (item.children) {
+        item.children = item.children.map(children => {
+          if (vm.selectedItems[item.value] !== undefined) {
+            if (vm.selectedItems[item.value].indexOf(children.value) >= 0) {
+              children.selected = true;
+            } else {
+              children.selected = false;
+            }
+          }
+
+          return children;
+        });
+
+        return item.children;
+      }
+
+      return item;
+    });
   },
   computed: {
     filteredListL() {
       let vm = this;
       let search = normalizeText(this.searchL);
-      let selectedsParent = this.getSelectedParent();
-      let selectedsItem = this.getSelectedItem();
+      let selected = Object.keys(this.selectedItems);
 
-      let listLeft = this.list.filter(item => {
-        let value = item.value;
+      let listLeft = clone(this.listLeft);
+
+      listLeft = listLeft.filter(item => {
         let label = normalizeText(item.label);
 
         // Has selected
-        if (selectedsItem.indexOf(value) >= 0) {
+        if (selected.indexOf(item.value) >= 0) {
           item.selected = true;
-          if (vm.listLeft.length === 0) {
-            item.selectedDefault = true;
-          }
         } else {
           item.selected = false;
-          if (vm.listLeft.length === 0) {
-            item.selectedDefault = false;
-          }
-        }
-
-        if (selectedsParent.indexOf(value) >= 0) {
-          item.selected = true;
-          if (vm.listLeft.length === 0) {
-            item.selectedDefault = true;
-          }
-        } else {
-          item.selected = false;
-          if (vm.listLeft.length === 0) {
-            item.selectedDefault = false;
-          }
         }
 
         // Has search
@@ -266,66 +283,64 @@ export default {
           item.visible = false;
         }
 
+        if (item.children) {
+          item.children = item.children.map(children => {
+            children.selected = false;
+            if (vm.selectedItems[item.value] !== undefined) {
+              if (vm.selectedItems[item.value].indexOf(children.value) >= 0) {
+                children.selected = true;
+              } else {
+                children.selected = false;
+              }
+            }
+            return children;
+          });
+
+          item.totalChildrenSelected = item.children.filter(function(a) {
+            return a.selected === true;
+          }).length;
+
+          return item.children;
+        }
+
         return item;
       });
 
-      // if (this.options.orderBy === "asc") {
-      //   data.sort(sortBy("text"));
-      // }
+      this.$set(this, "listLeft", listLeft);
 
-      // if (this.options.orderBy === "desc") {
-      //   data.sort(sortBy("-text"));
-      // }
-
-      // if (this.options.sortSelectedFirst === true) {
-      //   data.sort(sortBy("-selected"));
-      // }
-
-      // return data;
-      // console.log(JSON.stringify(listLeft));
-      this.$set(this, "listLeft", this.reorder(listLeft));
-
-      return this.listLeft;
+      return listLeft;
     },
     filteredListR() {
       let vm = this;
       let search = normalizeText(vm.searchR);
-      let selecteds = vm.getSelectedItem();
 
-      let listRight = vm.listLeft.filter(function sub(o) {
-        let value = o.value;
-        let label = normalizeText(o.label);
-        let children = o.children;
+      let listRight = vm.listLeft.filter(function sub(item) {
+        if (item.children) {
+          item.children = item.children.map(children => {
+            let label = normalizeText(children.label);
 
-        if (children) {
-          children = children.filter(sub);
-          return children;
+            if (label.includes(search)) {
+              children.visible = true;
+            } else {
+              children.visible = false;
+            }
+
+            if (vm.selectedItems[item.value] !== undefined) {
+              if (vm.selectedItems[item.value].indexOf(children.value) >= 0) {
+                children.selected = true;
+              } else {
+                children.selected = false;
+              }
+            }
+
+            return children;
+          });
+
+          return item.children;
         }
 
-        // Has selected
-        if (selecteds.indexOf(value) >= 0) {
-          if (vm.listRight.length === 0) {
-            o.selectedDefault = true;
-          }
-          o.selected = true;
-        } else {
-          if (vm.listRight.length === 0) {
-            o.selectedDefault = false;
-          }
-          o.selected = false;
-        }
-
-        // Has search
-        if (label.includes(search)) {
-          o.visible = true;
-        } else {
-          o.visible = false;
-        }
-
-        return o;
+        return item;
       });
-
-      // listRight = this.reorder(listRight);
 
       this.$set(this, "listRight", listRight);
 
@@ -338,12 +353,14 @@ export default {
       lang: "en_US",
       searchL: "",
       searchR: "",
-      selectedGrouped: {},
-      selectedParent: ["sudeste", "norte"],
-      selected: ["minas-gerais", "roraima", "amapa"],
+      finishedListLeft: false,
+      selectedItems: {},
+      propsSelectedGrouped: {},
+      propsSelectedParent: ["sudeste", "norte"],
+      propsSelectedItem: ["minas-gerais", "roraima", "amapa"],
       listLeft: [],
       listRight: [],
-      list: [
+      propsList: [
         {
           value: "sul",
           label: "Sul",
@@ -550,7 +567,6 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
 }
 
 .vm2s-list-ul {
@@ -595,7 +611,8 @@ export default {
   border: 1px solid #f4f4f4;
 }
 
-.vm2s-list-ul li.no-results > span {
+.vm2s-list-ul li.no-results > span,
+.vm2s-list-ul li.no-selection > span {
   cursor: default;
   background-color: #fafafa;
   border-color: transparent;
@@ -625,6 +642,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .vm2s-list-search {
@@ -678,8 +696,4 @@ export default {
 .vm2s-list-ul li span {
   border-radius: 4px;
 }
-
-/*
-vm2s-footer vm2s-list vm2s-list-search vm2s-list-ul
-*/
 </style>
