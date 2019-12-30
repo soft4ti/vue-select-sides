@@ -7,7 +7,7 @@
 <script>
 export default {
   name: "deselectAll",
-  display: "Deselect All",
+  display: "Deselect all",
   props: {
     click: Function,
     items: Array

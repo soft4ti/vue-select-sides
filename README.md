@@ -3,9 +3,10 @@
 ## To work
 
 - OK - Add support to selected first
-- Add mirror type
+- OK - Get data selected
+- OK - Add mirror type
+- Add one side type
 - Organization of styles
-- Get data selected
 - Create docs
 - Publish github public + npm repo
 

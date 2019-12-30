@@ -3,16 +3,13 @@
     <li
       v-for="(item, index) in items"
       :key="index"
-      v-show="hasChildren ? item.selected : item.visible"
+      v-show="showParent(item)"
       @click="!hasChildren ? toggleItem(item, {}, item.selected) : false"
       :class="liClass(item, hasChildren)"
     >
       <span style="">
         {{ item.label }}
-        <small
-          v-if="!hasChildren && item.totalChildrenSelected !== 0"
-          class="vm2s-list-badge"
-        >
+        <small v-if="showCounter(item)" class="vm2s-list-badge">
           {{ item.totalChildrenSelected }}
         </small>
       </span>
@@ -57,10 +54,26 @@ export default {
     noSelection
   },
   props: {
-    hasChildren: Boolean,
-    items: Array
+    hasChildren: {
+      type: Boolean
+    },
+    items: {
+      type: Array
+    },
+    enableCounter: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
+    showCounter(item) {
+      if (!this.enableCounter) return false;
+
+      return !this.hasChildren && item.totalChildrenSelected !== 0;
+    },
+    showParent(item) {
+      return this.hasChildren ? item.selected : item.visible;
+    },
     liClass(item, hasChildren) {
       let output = [];
 
@@ -94,3 +107,19 @@ export default {
   }
 };
 </script>
+
+<style>
+.vm2s-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.vm2s-list-ul {
+  overflow-y: auto;
+}
+
+.vm2s-list-ul li {
+  line-height: 1.5;
+}
+</style>
