@@ -1,0 +1,7 @@
+@import "../_variables.scss";
+
+$selected-color: $dark;
+$default-item-background-selected: $selected-color;
+$badge-background: lighten($selected-color, 15%);
+
+@import "../global.scss";

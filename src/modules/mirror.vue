@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="vm2s-list">
+    <div class="vss-list">
       <v-search
-        class="vm2s-list-search"
+        class="vss-list-search"
         v-if="search"
         v-model="searchL"
       ></v-search>
@@ -12,7 +12,7 @@
         :items="filteredListL"
         @updated-item="updateItem"
       ></v-list>
-      <div class="vm2s-footer">
+      <div class="vss-footer">
         <div v-if="toggleAll">
           <v-selectAll
             :items="listLeft"
@@ -22,9 +22,9 @@
       </div>
     </div>
     <v-separator></v-separator>
-    <div class="vm2s-list">
+    <div class="vss-list">
       <v-search
-        class="vm2s-list-search"
+        class="vss-list-search"
         v-if="search"
         v-model="searchR"
       ></v-search>
@@ -34,7 +34,7 @@
         :items="filteredListR"
         @updated-item="updateItem"
       ></v-list>
-      <div class="vm2s-footer">
+      <div class="vss-footer">
         <div v-if="toggleAll">
           <v-deselectAll
             :items="listRight"
@@ -47,18 +47,18 @@
 </template>
 
 <script>
-import { normalizeText, clone, reorder, removeItemArray } from "./utils";
+import { normalizeText, clone, reorder, removeItemArray } from "../utils";
 
-const vSelectAll = require("./components/selectAll.vue").default;
-const vDeselectAll = require("./components/deselectAll.vue").default;
-const vSearch = require("./components/search.vue").default;
-const vList = require("./components/list.vue").default;
-const vSeparator = require("./components/separator.vue").default;
-const mixin = require("./mixin").default;
+const vSelectAll = require("../components/selectAll.vue").default;
+const vDeselectAll = require("../components/deselectAll.vue").default;
+const vSearch = require("../components/search.vue").default;
+const vList = require("../components/list.vue").default;
+const vSeparator = require("../components/separator.vue").default;
+const mixin = require("../mixin").default;
 
 export default {
-  name: "multi-sides",
-  display: "Multi-sides",
+  name: "mirror-select-sides",
+  display: "Mirror select sides",
   mixins: [mixin],
   components: {
     vSelectAll,
@@ -158,6 +158,8 @@ export default {
       selected.forEach(parent => {
         propSelected.push(parent);
       });
+
+      console.log(selected);
 
       concat = [...propSelected, ...selectedItem];
 

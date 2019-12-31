@@ -1,0 +1,13 @@
+@import "../_variables.scss";
+
+$selected-color: $gray;
+
+$default-text-color: #222;
+$default-item-background: #fafafa;
+$default-item-color-selected: lighten($default-text-color, 30%);
+$default-item-background-selected: lighten($gray, 3%);
+
+$default-footer-text-color: lighten($default-text-color, 15%);
+$default-footer-background: darken($default-item-background, 5%);
+
+@import "../global.scss";

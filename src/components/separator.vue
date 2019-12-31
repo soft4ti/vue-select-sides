@@ -1,5 +1,5 @@
 <template>
-  <div class="vm2s-span">
+  <div class="vss-span">
     &lsaquo; &rsaquo;
   </div>
 </template>

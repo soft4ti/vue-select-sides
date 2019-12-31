@@ -1,0 +1,64 @@
+.vss,
+.vss ul,
+.vss ul li {
+  list-style-type: none;
+  margin: 0px;
+}
+
+.vss ul ul {
+  padding: 0px;
+}
+
+.vss,
+.vss *,
+.vss *::before,
+.vss *::after {
+  box-sizing: border-box;
+}
+
+.vss {
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+  }
+
+  .vss-span,
+  .vss-list-ul li {
+    user-select: none;
+  }
+
+  .vss-span {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vss-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .vss-list-search {
+      width: 100%;
+    }
+
+    .vss-list-ul {
+      overflow-y: auto;
+
+      li {
+        line-height: 1.5;
+
+        .vss-list-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

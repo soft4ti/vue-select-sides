@@ -1,9 +1,9 @@
 <template>
   <component
-    class="vm2s"
+    class="vss"
     :is="getComponent()"
     :lang="lang"
-    :list="dataList"
+    :list="list"
     :selected="selected"
     :selected-item="selectedItem"
     :selected-parent="selectedParent"
@@ -18,8 +18,8 @@
 
 <script>
 const types = require("./types").default;
-const grouped = require("./grouped").default;
-const mirror = require("./mirror").default;
+const grouped = require("./modules/grouped").default;
+const mirror = require("./modules/mirror").default;
 
 export default {
   name: "core-select-sides",
@@ -77,75 +77,12 @@ export default {
     }
   },
   beforeMount() {
-    this.$set(this, "dataList", this.list);
-
     // Languages
     const enabledLangs = ["pt_BR", "en_US"];
 
     if (enabledLangs.indexOf(this.lang) >= 0) {
       this.$i18n.locale = this.lang;
     }
-  },
-  data() {
-    return {
-      dataList: [],
-      dataSelected: {}
-    };
   }
 };
 </script>
-
-<style>
-.vm2s,
-.vm2s ul,
-.vm2s ul li {
-  list-style-type: none;
-  margin: 0px;
-}
-
-.vm2s ul ul {
-  padding: 0px;
-}
-
-.vm2s,
-.vm2s *,
-.vm2s *::before,
-.vm2s *::after {
-  box-sizing: border-box;
-}
-.vm2s a {
-  text-decoration: none;
-}
-
-.vm2s * {
-  font-size: 0.9rem;
-}
-
-.vm2s {
-  display: flex;
-  align-items: stretch;
-  align-content: stretch;
-  justify-content: space-between;
-}
-
-.vm2s-list-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.vm2s-span,
-.vm2s-list-ul li {
-  user-select: none;
-}
-.vm2s-span {
-  width: 15%;
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vm2s-list-search {
-  width: 100%;
-}
-</style>

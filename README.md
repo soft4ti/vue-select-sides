@@ -5,8 +5,8 @@
 - OK - Add support to selected first
 - OK - Get data selected
 - OK - Add mirror type
+- OK - Organization of styles
 - Add one side type
-- Organization of styles
 - Create docs
 - Publish github public + npm repo
 

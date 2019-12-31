@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="vm2s-list">
+    <div class="vss-list">
       <v-search
-        class="vm2s-list-search"
+        class="vss-list-search"
         v-if="search"
         v-model="searchL"
       ></v-search>
@@ -11,13 +11,13 @@
         :items="filteredListL"
         @updated-item="updateItem"
       ></v-list>
-      <div class="vm2s-footer">
+      <div class="vss-footer">
         <div v-if="toggleAll">
           <v-selectAll
             :items="listLeft"
             @update-select-all="updateLeftSelectAll"
           ></v-selectAll>
-          <div class="vm2s-footer-separator">/</div>
+          <div class="vss-footer-separator">/</div>
           <v-deselectAll
             :items="listLeft"
             @update-deselect-all="updateLeftDeselectAll"
@@ -26,9 +26,9 @@
       </div>
     </div>
     <v-separator></v-separator>
-    <div class="vm2s-list">
+    <div class="vss-list">
       <v-search
-        class="vm2s-list-search"
+        class="vss-list-search"
         v-if="search"
         v-model="searchR"
       ></v-search>
@@ -37,13 +37,13 @@
         :items="filteredListR"
         @updated-item="updateItem"
       ></v-list>
-      <div class="vm2s-footer">
+      <div class="vss-footer">
         <div v-if="toggleAll">
           <v-selectAll
             :items="listRight"
             @update-select-all="updateRightSelectAll"
           ></v-selectAll>
-          <div class="vm2s-footer-separator">/</div>
+          <div class="vss-footer-separator">/</div>
           <v-deselectAll
             :items="listRight"
             @update-deselect-all="updateRightDeselectAll"
@@ -55,18 +55,18 @@
 </template>
 
 <script>
-import { normalizeText, clone, reorder, removeItemArray } from "./utils";
+import { normalizeText, clone, reorder, removeItemArray } from "../utils";
 
-const vSelectAll = require("./components/selectAll.vue").default;
-const vDeselectAll = require("./components/deselectAll.vue").default;
-const vSearch = require("./components/search.vue").default;
-const vList = require("./components/list.vue").default;
-const vSeparator = require("./components/separator.vue").default;
-const mixin = require("./mixin").default;
+const vSelectAll = require("../components/selectAll.vue").default;
+const vDeselectAll = require("../components/deselectAll.vue").default;
+const vSearch = require("../components/search.vue").default;
+const vList = require("../components/list.vue").default;
+const vSeparator = require("../components/separator.vue").default;
+const mixin = require("../mixin").default;
 
 export default {
-  name: "multi-sides",
-  display: "Multi-sides",
+  name: "grouped-select-sides",
+  display: "Grouped select sides",
   mixins: [mixin],
   components: {
     vSelectAll,
@@ -179,12 +179,12 @@ export default {
       this.$set(this, "dataSelected", dataSelected);
     },
     getSelectedParent() {
-      let propSelected =
+      let selected =
         this.selected !== undefined ? Object.keys(this.selected) : [];
       let selectedParent =
         this.selectedParent !== undefined ? this.selectedParent : [];
 
-      let concat = [...propSelected, ...selectedParent];
+      let concat = [...selected, ...selectedParent];
 
       return [...new Set(concat)];
     },
@@ -194,6 +194,7 @@ export default {
       let concat = [];
       let selected =
         this.selected !== undefined ? Object.keys(vm.selected) : [];
+      let selectedItem = vm.selectedItem !== undefined ? vm.selectedItem : [];
 
       selected.forEach(parent => {
         vm.selected[parent].forEach(child => {
@@ -201,7 +202,7 @@ export default {
         });
       });
 
-      concat = [...propSelected, ...vm.selectedItem];
+      concat = [...propSelected, ...selectedItem];
 
       return [...new Set(concat)];
     }
@@ -251,6 +252,12 @@ export default {
       if (item.children) {
         item.children.map(children => {
           if (children.selectedDefault) {
+            if (this.dataSelected[item.value] === undefined) {
+              this.dataSelected[item.value] = [];
+            }
+
+            // console.log(this.dataSelected[item.value]);
+
             this.dataSelected[item.value].push(children.value);
           }
         });

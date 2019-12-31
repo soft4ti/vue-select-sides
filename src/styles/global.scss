@@ -1,0 +1,110 @@
+@import "_normalize.scss";
+@import "_variables.scss";
+
+.vss {
+  * {
+    font-size: $font-size-base;
+  }
+
+  .vss-span {
+    font-size: $font-size-base + 0.4rem;
+    color: $gray;
+  }
+
+  .vss-list {
+    box-shadow: 0px 0px 10px $gray;
+    border-radius: $border-radius-base;
+
+    .vss-list-search {
+      border: none;
+      padding: 12px 14px;
+      border-bottom: 2px solid lighten($gray, 7%);
+      border-top-left-radius: $border-radius-base;
+      border-top-right-radius: $border-radius-base;
+      outline: none;
+
+      &:focus {
+        border-color: $selected-color;
+      }
+    }
+
+    .vss-list-ul {
+      padding: 8px 10px 10px 10px;
+
+      li {
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-radius: $border-radius-base;
+          color: $default-text-color;
+          padding: 5px 12px;
+          margin-top: 2px;
+
+          .vss-list-badge {
+            font-size: $font-size-base - 0.4;
+            color: $white;
+            background-color: $badge-background;
+            padding: 2px 4px 0px 4px;
+            border-radius: 20px;
+            min-width: 14px;
+            height: 14px;
+            font-weight: bold;
+          }
+        }
+
+        &.active:not(.is-parent) > span {
+          background-color: $default-item-background-selected;
+          color: $default-item-color-selected;
+          border-color: transparent;
+        }
+
+        &:not(.is-parent) > span {
+          cursor: pointer;
+          background-color: $default-item-background;
+          border: 1px solid darken($default-item-background, 2%);
+        }
+
+        &.no-results > span,
+        &.no-selection > span {
+          cursor: default;
+          background-color: $default-item-background;
+          border-color: transparent;
+        }
+      }
+
+      > li:not(.is-parent) > span {
+        //
+      }
+
+      > li.is-parent > span {
+        font-weight: bold;
+        padding-left: 0px;
+      }
+    }
+
+    .vss-footer {
+      align-items: flex-end;
+      display: flex;
+      flex: 1 0 auto;
+
+      .vss-footer-separator {
+        margin: 0px 6px;
+      }
+
+      > div {
+        display: flex;
+        padding: 10px;
+        width: 100%;
+        background-color: $default-footer-background;
+        border-bottom-left-radius: $border-radius-base;
+        border-bottom-right-radius: $border-radius-base;
+
+        * {
+          color: $default-footer-text-color;
+          font-size: $font-size-base - 0.2;
+        }
+      }
+    }
+  }
+}

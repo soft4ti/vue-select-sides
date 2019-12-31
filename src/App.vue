@@ -5,7 +5,7 @@
       class="example"
       type="mirror"
       :list="mirror.list"
-      :selected="mirror.selectedItem"
+      :selected="mirror.selected"
       :order-by="mirror.orderBy"
       :sort-selected-up="mirror.sortSelectedUp"
       :search="mirror.search"
@@ -41,8 +41,8 @@ export default {
     vueSelectSides
   },
   methods: {
-    updatedItems(a) {
-      console.log(a);
+    updatedItems(newValues) {
+      console.log(newValues);
     }
   },
   data() {
@@ -54,7 +54,7 @@ export default {
         search: true,
         orderBy: "ASC",
         sortSelectedUp: true,
-        selectedItem: ["sudeste", "centro-oeste"],
+        selected: ["sudeste", "centro-oeste"],
         list: [
           {
             value: "sul",
@@ -84,9 +84,12 @@ export default {
         search: true,
         orderBy: "ASC",
         sortSelectedUp: true,
-        selected: {},
-        selectedItem: ["minas-gerais", "roraima", "amapa"],
-        selectedParent: ["sudeste", "norte"],
+        selected: {
+          sudeste: ["minas-gerais"],
+          norte: ["acre", "roraima"]
+        },
+        // selectedItem: ["minas-gerais", "roraima", "amapa"],
+        // selectedParent: ["sudeste", "norte"],
         list: [
           {
             value: "sul",
@@ -249,7 +252,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "./styles/themes/soft.scss";
+
 .example {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -258,110 +263,7 @@ export default {
   margin: 0 auto;
 }
 
-.vm2s {
+.vss {
   height: 500px;
-}
-
-.vm2s-list {
-  box-shadow: 0px 0px 10px #e1e1e1;
-  border-radius: 4px;
-}
-.vm2s-list-search {
-  border: none;
-  padding: 12px 14px;
-  border-bottom: 2px solid #f1f1f1;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  outline: none;
-}
-
-.vm2s-list-search:focus {
-  border-color: #f57f1e;
-}
-
-.vm2s-footer {
-  align-items: flex-end;
-  display: flex;
-  flex: 1 0 auto;
-}
-.vm2s-footer > div {
-  display: flex;
-  padding: 10px;
-  background-color: #242934;
-  width: 100%;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.vm2s-footer > div * {
-  color: white;
-  font-size: 0.7rem;
-}
-.vm2s-footer .vm2s-footer-separator {
-  margin: 0px 6px;
-}
-
-.vm2s-span {
-  color: #e1e1e1;
-}
-
-.vm2s-list-ul {
-  padding: 8px 10px 10px 10px;
-}
-
-.vm2s-list-ul li span {
-  border-radius: 4px;
-}
-
-.vm2s-list-ul li span {
-  padding: 5px 12px;
-  margin-top: 2px;
-}
-
-.vm2s-list-ul > li:not(.is-parent) > span {
-}
-
-.vm2s-list-ul > li.is-parent > span {
-  font-weight: bold;
-  padding-left: 0px;
-}
-
-.vm2s-list-ul li span {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.vm2s-list-ul li.active:not(.is-parent) > span {
-  background-color: #f57f1e;
-  border-color: transparent;
-  color: white;
-}
-
-.vm2s-list-ul li:not(.is-parent) > span {
-  cursor: pointer;
-  background-color: #fafafa;
-  border: 1px solid #f4f4f4;
-}
-
-.vm2s-list-ul li.no-results > span,
-.vm2s-list-ul li.no-selection > span {
-  cursor: default;
-  background-color: #fafafa;
-  border-color: transparent;
-}
-
-.vm2s-list-ul > li > ul > li span {
-}
-
-.vm2s-list-badge {
-  font-size: 8px;
-  color: white;
-  padding: 2px 4px 0px 4px;
-  border-radius: 20px;
-  min-width: 14px;
-  height: 14px;
-  background: rgba(0, 0, 0, 0.15);
-  font-weight: bold;
 }
 </style>

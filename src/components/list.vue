@@ -1,5 +1,5 @@
 <template>
-  <ul class="vm2s-list-ul">
+  <ul class="vss-list-ul">
     <li
       v-for="(item, index) in items"
       :key="index"
@@ -9,7 +9,7 @@
     >
       <span style="">
         {{ item.label }}
-        <small v-if="showCounter(item)" class="vm2s-list-badge">
+        <small v-if="showCounter(item)" class="vss-list-badge">
           {{ item.totalChildrenSelected }}
         </small>
       </span>
@@ -107,19 +107,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.vm2s-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.vm2s-list-ul {
-  overflow-y: auto;
-}
-
-.vm2s-list-ul li {
-  line-height: 1.5;
-}
-</style>
