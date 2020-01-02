@@ -20,7 +20,8 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "files": [
-    "dist"
+    "dist",
+    "styles"
   ],
   "keywords": [
     "vue",
@@ -40,7 +41,8 @@
     "sass-loader": "^8.0.0",
     "sort-by": "^1.2.0",
     "vue": "^2.6.10",
-    "vue-i18n": "^8.0.0"
+    "vue-i18n": "^8.0.0",
+    "vue-select-sides": "https://juliorosseti:15a03e13ba66b9b193a34c90d9cee4641fd2b193@github.com/juliorosseti/vue-select-sides.git"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

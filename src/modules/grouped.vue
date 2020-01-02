@@ -147,7 +147,9 @@ export default {
 
         if (selected) {
           if (item.visible) {
-            dataSelected[parent.value].push(item.value);
+            if (dataSelected[parent.value].indexOf(item.value) === -1) {
+              dataSelected[parent.value].push(item.value);
+            }
           }
         } else {
           if (item.visible) {

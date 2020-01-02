@@ -269,7 +269,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../src/styles/themes/soft.scss";
+@import "../styles/themes/soft.scss";
 
 .vss {
   height: 400px;
