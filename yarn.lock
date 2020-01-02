@@ -8276,17 +8276,6 @@ vue-loader@^15.7.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-"vue-select-sides@https://juliorosseti:15a03e13ba66b9b193a34c90d9cee4641fd2b193@github.com/juliorosseti/vue-select-sides.git":
-  version "1.0.0"
-  resolved "https://juliorosseti:15a03e13ba66b9b193a34c90d9cee4641fd2b193@github.com/juliorosseti/vue-select-sides.git#92d6d14032102a15abb74c78dc09e4a5fd3f6ad8"
-  dependencies:
-    core-js "^3.4.3"
-    node-sass "^4.13.0"
-    sass-loader "^8.0.0"
-    sort-by "^1.2.0"
-    vue "^2.6.10"
-    vue-i18n "^8.0.0"
-
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"

@@ -1,9 +1,9 @@
-import selectSides from "./core.vue";
+import vueSelectSides from "./core.vue";
 
 function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component("v-select-sides", selectSides);
+  Vue.component("v-select-sides", vueSelectSides);
 }
 
 const plugin = {
@@ -21,6 +21,6 @@ if (GlobalVue) {
   GlobalVue.use(plugin);
 }
 
-selectSides.install = install;
+vueSelectSides.install = install;
 
-export default selectSides;
+export default vueSelectSides;

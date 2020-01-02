@@ -8,19 +8,19 @@
     "type": "git",
     "url": "https://github.com/juliorosseti/vue-select-sides"
   },
-  "main": "dist/vueSelectSides.umd.js",
-  "unpkg": "dist/vueSelectSides.umd.min.js",
+  "main": "dist/core/vueSelectSides.umd.js",
+  "unpkg": "dist/core/vueSelectSides.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve  --target lib --name vueSelectSides ./example/main.js ",
     "build": "yarn run build:example && yarn run build:npm",
     "lint": "vue-cli-service lint",
-    "build:example": "vue-cli-service build --target lib --name vueSelectSides ./example/main.js",
-    "build:npm": "vue-cli-service build --target lib --name vueSelectSides ./src/index.js",
     "docs:serve": "docsify serve ./docs",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+    "build:example": "vue-cli-service build --target lib --dest ./dist/example --formats umd --name vueSelectSides ./example/App.vue",
+    "build:npm": "vue-cli-service build --target lib --dest ./dist/core --name vueSelectSides ./src/index.js"
   },
   "files": [
-    "dist",
+    "dist/core",
     "styles"
   ],
   "keywords": [
@@ -41,8 +41,7 @@
     "sass-loader": "^8.0.0",
     "sort-by": "^1.2.0",
     "vue": "^2.6.10",
-    "vue-i18n": "^8.0.0",
-    "vue-select-sides": "https://juliorosseti:15a03e13ba66b9b193a34c90d9cee4641fd2b193@github.com/juliorosseti/vue-select-sides.git"
+    "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
