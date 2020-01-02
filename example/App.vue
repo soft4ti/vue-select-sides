@@ -168,7 +168,7 @@ import exampleGrouped08 from "./components/08-grouped-sort-list.vue";
 import exampleGrouped09 from "./components/09-sort-selected-first.vue";
 
 const repo = require("../package.json").repository.url;
-const repoExamples = repo + `/example/components/`;
+const repoExamples = repo + `/blob/master/example/components/`;
 
 export default {
   components: {
