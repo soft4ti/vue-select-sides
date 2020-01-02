@@ -1,269 +1,205 @@
 <template>
   <div class="ex">
-    <div class="ex-section">
-      <h2>Mirror</h2>
-      <div class="ex-lib">
-        <vue-select-sides
-          type="mirror"
-          v-model="mirror.selected"
-          :list="mirror.list"
-          :order-by="mirror.orderBy"
-          :sort-selected-up="mirror.sortSelectedUp"
-          :search="mirror.search"
-          :toggle-all="mirror.toggleAll"
-          :lang="lang"
-          @change="updatedItemsMirror"
-        ></vue-select-sides>
-        <div class="ex-result">
-          <h4>Result</h4>
-          <pre>{{ mirror.selected }}</pre>
-        </div>
+    <header>
+      <div>
+        <img src="../static/images/logo.png" />
       </div>
-    </div>
+      <h2>Vue select sides</h2>
+      <h3>Examples</h3>
+    </header>
     <hr />
 
-    <div class="ex-section">
-      <h2>Grouped</h2>
-      <div class="ex-lib">
-        <vue-select-sides
-          type="grouped"
-          v-model="grouped.selected"
-          :list="grouped.list"
-          :order-by="grouped.orderBy"
-          :sort-selected-up="grouped.sortSelectedUp"
-          :search="grouped.search"
-          :toggle-all="grouped.toggleAll"
-          :lang="lang"
-          @change="updatedItemsGrouped"
-        ></vue-select-sides>
-        <div class="ex-result">
-          <h4>Result</h4>
-          <pre>{{ selectedGrouped }}</pre>
+    <div :class="`the-body ${affix}`">
+      <nav>
+        <div>
+          <ul>
+            <li><strong>Mirror</strong></li>
+            <ul>
+              <li><a href="#mirror-basic">01) Basic</a></li>
+              <li><a href="#mirror-with-selecteds">02) With selecteds</a></li>
+              <li><a href="#mirror-only-list">03) Only list</a></li>
+              <li><a href="#mirror-sort-list">04) Sort list</a></li>
+            </ul>
+          </ul>
+          <ul>
+            <li><strong>Grouped</strong></li>
+            <ul>
+              <li><a href="#grouped-basic">05) Basic</a></li>
+              <li><a href="#grouped-with-selecteds">06) With selecteds</a></li>
+              <li><a href="#grouped-only-list">07) Only list</a></li>
+              <li><a href="#grouped-sort-list">08) Sort list</a></li>
+              <li>
+                <a href="#grouped-sort-selected-first">
+                  09) Sort selected first
+                </a>
+              </li>
+            </ul>
+          </ul>
         </div>
-      </div>
+      </nav>
+      <section>
+        <div id="mirror-basic" class="ex-section">
+          <div class="ex-section-title">
+            <h3>01) Mirror - basic</h3>
+            <a :href="`${repoExamples}01-mirror-basic.vue`" target="_blank">
+              View source
+            </a>
+          </div>
+          <example-mirror-01></example-mirror-01>
+        </div>
+        <hr />
+
+        <div id="mirror-with-selecteds" class="ex-section">
+          <div class="ex-section-title">
+            <h3>02) Mirror - with selecteds</h3>
+            <a
+              :href="`${repoExamples}02-mirror-with-selecteds.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-mirror-02></example-mirror-02>
+        </div>
+        <hr />
+
+        <div id="mirror-only-list" class="ex-section">
+          <div class="ex-section-title">
+            <h3>03) Mirror - only list (search and footer removed)</h3>
+            <a :href="`${repoExamples}03-mirror-only-list.vue`" target="_blank">
+              View source
+            </a>
+          </div>
+          <example-mirror-03></example-mirror-03>
+        </div>
+        <hr />
+
+        <div id="mirror-sort-list" class="ex-section">
+          <div class="ex-section-title">
+            <h3>04) Mirror - sort list</h3>
+            <a :href="`${repoExamples}04-mirror-sort-list.vue`" target="_blank">
+              View source
+            </a>
+          </div>
+          <example-mirror-04></example-mirror-04>
+        </div>
+        <hr />
+
+        <div id="grouped-basic" class="ex-section">
+          <div class="ex-section-title">
+            <h3>05) Grouped - basic</h3>
+            <a :href="`${repoExamples}05-grouped-basic.vue`" target="_blank">
+              View source
+            </a>
+          </div>
+          <example-grouped-05></example-grouped-05>
+        </div>
+        <hr />
+
+        <div id="grouped-with-selecteds" class="ex-section">
+          <div class="ex-section-title">
+            <h3>06) Grouped - with selecteds</h3>
+            <a
+              :href="`${repoExamples}06-grouped-with-selecteds.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-grouped-06></example-grouped-06>
+        </div>
+        <hr />
+
+        <div id="grouped-only-list" class="ex-section">
+          <div class="ex-section-title">
+            <h3>07) Grouped - only list (search and footer removed)</h3>
+            <a
+              :href="`${repoExamples}07-grouped-only-list.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-grouped-07></example-grouped-07>
+        </div>
+        <hr />
+
+        <div id="grouped-sort-list" class="ex-section">
+          <div class="ex-section-title">
+            <h3>08) Grouped - sort list</h3>
+            <a
+              :href="`${repoExamples}08-grouped-sort-list.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-grouped-08></example-grouped-08>
+        </div>
+        <hr />
+
+        <div id="grouped-sort-selected-first" class="ex-section">
+          <div class="ex-section-title">
+            <h3>09) Grouped - sort selected to top list</h3>
+            <a
+              :href="`${repoExamples}09-sort-selected-first.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-grouped-09></example-grouped-09>
+        </div>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-import vueSelectSides from "../src/index";
+import exampleMirror01 from "./components/01-mirror-basic.vue";
+import exampleMirror02 from "./components/02-mirror-with-selecteds.vue";
+import exampleMirror03 from "./components/03-mirror-only-list.vue";
+import exampleMirror04 from "./components/04-mirror-sort-list.vue";
+
+import exampleGrouped05 from "./components/05-grouped-basic.vue";
+import exampleGrouped06 from "./components/06-grouped-with-selecteds.vue";
+import exampleGrouped07 from "./components/07-grouped-only-list.vue";
+import exampleGrouped08 from "./components/08-grouped-sort-list.vue";
+import exampleGrouped09 from "./components/09-sort-selected-first.vue";
+
+const repo = require("../package.json").repository.url;
+const repoExamples = repo + `/example/components/`;
 
 export default {
   components: {
-    vueSelectSides
+    exampleMirror01,
+    exampleMirror02,
+    exampleMirror03,
+    exampleMirror04,
+    exampleGrouped05,
+    exampleGrouped06,
+    exampleGrouped07,
+    exampleGrouped08,
+    exampleGrouped09
   },
   methods: {
-    updatedItemsMirror(newValues) {
-      this.$set(this, "selectedMirror", newValues);
-    },
-    updatedItemsGrouped(newValues) {
-      this.$set(this, "selectedGrouped", newValues);
+    scrolling() {
+      if (window.scrollY >= 275) {
+        this.affix = "affixed";
+      } else {
+        this.affix = "";
+      }
     }
   },
   data() {
     return {
       lang: "en_US",
-
-      selectedMirror: [],
-      selectedGrouped: {},
-
-      mirror: {
-        toggleAll: true,
-        search: true,
-        orderBy: "ASC",
-        sortSelectedUp: true,
-        selected: ["sudeste", "centro-oeste"],
-        list: [
-          {
-            value: "sul",
-            label: "Sul"
-          },
-          {
-            value: "sudeste",
-            label: "Sudeste"
-          },
-          {
-            value: "norte",
-            label: "Norte"
-          },
-          {
-            value: "centro-oeste",
-            label: "Centro Oeste"
-          },
-          {
-            value: "nordeste",
-            label: "Nordeste"
-          }
-        ]
-      },
-
-      grouped: {
-        toggleAll: true,
-        search: true,
-        orderBy: "ASC",
-        sortSelectedUp: true,
-        selected: {
-          sudeste: ["minas-gerais"],
-          norte: ["acre", "roraima"]
-        },
-        list: [
-          {
-            value: "sul",
-            label: "Sul",
-            children: [
-              {
-                value: "santa-catarina",
-                label: "Santa Catarina"
-              },
-              {
-                value: "rio-grande-do-sul",
-                label: "Rio Grande do Sul"
-              },
-              {
-                value: "parana",
-                label: "Paraná"
-              }
-            ]
-          },
-          {
-            value: "sudeste",
-            label: "Sudeste",
-            children: [
-              {
-                value: "minas-gerais",
-                label: "Minas Gerais"
-              },
-              {
-                value: "sao-paulo",
-                label: "São Paulo"
-              },
-              {
-                value: "espirito-santo",
-                label: "Espírito Santo"
-              },
-              {
-                value: "rio-de-janeiro",
-                label: "Rio de Janeiro"
-              }
-            ]
-          },
-          {
-            value: "norte",
-            label: "Norte",
-            children: [
-              {
-                value: "acre",
-                label: "Acre"
-              },
-              {
-                value: "amapa",
-                label: "Amapá"
-              },
-              {
-                value: "roraima",
-                label: "Roraima"
-              },
-              {
-                value: "tocantins",
-                label: "Tocantins"
-              },
-              {
-                value: "para",
-                label: "Pará"
-              },
-              {
-                value: "rondonia",
-                label: "Rondônia"
-              },
-              {
-                value: "amazonas",
-                label: "Amazonas"
-              }
-            ]
-          },
-          {
-            value: "centro-oeste",
-            label: "Centro Oeste",
-            children: [
-              {
-                value: "mato-grosso",
-                label: "Mato Grosso"
-              },
-              {
-                value: "mato-grosso-do-sul",
-                label: "Mato Grosso do Sul"
-              },
-              {
-                value: "goias",
-                label: "Goiás"
-              },
-              {
-                value: "distrito-federal",
-                label: "Distrito Federal"
-              }
-            ]
-          },
-          {
-            value: "nordeste",
-            label: "Nordeste",
-            children: [
-              {
-                value: "bahia",
-                label: "Bahia"
-              },
-              {
-                value: "sergipe",
-                label: "Sergipe"
-              },
-              {
-                value: "alagoas",
-                label: "Alagoas"
-              },
-              {
-                value: "paraiba",
-                label: "Paraíba"
-              },
-              {
-                value: "pernambuco",
-                label: "Pernambuco"
-              },
-              {
-                value: "rio-grande-do-norte",
-                label: "Rio Grande do Norte"
-              },
-              {
-                value: "ceara",
-                label: "Ceará"
-              },
-              {
-                value: "piaui",
-                label: "Piauí"
-              },
-              {
-                value: "maranhao",
-                label: "Maranhão"
-              },
-              {
-                value: "mato-grosso",
-                label: "Mato Grosso"
-              },
-              {
-                value: "mato-grosso-do-sul",
-                label: "Mato Grosso do Sul"
-              },
-              {
-                value: "goias",
-                label: "Goiás"
-              },
-              {
-                value: "distrito-federal",
-                label: "Distrito Federal"
-              }
-            ]
-          }
-        ]
-      }
+      affix: "",
+      repoExamples: repoExamples
     };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.scrolling);
   }
 };
 </script>
@@ -271,11 +207,87 @@ export default {
 <style lang="scss">
 @import "../styles/themes/soft.scss";
 
+$default-height: 400px;
+
 .vss {
-  height: 400px;
+  height: $default-height;
 }
 
 // Layout example
+header {
+  margin: 30px 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  img {
+    max-height: 120px;
+    margin-bottom: 10px;
+  }
+
+  h2,
+  h3 {
+    margin: 5px;
+  }
+}
+
+.the-body {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+
+  &.affixed {
+    nav {
+      margin-top: 0px;
+      position: fixed;
+      top: 30px;
+    }
+
+    section {
+      margin-left: 15rem;
+    }
+  }
+
+  nav {
+    margin-top: 30px;
+    background-color: $default-item-background;
+    border-radius: $border-radius-base;
+    width: 15rem;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+
+    > div {
+      padding: 25px 30px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0px 0px 15px;
+      padding: 0px;
+      li {
+        line-height: 1.5;
+
+        a {
+          text-decoration: none;
+          color: $dark;
+
+          &:hover {
+            color: $selected-color;
+          }
+        }
+      }
+      > ul {
+        padding-left: 15px;
+      }
+    }
+  }
+
+  section {
+    padding-left: 3rem;
+    width: 70%;
+  }
+}
+
 .ex {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -285,12 +297,28 @@ export default {
     border-style: solid;
     border-color: transparent;
     border-top-color: #f1f1f1;
-    margin: 35px 0px;
+    margin: 35px 0px 0px;
   }
 
   .ex-section {
-    width: 70%;
-    margin: 0 auto;
+    // width: 70%;
+    // margin: 0 auto;
+    padding-top: 30px;
+
+    .ex-section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+        background-color: $selected-color;
+        padding: 10px;
+        border-radius: $border-radius-base;
+        color: $white;
+        font-size: $font-size-base;
+      }
+    }
 
     .ex-lib {
       display: flex;
@@ -306,6 +334,8 @@ export default {
         }
 
         pre {
+          height: $default-height - 50px;
+          overflow-y: auto;
           background: #f1f1f1;
           padding: 10px;
           border-radius: 5px;

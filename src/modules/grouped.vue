@@ -75,7 +75,6 @@ export default {
     vSeparator,
     vList
   },
-
   props: {
     list: {
       required: true,
@@ -92,6 +91,10 @@ export default {
     },
     sortSelectedUp: {
       type: Boolean
+    },
+    model: {
+      type: Object,
+      default: undefined
     }
   },
   methods: {

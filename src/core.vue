@@ -1,6 +1,6 @@
 <template>
   <component
-    class="vss"
+    :class="`vss vss-theme-dark`"
     v-model="model"
     :is="getComponent()"
     :lang="lang"
@@ -60,6 +60,11 @@ export default {
       default: undefined
     }
   },
+  watch: {
+    lang(language) {
+      this.selectLanguage(language);
+    }
+  },
   model: {
     prop: "model",
     event: "change"
@@ -74,15 +79,18 @@ export default {
       } else {
         throw new Error(`The prop type does not exist: "${this.type}"`);
       }
+    },
+    selectLanguage(lang) {
+      const enabledLangs = ["pt_BR", "en_US"];
+
+      if (enabledLangs.indexOf(lang) >= 0) {
+        this.$i18n.locale = lang;
+      }
     }
   },
   beforeMount() {
     // Languages
-    const enabledLangs = ["pt_BR", "en_US"];
-
-    if (enabledLangs.indexOf(this.lang) >= 0) {
-      this.$i18n.locale = this.lang;
-    }
+    this.selectLanguage(this.lang);
   }
 };
 </script>

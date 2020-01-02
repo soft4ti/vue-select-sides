@@ -83,6 +83,10 @@ export default {
     },
     sortSelectedUp: {
       type: Boolean
+    },
+    model: {
+      type: Array,
+      default: undefined
     }
   },
   methods: {
@@ -118,9 +122,8 @@ export default {
   },
   beforeMount() {
     this.$set(this, "dataSelected", this.model);
-    this.$set(this, "dataList", this.list);
 
-    let dataList = this.dataList.filter(item => {
+    let dataList = this.list.filter(item => {
       let value = item.value;
 
       if (this.dataSelected.indexOf(value) >= 0) {
@@ -143,10 +146,8 @@ export default {
   },
   computed: {
     filteredListL() {
-      // let vm = this;
       let search = normalizeText(this.searchL);
       let selected = this.dataSelected;
-
       let listLeft = clone(this.listLeft);
 
       listLeft = listLeft.filter(item => {

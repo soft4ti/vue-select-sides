@@ -19,7 +19,9 @@ const reorder = (vm, data) => {
   if (vm.orderBy) {
     if (vm.orderBy.toLowerCase() === "asc") {
       orderBy.push("label");
-    } else {
+    }
+
+    if (vm.orderBy.toLowerCase() === "desc") {
       orderBy.push("-label");
     }
   }
