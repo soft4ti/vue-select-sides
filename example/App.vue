@@ -1,53 +1,71 @@
 <template>
-  <div>
-    <h2>Mirror</h2>
-    <vue-select-sides
-      class="example"
-      type="mirror"
-      :list="mirror.list"
-      :selected="mirror.selected"
-      :order-by="mirror.orderBy"
-      :sort-selected-up="mirror.sortSelectedUp"
-      :search="mirror.search"
-      :toggle-all="mirror.toggleAll"
-      :lang="lang"
-      @change="updatedItems"
-    ></vue-select-sides>
+  <div class="ex">
+    <div class="ex-section">
+      <h2>Mirror</h2>
+      <div class="ex-lib">
+        <vue-select-sides
+          type="mirror"
+          v-model="mirror.selected"
+          :list="mirror.list"
+          :order-by="mirror.orderBy"
+          :sort-selected-up="mirror.sortSelectedUp"
+          :search="mirror.search"
+          :toggle-all="mirror.toggleAll"
+          :lang="lang"
+          @change="updatedItemsMirror"
+        ></vue-select-sides>
+        <div class="ex-result">
+          <h4>Result</h4>
+          <pre>{{ mirror.selected }}</pre>
+        </div>
+      </div>
+    </div>
     <hr />
 
-    <h2>Grouped</h2>
-    <vue-select-sides
-      class="example"
-      type="grouped"
-      :list="grouped.list"
-      :selected="grouped.selected"
-      :selected-item="grouped.selectedItem"
-      :selected-parent="grouped.selectedParent"
-      :order-by="grouped.orderBy"
-      :sort-selected-up="grouped.sortSelectedUp"
-      :search="grouped.search"
-      :toggle-all="grouped.toggleAll"
-      :lang="lang"
-      @change="updatedItems"
-    ></vue-select-sides>
+    <div class="ex-section">
+      <h2>Grouped</h2>
+      <div class="ex-lib">
+        <vue-select-sides
+          type="grouped"
+          v-model="grouped.selected"
+          :list="grouped.list"
+          :order-by="grouped.orderBy"
+          :sort-selected-up="grouped.sortSelectedUp"
+          :search="grouped.search"
+          :toggle-all="grouped.toggleAll"
+          :lang="lang"
+          @change="updatedItemsGrouped"
+        ></vue-select-sides>
+        <div class="ex-result">
+          <h4>Result</h4>
+          <pre>{{ selectedGrouped }}</pre>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-const vueSelectSides = require("./core.vue").default;
+import vueSelectSides from "../src/index";
 
 export default {
   components: {
     vueSelectSides
   },
   methods: {
-    updatedItems(newValues) {
-      console.log(newValues);
+    updatedItemsMirror(newValues) {
+      this.$set(this, "selectedMirror", newValues);
+    },
+    updatedItemsGrouped(newValues) {
+      this.$set(this, "selectedGrouped", newValues);
     }
   },
   data() {
     return {
       lang: "en_US",
+
+      selectedMirror: [],
+      selectedGrouped: {},
 
       mirror: {
         toggleAll: true,
@@ -88,8 +106,6 @@ export default {
           sudeste: ["minas-gerais"],
           norte: ["acre", "roraima"]
         },
-        // selectedItem: ["minas-gerais", "roraima", "amapa"],
-        // selectedParent: ["sudeste", "norte"],
         list: [
           {
             value: "sul",
@@ -253,17 +269,49 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/themes/soft.scss";
+@import "../src/styles/themes/soft.scss";
 
-.example {
+.vss {
+  height: 400px;
+}
+
+// Layout example
+.ex {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 600px;
-  margin: 0 auto;
-}
 
-.vss {
-  height: 500px;
+  hr {
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: #f1f1f1;
+    margin: 35px 0px;
+  }
+
+  .ex-section {
+    width: 70%;
+    margin: 0 auto;
+
+    .ex-lib {
+      display: flex;
+      .vss {
+        width: 65%;
+      }
+      .ex-result {
+        margin-left: 2.5rem;
+        width: 35%;
+
+        h4 {
+          margin: 0px;
+        }
+
+        pre {
+          background: #f1f1f1;
+          padding: 10px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
 }
 </style>

@@ -87,15 +87,6 @@ export default {
     toggleAll: {
       type: Boolean
     },
-    selected: {
-      type: Object
-    },
-    selectedItem: {
-      type: Array
-    },
-    selectedParent: {
-      type: Array
-    },
     orderBy: {
       type: String
     },
@@ -177,47 +168,20 @@ export default {
       }
 
       this.$set(this, "dataSelected", dataSelected);
-    },
-    getSelectedParent() {
-      let selected =
-        this.selected !== undefined ? Object.keys(this.selected) : [];
-      let selectedParent =
-        this.selectedParent !== undefined ? this.selectedParent : [];
-
-      let concat = [...selected, ...selectedParent];
-
-      return [...new Set(concat)];
-    },
-    getSelectedItem() {
-      let vm = this;
-      let propSelected = [];
-      let concat = [];
-      let selected =
-        this.selected !== undefined ? Object.keys(vm.selected) : [];
-      let selectedItem = vm.selectedItem !== undefined ? vm.selectedItem : [];
-
-      selected.forEach(parent => {
-        vm.selected[parent].forEach(child => {
-          propSelected.push(child);
-        });
-      });
-
-      concat = [...propSelected, ...selectedItem];
-
-      return [...new Set(concat)];
     }
   },
   beforeMount() {
+    this.$set(this, "dataSelected", this.model);
     this.$set(this, "dataList", this.list);
 
-    // Organiza os "defaultSelected" para o reorder
-    let selectedsParent = this.getSelectedParent();
-    let selectedsItem = this.getSelectedItem();
+    let vm = this;
+    let keyParentsSelected = Object.keys(vm.dataSelected);
 
-    let dataList = this.dataList.filter(item => {
-      let value = item.value;
+    let dataList = vm.dataList.filter(item => {
+      let valueParent = item.value;
+      let existsParentSelected = keyParentsSelected.indexOf(valueParent) >= 0;
 
-      if (selectedsParent.indexOf(value) >= 0) {
+      if (existsParentSelected) {
         item.selectedDefault = true;
       } else {
         item.selectedDefault = false;
@@ -228,43 +192,23 @@ export default {
           let valueChildren = item.value;
 
           // Has selected
-          if (selectedsItem.indexOf(valueChildren) >= 0) {
-            item.selectedDefault = true;
-          } else {
-            item.selectedDefault = false;
+          if (existsParentSelected) {
+            let existsChildrenSelected =
+              vm.dataSelected[valueParent].indexOf(valueChildren) >= 0;
+
+            if (existsChildrenSelected) {
+              item.selectedDefault = true;
+            } else {
+              item.selectedDefault = false;
+            }
           }
         });
       }
-
-      this.dataList = reorder(this, this.dataList);
 
       return item;
     });
 
-    // Organiza o array de selecionados
-    dataList.map(item => {
-      if (item.selectedDefault) {
-        if (this.dataSelected[item.value] === undefined) {
-          this.dataSelected[item.value] = [];
-        }
-      }
-
-      if (item.children) {
-        item.children.map(children => {
-          if (children.selectedDefault) {
-            if (this.dataSelected[item.value] === undefined) {
-              this.dataSelected[item.value] = [];
-            }
-
-            // console.log(this.dataSelected[item.value]);
-
-            this.dataSelected[item.value].push(children.value);
-          }
-        });
-      }
-    });
-
-    this.$set(this, "dataList", this.dataList);
+    this.$set(this, "dataList", reorder(vm, dataList));
   },
   mounted() {
     let vm = this;

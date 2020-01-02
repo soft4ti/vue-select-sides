@@ -78,15 +78,6 @@ export default {
     toggleAll: {
       type: Boolean
     },
-    selected: {
-      type: Array
-    },
-    selectedItem: {
-      type: Array
-    },
-    selectedParent: {
-      type: Array
-    },
     orderBy: {
       type: String
     },
@@ -116,94 +107,32 @@ export default {
     updateItem(item, parent, selected) {
       let dataSelected = clone(this.dataSelected);
 
-      if (Object.keys(parent).length > 0) {
-        if (dataSelected[parent.value] === undefined) {
-          if (parent.visible) {
-            dataSelected[parent.value] = [];
-          }
-        }
-
-        if (selected) {
-          if (item.visible) {
-            dataSelected[parent.value].push(item.value);
-          }
-        } else {
-          if (item.visible) {
-            dataSelected[parent.value] = removeItemArray(
-              dataSelected[parent.value],
-              item.value
-            );
-          }
-        }
+      if (selected) {
+        dataSelected.push(item.value);
       } else {
-        if (selected) {
-          if (dataSelected[item.value] === undefined) {
-            dataSelected[item.value] = [];
-          }
-        } else {
-          delete dataSelected[item.value];
-        }
+        dataSelected = removeItemArray(dataSelected, item.value);
       }
 
       this.$set(this, "dataSelected", dataSelected);
-    },
-    getSelectedItem() {
-      let vm = this;
-      let propSelected = [];
-      let concat = [];
-      let selected = this.selected !== undefined ? vm.selected : [];
-      let selectedItem =
-        this.selectedItem !== undefined ? this.selectedItem : [];
-
-      selected.forEach(parent => {
-        propSelected.push(parent);
-      });
-
-      console.log(selected);
-
-      concat = [...propSelected, ...selectedItem];
-
-      return [...new Set(concat)];
     }
   },
   beforeMount() {
+    this.$set(this, "dataSelected", this.model);
     this.$set(this, "dataList", this.list);
-
-    // Organiza os "defaultSelected" para o reorder
-    let selectedsItem = this.getSelectedItem();
 
     let dataList = this.dataList.filter(item => {
       let value = item.value;
 
-      if (selectedsItem.indexOf(value) >= 0) {
+      if (this.dataSelected.indexOf(value) >= 0) {
         item.selectedDefault = true;
       } else {
         item.selectedDefault = false;
       }
 
-      this.dataList = reorder(this, this.dataList);
-
       return item;
     });
 
-    // Organiza o array de selecionados
-    dataList.map(item => {
-      if (item.selectedDefault) {
-        if (this.dataSelected[item.value] === undefined) {
-          this.dataSelected[item.value] = [];
-        }
-      }
-
-      if (item.children) {
-        item.children.map(children => {
-          if (children.selectedDefault) {
-            this.dataSelected[item.value].push(children.value);
-          }
-        });
-      }
-    });
-
-    this.$set(this, "dataList", this.dataList);
+    this.$set(this, "dataList", reorder(this, dataList));
   },
   mounted() {
     // Organiza a listLeft
@@ -216,7 +145,7 @@ export default {
     filteredListL() {
       // let vm = this;
       let search = normalizeText(this.searchL);
-      let selected = Object.keys(this.dataSelected);
+      let selected = this.dataSelected;
 
       let listLeft = clone(this.listLeft);
 
@@ -249,7 +178,7 @@ export default {
     filteredListR() {
       let vm = this;
       let search = normalizeText(vm.searchR);
-      let selected = Object.keys(this.dataSelected);
+      let selected = this.dataSelected;
       let listRight = clone(vm.listLeft);
 
       listRight = listRight.filter(item => {
@@ -282,7 +211,7 @@ export default {
   data() {
     return {
       dataList: [],
-      dataSelected: {},
+      dataSelected: [],
       listLeft: [],
       listRight: [],
       searchL: "",

@@ -1,12 +1,10 @@
 <template>
   <component
     class="vss"
+    v-model="model"
     :is="getComponent()"
     :lang="lang"
     :list="list"
-    :selected="selected"
-    :selected-item="selectedItem"
-    :selected-parent="selectedParent"
     :search="search"
     :toggle-all="toggleAll"
     :order-by="orderBy"
@@ -17,11 +15,14 @@
 </template>
 
 <script>
+import i18n from "./i18n";
+
 const types = require("./types").default;
 const grouped = require("./modules/grouped").default;
 const mirror = require("./modules/mirror").default;
 
 export default {
+  i18n,
   name: "core-select-sides",
   display: "Core select sides",
   components: { mirror, grouped },
@@ -38,15 +39,6 @@ export default {
       type: String,
       default: "en_US"
     },
-    selectedItem: {
-      type: Array
-    },
-    selectedParent: {
-      type: Array
-    },
-    selected: {
-      type: [Object, Array]
-    },
     orderBy: {
       type: String,
       default: undefined
@@ -62,7 +54,15 @@ export default {
     toggleAll: {
       type: Boolean,
       default: true
+    },
+    model: {
+      type: [Object, Array],
+      default: undefined
     }
+  },
+  model: {
+    prop: "model",
+    event: "change"
   },
   methods: {
     updateSelected(items) {
