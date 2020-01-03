@@ -162,16 +162,17 @@ export default {
 
 These are all the props you can pass to the component:
 
-| name              | type                | example                                     | notes                                                                                        |
-| ----------------- | ------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| v-model           | `Array` or `Object` | `["xyz"]` or `{xyz: ["abc", "def"]}`        | Use **Object** if type is grouped else uses **Array**                                        |
-| :type             | `String`            | `grouped` or `mirror`                       |                                                                                              |
-| :list             | `Array`             | `[{ value: "xyz", label: "Label xyz 01" }]` | You can add the `children` key to type `grouped`                                             |
-| :search           | `Boolean`           | `true` or `false`                           | To show/hide search input. Default is visible (true)                                         |
-| :toggle-all       | `Boolean`           | `true` or `false`                           | To show/hide footer. Default is visible (true)                                               |
-| :sort-selected-up | `Boolean`           | `true` or `false`                           | Show first the pre-selected. Default does not visible (false). _Available only grouped type_ |
-| :order-by         | `String`            | `asc` or `desc`                             | Show first the pre-selected. Default is natural order                                        |
-| :lang             | `String`            | `en_US` or `pt_BR`                          | Language default. Default is en_US                                                           |
+| name             | type                | example                                     | notes                                                                                        |
+| ---------------- | ------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| v-model          | `Array` or `Object` | `["xyz"]` or `{xyz: ["abc", "def"]}`        | Use **Object** if type is grouped else uses **Array**                                        |
+| type             | `String`            | `grouped` or `mirror`                       |                                                                                              |
+| list             | `Array`             | `[{ value: "xyz", label: "Label xyz 01" }]` | You can add the `children` key to type `grouped`                                             |
+| search           | `Boolean`           | `true` or `false`                           | To show/hide search input. Default is visible (true)                                         |
+| total            | `Boolean`           | `true` or `false`                           | To show/hide total selected in footer. Default is visible (true)                             |
+| toggle-all       | `Boolean`           | `true` or `false`                           | To show/hide toggle in footer. Default is visible (true)                                     |
+| sort-selected-up | `Boolean`           | `true` or `false`                           | Show first the pre-selected. Default does not visible (false). _Available only grouped type_ |
+| order-by         | `String`            | `asc` or `desc`                             | Show first the pre-selected. Default is natural order                                        |
+| lang             | `String`            | `en_US` or `pt_BR`                          | Language default. Default is en_US                                                           |
 
 ## Bugs and feature requests
 

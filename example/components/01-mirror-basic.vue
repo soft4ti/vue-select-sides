@@ -4,7 +4,6 @@
       type="mirror"
       v-model="selected"
       :list="list"
-      lang="pt_BR"
     ></vue-select-sides>
     <div class="ex-result">
       <h4>Result</h4>

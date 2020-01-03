@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "search",
+  name: "v-search",
   display: "Search",
   props: ["value"],
   watch: {

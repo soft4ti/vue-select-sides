@@ -26,26 +26,26 @@
             {{ children.label }}
           </span>
         </li>
-        <no-results v-show="totalItems(item.children) === 0"></no-results>
+        <v-no-results v-show="totalItems(item.children) === 0"></v-no-results>
       </ul>
     </li>
-    <no-selection v-show="showNoSelection(items)"></no-selection>
+    <v-no-selection v-show="showNoSelection(items)"></v-no-selection>
 
-    <no-results v-show="showNoResultParent(items)"></no-results>
+    <v-no-results v-show="showNoResultParent(items)"></v-no-results>
   </ul>
 </template>
 
 <script>
-const noResults = require("./noResults.vue").default;
-const noSelection = require("./noSelection.vue").default;
+const vNoResults = require("./noResults.vue").default;
+const vNoSelection = require("./noSelection.vue").default;
 
 export default {
-  name: "list",
+  name: "v-list",
   display: "List",
   mounted() {},
   components: {
-    noResults,
-    noSelection
+    vNoResults,
+    vNoSelection
   },
   props: {
     hasChildren: {

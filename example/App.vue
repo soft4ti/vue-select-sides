@@ -209,7 +209,7 @@ export default {
 <style lang="scss">
 @import "../styles/themes/soft.scss";
 
-$default-height: 400px;
+$default-height: 300px;
 
 .vss {
   height: $default-height;
@@ -290,8 +290,8 @@ header {
   }
 
   section {
-    padding-left: 3rem;
-    width: 70%;
+    padding-left: 2rem;
+    width: 74%;
   }
 }
 

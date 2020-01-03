@@ -1,49 +1,61 @@
 <template>
   <div>
     <div class="vss-list">
-      <v-search
-        class="vss-list-search"
-        v-if="search"
-        v-model="searchL"
-      ></v-search>
-      <v-list
-        :enable-counter="false"
-        :has-children="false"
-        :type="type"
-        side="left"
-        :items="filteredListL"
-        @updated-item="updateItem"
-      ></v-list>
-      <div class="vss-footer">
-        <div v-if="toggleAll">
-          <v-selectAll
-            :items="listLeft"
-            @update-select-all="updateLeftSelectAll"
-          ></v-selectAll>
+      <div class="vss-inner-list">
+        <v-search
+          class="vss-list-search"
+          v-if="search"
+          v-model="searchL"
+        ></v-search>
+        <v-list
+          :enable-counter="false"
+          :has-children="false"
+          :type="type"
+          side="left"
+          :items="filteredListL"
+          @updated-item="updateItem"
+        ></v-list>
+
+        <div class="vss-footer" v-show="toggleAll || total">
+          <div class="vss-footer-bg">
+            <div>
+              <v-select-all
+                v-if="toggleAll"
+                :items="listLeft"
+                @update-select-all="updateLeftSelectAll"
+              ></v-select-all>
+            </div>
+            <v-total :value="dataSelected.length" v-if="total"></v-total>
+          </div>
         </div>
       </div>
     </div>
     <v-separator></v-separator>
     <div class="vss-list">
-      <v-search
-        class="vss-list-search"
-        v-if="search"
-        v-model="searchR"
-      ></v-search>
-      <v-list
-        :enable-counter="false"
-        :has-children="false"
-        :type="type"
-        side="right"
-        :items="filteredListR"
-        @updated-item="updateItem"
-      ></v-list>
-      <div class="vss-footer">
-        <div v-if="toggleAll">
-          <v-deselectAll
-            :items="listRight"
-            @update-deselect-all="updateRightDeselectAll"
-          ></v-deselectAll>
+      <div class="vss-inner-list">
+        <v-search
+          class="vss-list-search"
+          v-if="search"
+          v-model="searchR"
+        ></v-search>
+        <v-list
+          :enable-counter="false"
+          :has-children="false"
+          :type="type"
+          side="right"
+          :items="filteredListR"
+          @updated-item="updateItem"
+        ></v-list>
+        <div class="vss-footer" v-show="toggleAll || total">
+          <div class="vss-footer-bg">
+            <div>
+              <v-deselect-all
+                v-if="toggleAll"
+                :items="listRight"
+                @update-deselect-all="updateRightDeselectAll"
+              ></v-deselect-all>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -58,6 +70,7 @@ const vDeselectAll = require("../components/deselectAll.vue").default;
 const vSearch = require("../components/search.vue").default;
 const vList = require("../components/list.vue").default;
 const vSeparator = require("../components/separator.vue").default;
+const vTotal = require("../components/total.vue").default;
 const mixin = require("../mixin").default;
 
 export default {
@@ -69,7 +82,8 @@ export default {
     vDeselectAll,
     vSearch,
     vSeparator,
-    vList
+    vList,
+    vTotal
   },
   props: {
     list: {
@@ -77,6 +91,9 @@ export default {
       type: [Array, Object]
     },
     search: {
+      type: Boolean
+    },
+    total: {
       type: Boolean
     },
     toggleAll: {

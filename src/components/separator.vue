@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "separator",
+  name: "v-separator",
   display: "Separator"
 };
 </script>

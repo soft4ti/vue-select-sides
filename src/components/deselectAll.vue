@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "deselectAll",
+  name: "v-deselect-all",
   display: "Deselect all",
   props: {
     click: Function,

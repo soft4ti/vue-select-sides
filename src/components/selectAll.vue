@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "selectAll",
+  name: "v-select-all",
   display: "Select all",
   props: {
     items: Array

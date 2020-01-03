@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "noResults",
+  name: "v-no-results",
   display: "No results",
   methods: {}
 };

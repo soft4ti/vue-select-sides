@@ -5,6 +5,7 @@
       v-model="selected"
       :list="list"
       :search="search"
+      :total="total"
       :toggle-all="toggleAll"
     ></vue-select-sides>
     <div class="ex-result">
@@ -25,6 +26,7 @@ export default {
     return {
       search: false,
       toggleAll: false,
+      total: false,
       selected: {},
       list: [
         {

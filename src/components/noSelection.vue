@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "noSelection",
+  name: "v-no-selection",
   display: "No selection",
   methods: {}
 };

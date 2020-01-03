@@ -1,55 +1,72 @@
 <template>
   <div>
     <div class="vss-list">
-      <v-search
-        class="vss-list-search"
-        v-if="search"
-        v-model="searchL"
-      ></v-search>
-      <v-list
-        :has-children="false"
-        :type="type"
-        :items="filteredListL"
-        @updated-item="updateItem"
-      ></v-list>
-      <div class="vss-footer">
-        <div v-if="toggleAll">
-          <v-selectAll
-            :items="listLeft"
-            @update-select-all="updateLeftSelectAll"
-          ></v-selectAll>
-          <div class="vss-footer-separator">/</div>
-          <v-deselectAll
-            :items="listLeft"
-            @update-deselect-all="updateLeftDeselectAll"
-          ></v-deselectAll>
+      <div class="vss-inner-list">
+        <v-search
+          class="vss-list-search"
+          v-if="search"
+          v-model="searchL"
+        ></v-search>
+        <v-list
+          :has-children="false"
+          :type="type"
+          :items="filteredListL"
+          @updated-item="updateItem"
+        ></v-list>
+        <div class="vss-footer" v-show="toggleAll || total">
+          <div class="vss-footer-bg">
+            <div>
+              <v-select-all
+                v-if="toggleAll"
+                :items="listLeft"
+                @update-select-all="updateLeftSelectAll"
+              ></v-select-all>
+              <div v-if="toggleAll" class="vss-footer-separator">/</div>
+              <v-deselect-all
+                v-if="toggleAll"
+                :items="listLeft"
+                @update-deselect-all="updateLeftDeselectAll"
+              ></v-deselect-all>
+            </div>
+            <v-total
+              :value="Object.keys(dataSelected).length"
+              v-if="total"
+            ></v-total>
+          </div>
         </div>
       </div>
     </div>
     <v-separator></v-separator>
     <div class="vss-list">
-      <v-search
-        class="vss-list-search"
-        v-if="search"
-        v-model="searchR"
-      ></v-search>
-      <v-list
-        :has-children="true"
-        :type="type"
-        :items="filteredListR"
-        @updated-item="updateItem"
-      ></v-list>
-      <div class="vss-footer">
-        <div v-if="toggleAll">
-          <v-selectAll
-            :items="listRight"
-            @update-select-all="updateRightSelectAll"
-          ></v-selectAll>
-          <div class="vss-footer-separator">/</div>
-          <v-deselectAll
-            :items="listRight"
-            @update-deselect-all="updateRightDeselectAll"
-          ></v-deselectAll>
+      <div class="vss-inner-list">
+        <v-search
+          class="vss-list-search"
+          v-if="search"
+          v-model="searchR"
+        ></v-search>
+        <v-list
+          :has-children="true"
+          :type="type"
+          :items="filteredListR"
+          @updated-item="updateItem"
+        ></v-list>
+        <div class="vss-footer" v-show="toggleAll || total">
+          <div class="vss-footer-bg">
+            <div>
+              <v-select-all
+                v-if="toggleAll"
+                :items="listRight"
+                @update-select-all="updateRightSelectAll"
+              ></v-select-all>
+              <div v-if="toggleAll" class="vss-footer-separator">/</div>
+              <v-deselect-all
+                v-if="toggleAll"
+                :items="listRight"
+                @update-deselect-all="updateRightDeselectAll"
+              ></v-deselect-all>
+            </div>
+            <v-total :value="totalChildrenSelected" v-if="total"></v-total>
+          </div>
         </div>
       </div>
     </div>
@@ -64,6 +81,7 @@ const vDeselectAll = require("../components/deselectAll.vue").default;
 const vSearch = require("../components/search.vue").default;
 const vList = require("../components/list.vue").default;
 const vSeparator = require("../components/separator.vue").default;
+const vTotal = require("../components/total.vue").default;
 const mixin = require("../mixin").default;
 
 export default {
@@ -75,7 +93,8 @@ export default {
     vDeselectAll,
     vSearch,
     vSeparator,
-    vList
+    vList,
+    vTotal
   },
   props: {
     list: {
@@ -83,6 +102,9 @@ export default {
       type: [Array, Object]
     },
     search: {
+      type: Boolean
+    },
+    total: {
       type: Boolean
     },
     toggleAll: {
@@ -247,6 +269,13 @@ export default {
     });
   },
   computed: {
+    totalChildrenSelected() {
+      return Object.keys(this.dataSelected)
+        .map(ab => {
+          return this.dataSelected[ab].length;
+        })
+        .reduce((a, b) => a + b, 0);
+    },
     filteredListL() {
       let vm = this;
       let search = normalizeText(this.searchL);

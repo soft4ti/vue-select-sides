@@ -1,12 +1,13 @@
 <template>
   <component
-    :class="`vss vss-theme-dark`"
+    class="vss"
     v-model="model"
     :is="getComponent()"
     :lang="lang"
     :type="type"
     :list="list"
     :search="search"
+    :total="total"
     :toggle-all="toggleAll"
     :order-by="orderBy"
     :sort-selected-up="sortSelectedUp"
@@ -49,6 +50,10 @@ export default {
       default: false
     },
     search: {
+      type: Boolean,
+      default: true
+    },
+    total: {
       type: Boolean,
       default: true
     },
