@@ -2,7 +2,7 @@
   <div class="ex">
     <header>
       <div>
-        <img src="../static/images/logo.png" />
+        <img src="../static/logo.png" />
       </div>
       <h2>Vue select sides</h2>
       <h3>Examples</h3>
