@@ -23,8 +23,7 @@ export default {
   data() {
     return {
       selected: [],
-      list: [],
-      list2: [
+      list: [
         {
           value: "afghanistan",
           label: "Afghanistan"
