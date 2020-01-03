@@ -8,19 +8,18 @@
     "type": "git",
     "url": "https://github.com/juliorosseti/vue-select-sides"
   },
-  "main": "dist/core/vueSelectSides.umd.js",
-  "unpkg": "dist/core/vueSelectSides.umd.min.js",
+  "main": "dist/vueSelectSides.umd.js",
+  "unpkg": "dist/vueSelectSides.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve  --target lib --name vueSelectSides ./example/main.js ",
     "build": "yarn run build:example && yarn run build:npm",
     "lint": "vue-cli-service lint",
-    "docs:serve": "docsify serve ./docs",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "build:example": "vue-cli-service build --target lib --dest ./dist/example --formats umd --name vueSelectSides ./example/App.vue",
-    "build:npm": "vue-cli-service build --target lib --dest ./dist/core --name vueSelectSides ./src/index.js"
+    "build:example": "vue-cli-service build --target lib --dest ./docs --formats umd --name vueSelectSides ./example/App.vue",
+    "build:npm": "vue-cli-service build --target lib --name vueSelectSides ./src/index.js"
   },
   "files": [
-    "dist/core",
+    "dist",
     "styles"
   ],
   "keywords": [

@@ -4,6 +4,7 @@
     v-model="model"
     :is="getComponent()"
     :lang="lang"
+    :type="type"
     :list="list"
     :search="search"
     :toggle-all="toggleAll"

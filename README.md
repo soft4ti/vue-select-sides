@@ -1,45 +1,206 @@
-# vue-select-sides
+<p align="center">
+  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/images/logo.png?token=AEJJO7X6P457BFQIVN5VOS26BZ44S" />
+</p>
+<h2 align="center">Vue Select Sides</h2>
 
-## To work
+A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
-- OK - Add support to selected first
-- OK - Get data selected
-- OK - Add mirror type
-- OK - Organization of styles
-- Add one side type
-- Create docs
-- Publish github public + npm repo
+## Examples
 
-## Project setup
+Url to page example.
+
+## Installation
+
+First install it using:
+
+```bash
+npm install --save vue-select-sides
+```
+
+or
+
+```bash
+yarn add vue-select-sides
+```
+
+Then you can either use it as a component:
+
+```js
+import vueSelectSides from "vue-select-sides";
+
+export default {
+  components: {
+    vueSelectSides
+  }
+};
+```
+
+Or if you wish to include it in a `script` tag, just include the `vueSelectSides.umd.min.js` file located in the `dist` folder as so:
+
+```html
+<script src="dist/vueSelectSides.umd.min.js"></script>
+```
+
+## Usage
+
+The component has support for two types: `mirror` and `grouped`.
+
+#### Import a theme
+
+```scss
+// modern
+@import "/node_modules/vue-select-sides/styles/themes/soft.scss";
+// or dark
+@import "/node_modules/vue-select-sides/styles/themes/dark.scss";
+// or light
+@import "/node_modules/vue-select-sides/styles/themes/light.scss";
+```
+
+#### Grouped
+
+Warning: `v-model` must be of type `Object`
+
+```html
+<vue-select-sides
+  type="grouped"
+  v-model="selected"
+  :list="list"
+></vue-select-sides>
+```
+
+```javascript
+import vueSelectSides from "vue-select-sides";
+
+export default {
+  components: {
+    vueSelectSides
+  },
+  data() {
+    return {
+      selected: {},
+      list: [
+        {
+          value: "sul",
+          label: "Sul",
+          children: [
+            {
+              value: "santa-catarina",
+              label: "Santa Catarina"
+            },
+            {
+              ...
+            }
+          ]
+        },
+        {
+          value: "sudeste",
+          label: "Sudeste",
+          children: [
+            {
+              value: "minas-gerais",
+              label: "Minas Gerais"
+            },
+            {
+              ...
+            }
+          ]
+        }
+      ]
+    };
+  }
+};
+```
+
+#### Mirror
+
+Warning: `v-model` must be of type `Array`
+
+```html
+<vue-select-sides
+  type="mirror"
+  v-model="selected"
+  :list="list"
+></vue-select-sides>
+```
+
+```javascript
+import vueSelectSides from "vue-select-sides";
+
+export default {
+  components: {
+    vueSelectSides
+  },
+  data() {
+    return {
+      selected: [],
+      list: [
+        {
+          value: "afghanistan",
+          label: "Afghanistan"
+        },
+        {
+          value: "brazil",
+          label: "Brazil"
+        },
+        {
+          value: "fiji",
+          label: "Fiji"
+        },
+        {
+          value: "ghana",
+          label: "Ghana"
+        },
+        {
+          ...
+        }
+    };
+  }
+};
+```
+
+## Props
+
+These are all the props you can pass to the component:
+
+| name              | type                | example                                     | notes                                                                                        |
+| ----------------- | ------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| v-model           | `Array` or `Object` | `["xyz"]` or `{xyz: ["abc", "def"]}`        | Use **Object** if type is grouped else uses **Array**                                        |
+| :type             | `String`            | `grouped` or `mirror`                       |                                                                                              |
+| :list             | `Array`             | `[{ value: "xyz", label: "Label xyz 01" }]` | You can add the `children` key to type `grouped`                                             |
+| :search           | `Boolean`           | `true` or `false`                           | To show/hide search input. Default is visible (true)                                         |
+| :toggle-all       | `Boolean`           | `true` or `false`                           | To show/hide footer. Default is visible (true)                                               |
+| :sort-selected-up | `Boolean`           | `true` or `false`                           | Show first the pre-selected. Default does not visible (false). _Available only grouped type_ |
+| :order-by         | `String`            | `asc` or `desc`                             | Show first the pre-selected. Default is natural order                                        |
+| :lang             | `String`            | `en_US` or `pt_BR`                          | Language default. Default is en_US                                                           |
+
+## Bugs and feature requests
+
+If your problem or idea is not <a href="https://github.com/juliorosseti/vue-select-sides/issues" target="_blank">addressed</a> yet, <a href="https://github.com/juliorosseti/vue-select-sides/issues/new" target="_blank">please open a new issue</a>.
+
+## Development
+
+#### Install dependencies
 
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+#### Devserver
 
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+#### Bundling
 
 ```
 yarn run build
 ```
 
-### Run your tests
+## Donate
 
-```
-yarn run test
-```
+You can help with a donation on <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E96JA5BH6XTHE&source=url" target="_blank">Paypal</a>
 
-### Lints and fixes files
+## License
 
-```
-yarn run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Vue select sides is open-sourced software licensed under the the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a>.

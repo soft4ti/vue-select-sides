@@ -6,6 +6,8 @@
       </div>
       <h2>Vue select sides</h2>
       <h3>Examples</h3>
+      <br />
+      <a :href="repo" target="_blank">{{ repo }}</a>
     </header>
     <hr />
 
@@ -193,9 +195,9 @@ export default {
   },
   data() {
     return {
-      lang: "en_US",
       affix: "",
-      repoExamples: repoExamples
+      repoExamples: repoExamples,
+      repo: repo
     };
   },
   mounted() {
@@ -228,6 +230,11 @@ header {
   h2,
   h3 {
     margin: 5px;
+  }
+
+  a {
+    color: $selected-color;
+    text-decoration: none;
   }
 }
 

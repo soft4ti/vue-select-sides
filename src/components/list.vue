@@ -26,18 +26,12 @@
             {{ children.label }}
           </span>
         </li>
-        <no-results v-show="totalChildren(item.children) === 0"></no-results>
+        <no-results v-show="totalItems(item.children) === 0"></no-results>
       </ul>
     </li>
-    <no-selection
-      v-show="
-        (totalParentSelected(items) === 0 && hasChildren) || items.length === 0
-      "
-    ></no-selection>
+    <no-selection v-show="showNoSelection(items)"></no-selection>
 
-    <no-results
-      v-show="totalChildren(items) === 0 && !hasChildren"
-    ></no-results>
+    <no-results v-show="showNoResultParent(items)"></no-results>
   </ul>
 </template>
 
@@ -63,9 +57,51 @@ export default {
     enableCounter: {
       type: Boolean,
       default: true
+    },
+    type: {
+      type: String
+    },
+    side: {
+      type: String
     }
   },
   methods: {
+    showNoResultParent(items) {
+      if (this.type === "grouped") {
+        return this.totalItems(items) === 0 && !this.hasChildren;
+      } else {
+        if (this.side === "left") {
+          return (
+            items.length === 0 ||
+            this.totalParentSelected(items) === items.length ||
+            (items.length > 0 && this.totalItems(items) === 0)
+          );
+        }
+        if (this.side === "right") {
+          return (
+            items.length === 0 ||
+            (this.totalParentSelected(items) !== 0 &&
+              items.length > 0 &&
+              this.totalItems(items) === 0)
+          );
+        }
+      }
+    },
+    showNoSelection(items) {
+      if (this.type === "grouped") {
+        return (
+          (this.totalParentSelected(items) === 0 && this.hasChildren) ||
+          items.length === 0
+        );
+      } else {
+        if (this.side === "left") {
+          return false;
+        }
+        if (this.side === "right") {
+          return items.length !== 0 && this.totalParentSelected(items) === 0;
+        }
+      }
+    },
     showCounter(item) {
       if (!this.enableCounter) return false;
 
@@ -87,7 +123,7 @@ export default {
 
       return output;
     },
-    totalChildren(o) {
+    totalItems(o) {
       return o.filter(function(a) {
         return a.visible === true;
       }).length;
@@ -97,7 +133,6 @@ export default {
         return a.selected === true;
       }).length;
     },
-
     toggleItem(item, parent, isSelected) {
       this.$emit("updated-item", item, parent, !isSelected);
     }

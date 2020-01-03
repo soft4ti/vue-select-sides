@@ -8,6 +8,7 @@
       ></v-search>
       <v-list
         :has-children="false"
+        :type="type"
         :items="filteredListL"
         @updated-item="updateItem"
       ></v-list>
@@ -34,6 +35,7 @@
       ></v-search>
       <v-list
         :has-children="true"
+        :type="type"
         :items="filteredListR"
         @updated-item="updateItem"
       ></v-list>
@@ -95,6 +97,9 @@ export default {
     model: {
       type: Object,
       default: undefined
+    },
+    type: {
+      type: String
     }
   },
   methods: {

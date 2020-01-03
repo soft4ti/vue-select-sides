@@ -9,6 +9,8 @@
       <v-list
         :enable-counter="false"
         :has-children="false"
+        :type="type"
+        side="left"
         :items="filteredListL"
         @updated-item="updateItem"
       ></v-list>
@@ -31,6 +33,8 @@
       <v-list
         :enable-counter="false"
         :has-children="false"
+        :type="type"
+        side="right"
         :items="filteredListR"
         @updated-item="updateItem"
       ></v-list>
@@ -87,6 +91,9 @@ export default {
     model: {
       type: Array,
       default: undefined
+    },
+    type: {
+      type: String
     }
   },
   methods: {

@@ -4,6 +4,7 @@
       type="mirror"
       v-model="selected"
       :list="list"
+      lang="pt_BR"
     ></vue-select-sides>
     <div class="ex-result">
       <h4>Result</h4>
@@ -22,7 +23,8 @@ export default {
   data() {
     return {
       selected: [],
-      list: [
+      list: [],
+      list2: [
         {
           value: "afghanistan",
           label: "Afghanistan"
