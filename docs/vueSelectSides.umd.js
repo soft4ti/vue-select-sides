@@ -6607,12 +6607,12 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
 
 // CONCATENATED MODULE: ./example/App.vue?vue&type=template&id=d255e4c6&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"773e2be7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./example/components/01-mirror-basic.vue?vue&type=template&id=935b3a70&
-var _01_mirror_basicvue_type_template_id_935b3a70_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"ex-lib"},[_c('vue-select-sides',{attrs:{"type":"mirror","list":_vm.list,"lang":"pt_BR"},model:{value:(_vm.selected),callback:function ($$v) {_vm.selected=$$v},expression:"selected"}}),_c('div',{staticClass:"ex-result"},[_c('h4',[_vm._v("Result")]),_c('pre',[_vm._v(_vm._s(_vm.selected))])])],1)}
-var _01_mirror_basicvue_type_template_id_935b3a70_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"773e2be7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./example/components/01-mirror-basic.vue?vue&type=template&id=477c6128&
+var _01_mirror_basicvue_type_template_id_477c6128_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"ex-lib"},[_c('vue-select-sides',{attrs:{"type":"mirror","list":_vm.list,"lang":"pt_BR"},model:{value:(_vm.selected),callback:function ($$v) {_vm.selected=$$v},expression:"selected"}}),_c('div',{staticClass:"ex-result"},[_c('h4',[_vm._v("Result")]),_c('pre',[_vm._v(_vm._s(_vm.selected))])])],1)}
+var _01_mirror_basicvue_type_template_id_477c6128_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./example/components/01-mirror-basic.vue?vue&type=template&id=935b3a70&
+// CONCATENATED MODULE: ./example/components/01-mirror-basic.vue?vue&type=template&id=477c6128&
 
 // EXTERNAL MODULE: ./src/index.js
 var src = __webpack_require__("b635");
@@ -6641,8 +6641,7 @@ var src = __webpack_require__("b635");
   data: function data() {
     return {
       selected: [],
-      list: [],
-      list2: [{
+      list: [{
         value: "afghanistan",
         label: "Afghanistan"
       }, {
@@ -7432,8 +7431,8 @@ var componentNormalizer = __webpack_require__("2877");
 
 var component = Object(componentNormalizer["a" /* default */])(
   components_01_mirror_basicvue_type_script_lang_js_,
-  _01_mirror_basicvue_type_template_id_935b3a70_render,
-  _01_mirror_basicvue_type_template_id_935b3a70_staticRenderFns,
+  _01_mirror_basicvue_type_template_id_477c6128_render,
+  _01_mirror_basicvue_type_template_id_477c6128_staticRenderFns,
   false,
   null,
   null,
