@@ -10,6 +10,8 @@
     :total="total"
     :toggle-all="toggleAll"
     :order-by="orderBy"
+    :placeholder-search-left="placeholderSearchLeft"
+    :placeholder-search-right="placeholderSearchRight"
     :sort-selected-up="sortSelectedUp"
     @update-selected="updateSelected"
   >
@@ -44,6 +46,14 @@ export default {
     orderBy: {
       type: String,
       default: undefined
+    },
+    placeholderSearchLeft: {
+      type: [String, Boolean],
+      default: false
+    },
+    placeholderSearchRight: {
+      type: [String, Boolean],
+      default: false
     },
     sortSelectedUp: {
       type: Boolean,

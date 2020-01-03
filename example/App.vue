@@ -21,18 +21,28 @@
               <li><a href="#mirror-with-selecteds">02) With selecteds</a></li>
               <li><a href="#mirror-only-list">03) Only list</a></li>
               <li><a href="#mirror-sort-list">04) Sort list</a></li>
+              <li>
+                <a href="#mirror-placeholder-search">
+                  05) Placeholder search
+                </a>
+              </li>
             </ul>
           </ul>
           <ul>
             <li><strong>Grouped</strong></li>
             <ul>
-              <li><a href="#grouped-basic">05) Basic</a></li>
-              <li><a href="#grouped-with-selecteds">06) With selecteds</a></li>
-              <li><a href="#grouped-only-list">07) Only list</a></li>
-              <li><a href="#grouped-sort-list">08) Sort list</a></li>
+              <li><a href="#grouped-basic">01) Basic</a></li>
+              <li><a href="#grouped-with-selecteds">02) With selecteds</a></li>
+              <li><a href="#grouped-only-list">03) Only list</a></li>
+              <li><a href="#grouped-sort-list">04) Sort list</a></li>
               <li>
                 <a href="#grouped-sort-selected-first">
-                  09) Sort selected first
+                  05) Sort selected first
+                </a>
+              </li>
+              <li>
+                <a href="#grouped-placeholder-search">
+                  06) Placeholder search
                 </a>
               </li>
             </ul>
@@ -43,7 +53,7 @@
         <div id="mirror-basic" class="ex-section">
           <div class="ex-section-title">
             <h3>01) Mirror - basic</h3>
-            <a :href="`${repoExamples}01-mirror-basic.vue`" target="_blank">
+            <a :href="`${repoExamples}mirror-basic.vue`" target="_blank">
               View source
             </a>
           </div>
@@ -55,7 +65,7 @@
           <div class="ex-section-title">
             <h3>02) Mirror - with selecteds</h3>
             <a
-              :href="`${repoExamples}02-mirror-with-selecteds.vue`"
+              :href="`${repoExamples}mirror-with-selecteds.vue`"
               target="_blank"
             >
               View source
@@ -68,7 +78,7 @@
         <div id="mirror-only-list" class="ex-section">
           <div class="ex-section-title">
             <h3>03) Mirror - only list (search and footer removed)</h3>
-            <a :href="`${repoExamples}03-mirror-only-list.vue`" target="_blank">
+            <a :href="`${repoExamples}mirror-only-list.vue`" target="_blank">
               View source
             </a>
           </div>
@@ -79,7 +89,7 @@
         <div id="mirror-sort-list" class="ex-section">
           <div class="ex-section-title">
             <h3>04) Mirror - sort list</h3>
-            <a :href="`${repoExamples}04-mirror-sort-list.vue`" target="_blank">
+            <a :href="`${repoExamples}mirror-sort-list.vue`" target="_blank">
               View source
             </a>
           </div>
@@ -87,22 +97,85 @@
         </div>
         <hr />
 
-        <div id="grouped-basic" class="ex-section">
+        <div id="mirror-placeholder-search" class="ex-section">
           <div class="ex-section-title">
-            <h3>05) Grouped - basic</h3>
-            <a :href="`${repoExamples}05-grouped-basic.vue`" target="_blank">
+            <h3>05) Mirror - placeholder search</h3>
+            <a
+              :href="`${repoExamples}mirror-placeholder-search.vue`"
+              target="_blank"
+            >
               View source
             </a>
           </div>
-          <example-grouped-05></example-grouped-05>
+          <example-mirror-06></example-mirror-06>
+        </div>
+        <hr />
+
+        <div id="grouped-basic" class="ex-section">
+          <div class="ex-section-title">
+            <h3>01) Grouped - basic</h3>
+            <a :href="`${repoExamples}grouped-basic.vue`" target="_blank">
+              View source
+            </a>
+          </div>
+          <example-grouped-01></example-grouped-01>
         </div>
         <hr />
 
         <div id="grouped-with-selecteds" class="ex-section">
           <div class="ex-section-title">
-            <h3>06) Grouped - with selecteds</h3>
+            <h3>02) Grouped - with selecteds</h3>
             <a
-              :href="`${repoExamples}06-grouped-with-selecteds.vue`"
+              :href="`${repoExamples}grouped-with-selecteds.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-grouped-02></example-grouped-02>
+        </div>
+        <hr />
+
+        <div id="grouped-only-list" class="ex-section">
+          <div class="ex-section-title">
+            <h3>03) Grouped - only list (search and footer removed)</h3>
+            <a :href="`${repoExamples}grouped-only-list.vue`" target="_blank">
+              View source
+            </a>
+          </div>
+          <example-grouped-03></example-grouped-03>
+        </div>
+        <hr />
+
+        <div id="grouped-sort-list" class="ex-section">
+          <div class="ex-section-title">
+            <h3>04) Grouped - sort list</h3>
+            <a :href="`${repoExamples}grouped-sort-list.vue`" target="_blank">
+              View source
+            </a>
+          </div>
+          <example-grouped-04></example-grouped-04>
+        </div>
+        <hr />
+
+        <div id="grouped-sort-selected-first" class="ex-section">
+          <div class="ex-section-title">
+            <h3>05) Grouped - sort selected to top list</h3>
+            <a
+              :href="`${repoExamples}grouped-sort-selected-first.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-grouped-05></example-grouped-05>
+        </div>
+
+        <div id="grouped-placeholder-search" class="ex-section">
+          <div class="ex-section-title">
+            <h3>06) Grouped - placeholder search</h3>
+            <a
+              :href="`${repoExamples}grouped-placeholder-search.vue`"
               target="_blank"
             >
               View source
@@ -110,64 +183,24 @@
           </div>
           <example-grouped-06></example-grouped-06>
         </div>
-        <hr />
-
-        <div id="grouped-only-list" class="ex-section">
-          <div class="ex-section-title">
-            <h3>07) Grouped - only list (search and footer removed)</h3>
-            <a
-              :href="`${repoExamples}07-grouped-only-list.vue`"
-              target="_blank"
-            >
-              View source
-            </a>
-          </div>
-          <example-grouped-07></example-grouped-07>
-        </div>
-        <hr />
-
-        <div id="grouped-sort-list" class="ex-section">
-          <div class="ex-section-title">
-            <h3>08) Grouped - sort list</h3>
-            <a
-              :href="`${repoExamples}08-grouped-sort-list.vue`"
-              target="_blank"
-            >
-              View source
-            </a>
-          </div>
-          <example-grouped-08></example-grouped-08>
-        </div>
-        <hr />
-
-        <div id="grouped-sort-selected-first" class="ex-section">
-          <div class="ex-section-title">
-            <h3>09) Grouped - sort selected to top list</h3>
-            <a
-              :href="`${repoExamples}09-sort-selected-first.vue`"
-              target="_blank"
-            >
-              View source
-            </a>
-          </div>
-          <example-grouped-09></example-grouped-09>
-        </div>
       </section>
     </div>
   </div>
 </template>
 
 <script>
-import exampleMirror01 from "./components/01-mirror-basic.vue";
-import exampleMirror02 from "./components/02-mirror-with-selecteds.vue";
-import exampleMirror03 from "./components/03-mirror-only-list.vue";
-import exampleMirror04 from "./components/04-mirror-sort-list.vue";
+import exampleMirror01 from "./components/mirror-basic.vue";
+import exampleMirror02 from "./components/mirror-with-selecteds.vue";
+import exampleMirror03 from "./components/mirror-only-list.vue";
+import exampleMirror04 from "./components/mirror-sort-list.vue";
+import exampleMirror06 from "./components/mirror-placeholder-search.vue";
 
-import exampleGrouped05 from "./components/05-grouped-basic.vue";
-import exampleGrouped06 from "./components/06-grouped-with-selecteds.vue";
-import exampleGrouped07 from "./components/07-grouped-only-list.vue";
-import exampleGrouped08 from "./components/08-grouped-sort-list.vue";
-import exampleGrouped09 from "./components/09-sort-selected-first.vue";
+import exampleGrouped01 from "./components/grouped-basic.vue";
+import exampleGrouped02 from "./components/grouped-with-selecteds.vue";
+import exampleGrouped03 from "./components/grouped-only-list.vue";
+import exampleGrouped04 from "./components/grouped-sort-list.vue";
+import exampleGrouped05 from "./components/grouped-sort-selected-first.vue";
+import exampleGrouped06 from "./components/grouped-placeholder-search.vue";
 
 const repo = require("../package.json").repository.url;
 const repoExamples = repo + `/blob/master/example/components/`;
@@ -178,11 +211,13 @@ export default {
     exampleMirror02,
     exampleMirror03,
     exampleMirror04,
+    exampleMirror06,
+    exampleGrouped01,
+    exampleGrouped02,
+    exampleGrouped03,
+    exampleGrouped04,
     exampleGrouped05,
-    exampleGrouped06,
-    exampleGrouped07,
-    exampleGrouped08,
-    exampleGrouped09
+    exampleGrouped06
   },
   methods: {
     scrolling() {

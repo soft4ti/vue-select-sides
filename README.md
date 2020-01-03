@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/images/logo.png?token=AEJJO7X6P457BFQIVN5VOS26BZ44S" />
+  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/images/logo.png" />
 </p>
 <h2 align="center">Vue Select Sides</h2>
 
@@ -162,23 +162,25 @@ export default {
 
 These are all the props you can pass to the component:
 
-| name             | type                | example                                     | notes                                                                                        |
-| ---------------- | ------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| v-model          | `Array` or `Object` | `["xyz"]` or `{xyz: ["abc", "def"]}`        | Use **Object** if type is grouped else uses **Array**                                        |
-| type             | `String`            | `grouped` or `mirror`                       |                                                                                              |
-| list             | `Array`             | `[{ value: "xyz", label: "Label xyz 01" }]` | You can add the `children` key to type `grouped`                                             |
-| search           | `Boolean`           | `true` or `false`                           | To show/hide search input. Default is visible (true)                                         |
-| total            | `Boolean`           | `true` or `false`                           | To show/hide total selected in footer. Default is visible (true)                             |
-| toggle-all       | `Boolean`           | `true` or `false`                           | To show/hide toggle in footer. Default is visible (true)                                     |
-| sort-selected-up | `Boolean`           | `true` or `false`                           | Show first the pre-selected. Default does not visible (false). _Available only grouped type_ |
-| order-by         | `String`            | `asc` or `desc`                             | Show first the pre-selected. Default is natural order                                        |
-| lang             | `String`            | `en_US` or `pt_BR`                          | Language default. Default is en_US                                                           |
+| name                     | type                | example                                     | notes                                                                                        |
+| ------------------------ | ------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| v-model                  | `Array` or `Object` | `["xyz"]` or `{xyz: ["abc", "def"]}`        | Use **Object** if type is grouped else uses **Array**                                        |
+| type                     | `String`            | `grouped` or `mirror`                       |                                                                                              |
+| list                     | `Array`             | `[{ value: "xyz", label: "Label xyz 01" }]` | You can add the `children` key to type `grouped`                                             |
+| search                   | `Boolean`           | `true` or `false`                           | To show/hide search input. Default is visible (true)                                         |
+| total                    | `Boolean`           | `true` or `false`                           | To show/hide total selected in footer. Default is visible (true)                             |
+| toggle-all               | `Boolean`           | `true` or `false`                           | To show/hide toggle in footer. Default is visible (true)                                     |
+| sort-selected-up         | `Boolean`           | `true` or `false`                           | Show first the pre-selected. Default does not visible (false). _Available only grouped type_ |
+| order-by                 | `String`            | `asc` or `desc`                             | Show first the pre-selected. Default is natural order                                        |
+| lang                     | `String`            | `en_US` or `pt_BR`                          | Language default. Default is en_US                                                           |
+| placeholder-search-left  | `String`            | "Yay! Search items..."                      | Placeholder on the left search field. Default is ""                                          |
+| placeholder-search-right | `String`            | "Or search children items..."               | Placeholder on the right search field. Default is ""                                         |
 
 ## Bugs and feature requests
 
 If your problem or idea is not <a href="https://github.com/juliorosseti/vue-select-sides/issues" target="_blank">addressed</a> yet, <a href="https://github.com/juliorosseti/vue-select-sides/issues/new" target="_blank">please open a new issue</a>.
 
-## Development
+## Contribution / Development
 
 #### Install dependencies
 

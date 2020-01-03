@@ -3,6 +3,7 @@
     <div class="vss-list">
       <div class="vss-inner-list">
         <v-search
+          :placeholder="placeholderSearchLeft"
           class="vss-list-search"
           v-if="search"
           v-model="searchL"
@@ -40,6 +41,7 @@
     <div class="vss-list">
       <div class="vss-inner-list">
         <v-search
+          :placeholder="placeholderSearchRight"
           class="vss-list-search"
           v-if="search"
           v-model="searchR"
@@ -101,27 +103,9 @@ export default {
       required: true,
       type: [Array, Object]
     },
-    search: {
-      type: Boolean
-    },
-    total: {
-      type: Boolean
-    },
-    toggleAll: {
-      type: Boolean
-    },
-    orderBy: {
-      type: String
-    },
-    sortSelectedUp: {
-      type: Boolean
-    },
     model: {
       type: Object,
       default: undefined
-    },
-    type: {
-      type: String
     }
   },
   methods: {
