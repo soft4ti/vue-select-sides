@@ -1,12 +1,12 @@
 <p align="center">
-  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/logo.png?token=AEJJO7WGDFMFGWQB7N3DNG26B6252" />
+  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/logo.png?token=AEJJO7WKHZRSBZQFPPFLVEC6CT3N2" />
 </p>
 <h2 align="center">Vue Select Sides</h2>
 
 A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
 <p align="center">
-  <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/demo.gif?token=AEJJO7QTWOK6XXZY3T7MJN26B626C" />
+  <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/demo.gif?token=AEJJO7WKHZRSBZQFPPFLVEC6CT3N2" />
 </p>
 
 ## Examples
@@ -183,6 +183,12 @@ These are all the props you can pass to the component:
 ## Bugs and feature requests
 
 If your problem or idea is not <a href="https://github.com/juliorosseti/vue-select-sides/issues" target="_blank">addressed</a> yet, <a href="https://github.com/juliorosseti/vue-select-sides/issues/new" target="_blank">please open a new issue</a>.
+
+## Sponsor / Creator
+
+<a href="http://softdesk.com.br/" target="_blank">
+  <img alt="Softdesk - Sponsor" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/softdesk.png?token=AEJJO7WKHZRSBZQFPPFLVEC6CT3N2" />
+</a>
 
 ## Contribution / Development
 
