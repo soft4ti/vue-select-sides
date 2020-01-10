@@ -1,17 +1,15 @@
 <p align="center">
-  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/logo.png?token=AEJJO7WKHZRSBZQFPPFLVEC6CT3N2" />
+  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/logo.png" />
 </p>
 <h2 align="center">Vue Select Sides</h2>
 
 A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
 <p align="center">
-  <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/demo.gif?token=AEJJO7WKHZRSBZQFPPFLVEC6CT3N2" />
+  <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/demo.gif" />
 </p>
 
-## Examples
-
-Url to page example.
+## [Live DEMO](https://juliorosseti.github.io/vue-select-sides/demo.html?v=1.0.0)
 
 ## Installation
 
@@ -187,7 +185,7 @@ If your problem or idea is not <a href="https://github.com/juliorosseti/vue-sele
 ## Sponsor / Creator
 
 <a href="http://softdesk.com.br/" target="_blank">
-  <img alt="Softdesk - Sponsor" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/softdesk.png?token=AEJJO7WKHZRSBZQFPPFLVEC6CT3N2" />
+  <img alt="Softdesk - Sponsor" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/softdesk.png" />
 </a>
 
 ## Contribution / Development
