@@ -34,15 +34,14 @@
     "select 2 sides",
     "multiselect 2 sides"
   ],
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "core-js": "^3.4.3",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
     "sort-by": "^1.2.0",
     "vue": "^2.6.10",
-    "vue-i18n": "^8.0.0"
-  },
-  "devDependencies": {
+    "vue-i18n": "^8.0.0",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
