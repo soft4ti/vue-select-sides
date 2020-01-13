@@ -6892,4 +6892,3 @@ module.exports = NATIVE_SYMBOL
 
 /******/ });
 });
-//# sourceMappingURL=vueSelectSides.umd.js.map
