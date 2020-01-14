@@ -1325,12 +1325,12 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"773e2be7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/core.vue?vue&type=template&id=5620f996&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.getComponent(),{tag:"component",staticClass:"vss",attrs:{"lang":_vm.lang,"type":_vm.type,"list":_vm.list,"search":_vm.search,"total":_vm.total,"toggle-all":_vm.toggleAll,"order-by":_vm.orderBy,"placeholder-search-left":_vm.placeholderSearchLeft,"placeholder-search-right":_vm.placeholderSearchRight,"sort-selected-up":_vm.sortSelectedUp},on:{"update-selected":_vm.updateSelected},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v},expression:"model"}})}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"773e2be7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/core.vue?vue&type=template&id=97ffb174&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.getComponent(),{tag:"component",staticClass:"vss",attrs:{"lang":_vm.lang,"type":_vm.type,"list":_vm.listClone,"search":_vm.search,"total":_vm.total,"toggle-all":_vm.toggleAll,"order-by":_vm.orderBy,"placeholder-search-left":_vm.placeholderSearchLeft,"placeholder-search-right":_vm.placeholderSearchRight,"sort-selected-up":_vm.sortSelectedUp},on:{"update-selected":_vm.updateSelected},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v},expression:"model"}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/core.vue?vue&type=template&id=5620f996&
+// CONCATENATED MODULE: ./src/core.vue?vue&type=template&id=97ffb174&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
 var es_array_index_of = __webpack_require__("c975");
@@ -3266,6 +3266,9 @@ function loadLocaleMessages() {
   fallbackLocale: "en_US" || false,
   messages: loadLocaleMessages()
 }));
+// EXTERNAL MODULE: ./src/utils.js
+var utils = __webpack_require__("025e");
+
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/core.vue?vue&type=script&lang=js&
 
 //
@@ -3288,6 +3291,7 @@ function loadLocaleMessages() {
 //
 //
 //
+
 
 
 var types = __webpack_require__("6792").default;
@@ -3381,6 +3385,12 @@ var mirror = __webpack_require__("bcd4").default;
   beforeMount: function beforeMount() {
     // Languages
     this.selectLanguage(this.lang);
+    this.$set(this, "listClone", Object(utils["a" /* clone */])(this.list));
+  },
+  data: function data() {
+    return {
+      listClone: []
+    };
   }
 });
 // CONCATENATED MODULE: ./src/core.vue?vue&type=script&lang=js&
@@ -4970,7 +4980,7 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 /***/ "9224":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"vue-select-sides\",\"version\":\"1.0.0\",\"description\":\"select sides component for vue\",\"license\":\"MIT\",\"publishConfig\":{\"registry\":\"https://npm.pkg.github.com/\"},\"private\":false,\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/juliorosseti/vue-select-sides\"},\"main\":\"dist/vueSelectSides.umd.js\",\"unpkg\":\"dist/vueSelectSides.umd.min.js\",\"scripts\":{\"serve\":\"vue-cli-service serve  --target lib --name vueSelectSides ./example/main.js \",\"build\":\"yarn run build:example && yarn run build:npm\",\"lint\":\"vue-cli-service lint\",\"i18n:report\":\"vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'\",\"build:example\":\"vue-cli-service build --target lib --dest ./docs --formats umd --name vueSelectSides ./example/App.vue\",\"build:npm\":\"vue-cli-service build --target lib --name vueSelectSides ./src/index.js\"},\"files\":[\"dist\",\"styles\"],\"keywords\":[\"vue\",\"vuejs\",\"component\",\"select list\",\"multiselect\",\"multipleselect\",\"multiple\",\"select\",\"select 2 sides\",\"multiselect 2 sides\"],\"dependencies\":{},\"devDependencies\":{\"core-js\":\"^3.4.3\",\"node-sass\":\"^4.13.0\",\"sass-loader\":\"^8.0.0\",\"sort-by\":\"^1.2.0\",\"vue\":\"^2.6.10\",\"vue-i18n\":\"^8.0.0\",\"@vue/cli-plugin-babel\":\"^4.1.0\",\"@vue/cli-plugin-eslint\":\"^4.1.0\",\"@vue/cli-service\":\"^4.1.0\",\"babel-eslint\":\"^10.0.3\",\"eslint\":\"^5.16.0\",\"eslint-plugin-vue\":\"^5.0.0\",\"style-resources-loader\":\"^1.3.2\",\"vue-cli-plugin-i18n\":\"^0.6.0\",\"vue-template-compiler\":\"^2.6.10\"},\"eslintConfig\":{\"root\":true,\"env\":{\"node\":true},\"extends\":[\"plugin:vue/essential\",\"eslint:recommended\"],\"rules\":{},\"parserOptions\":{\"parser\":\"babel-eslint\"}},\"browserslist\":[\"> 1%\",\"last 2 versions\"]}");
+module.exports = JSON.parse("{\"name\":\"vue-select-sides\",\"version\":\"1.0.3\",\"description\":\"select sides component for vue\",\"license\":\"MIT\",\"private\":false,\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/juliorosseti/vue-select-sides\"},\"main\":\"dist/vueSelectSides.umd.js\",\"unpkg\":\"dist/vueSelectSides.umd.min.js\",\"scripts\":{\"serve\":\"vue-cli-service serve  --target lib --name vueSelectSides ./example/main.js \",\"build\":\"yarn run build:example && yarn run build:npm\",\"lint\":\"vue-cli-service lint\",\"i18n:report\":\"vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'\",\"build:example\":\"vue-cli-service build --target lib --dest ./docs --formats umd --name vueSelectSides ./example/App.vue\",\"build:npm\":\"vue-cli-service build --target lib --name vueSelectSides ./src/index.js\"},\"files\":[\"dist\",\"styles\"],\"keywords\":[\"vue\",\"vuejs\",\"component\",\"select list\",\"multiselect\",\"multipleselect\",\"multiple\",\"select\",\"select 2 sides\",\"multiselect 2 sides\"],\"dependencies\":{},\"devDependencies\":{\"core-js\":\"^3.4.3\",\"node-sass\":\"^4.13.0\",\"sass-loader\":\"^8.0.0\",\"sort-by\":\"^1.2.0\",\"vue\":\"^2.6.10\",\"vue-i18n\":\"^8.0.0\",\"@vue/cli-plugin-babel\":\"^4.1.0\",\"@vue/cli-plugin-eslint\":\"^4.1.0\",\"@vue/cli-service\":\"^4.1.0\",\"babel-eslint\":\"^10.0.3\",\"eslint\":\"^5.16.0\",\"eslint-plugin-vue\":\"^5.0.0\",\"style-resources-loader\":\"^1.3.2\",\"vue-cli-plugin-i18n\":\"^0.6.0\",\"vue-template-compiler\":\"^2.6.10\"},\"eslintConfig\":{\"root\":true,\"env\":{\"node\":true},\"extends\":[\"plugin:vue/essential\",\"eslint:recommended\"],\"rules\":{},\"parserOptions\":{\"parser\":\"babel-eslint\"}},\"browserslist\":[\"> 1%\",\"last 2 versions\"]}");
 
 /***/ }),
 
@@ -9425,4 +9435,3 @@ module.exports = NATIVE_SYMBOL
 
 /******/ })["default"];
 });
-//# sourceMappingURL=vueSelectSides.umd.js.map
