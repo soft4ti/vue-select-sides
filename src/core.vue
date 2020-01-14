@@ -5,7 +5,7 @@
     :is="getComponent()"
     :lang="lang"
     :type="type"
-    :list="list"
+    :list="listClone"
     :search="search"
     :total="total"
     :toggle-all="toggleAll"
@@ -20,6 +20,7 @@
 
 <script>
 import i18n from "./i18n";
+import { clone } from "./utils";
 
 const types = require("./types").default;
 const grouped = require("./modules/grouped").default;
@@ -107,6 +108,12 @@ export default {
   beforeMount() {
     // Languages
     this.selectLanguage(this.lang);
+    this.$set(this, "listClone", clone(this.list));
+  },
+  data() {
+    return {
+      listClone: []
+    };
   }
 };
 </script>
