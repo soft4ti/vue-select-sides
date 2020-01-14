@@ -80,6 +80,9 @@ export default {
   watch: {
     lang(language) {
       this.selectLanguage(language);
+    },
+    list(newList) {
+      this.$set(this, "listClone", clone(newList));
     }
   },
   model: {

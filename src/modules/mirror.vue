@@ -125,31 +125,42 @@ export default {
       }
 
       this.$set(this, "dataSelected", dataSelected);
+    },
+
+    prepareList() {
+      this.$set(this, "dataListOriginal", clone(this.list));
+
+      let vm = this;
+      let foundSelected = [];
+      let dataList = vm.list.filter(item => {
+        let value = item.value;
+
+        if (vm.model.indexOf(value) >= 0) {
+          item.selectedDefault = true;
+          foundSelected.push(value);
+        } else {
+          item.selectedDefault = false;
+        }
+
+        return item;
+      });
+
+      vm.$set(vm, "dataSelected", foundSelected);
+      vm.$set(vm, "dataList", reorder(vm, dataList));
+    },
+
+    prepareListLeft() {
+      this.listLeft = this.dataList.filter(item => {
+        item.visible = true;
+        return item;
+      });
     }
   },
   beforeMount() {
-    this.$set(this, "dataSelected", this.model);
-
-    let dataList = this.list.filter(item => {
-      let value = item.value;
-
-      if (this.dataSelected.indexOf(value) >= 0) {
-        item.selectedDefault = true;
-      } else {
-        item.selectedDefault = false;
-      }
-
-      return item;
-    });
-
-    this.$set(this, "dataList", reorder(this, dataList));
+    this.prepareList();
   },
   mounted() {
-    // Organiza a listLeft
-    this.listLeft = this.dataList.filter(item => {
-      item.visible = true;
-      return item;
-    });
+    this.prepareListLeft();
   },
   computed: {
     filteredListL() {
@@ -219,6 +230,7 @@ export default {
   data() {
     return {
       dataList: [],
+      dataListOriginal: [],
       dataSelected: [],
       listLeft: [],
       listRight: [],

@@ -184,73 +184,90 @@ export default {
       }
 
       this.$set(this, "dataSelected", dataSelected);
+    },
+
+    prepareList() {
+      let vm = this;
+      let foundSelected = {};
+
+      vm.$set(vm, "dataListOriginal", clone(vm.list));
+
+      // let foundSelected = vm.list
+      //   .map(item => {
+      //     return vm.model.indexOf(item.value) >= 0 ? item.value : false;
+      //   })
+      //   .filter(Boolean);
+
+      let keyParentsSelected = Object.keys(vm.model);
+
+      let dataList = vm.list.filter(item => {
+        let valueParent = item.value;
+        let existsParentSelected = keyParentsSelected.indexOf(valueParent) >= 0;
+
+        if (existsParentSelected) {
+          item.selectedDefault = true;
+          foundSelected[valueParent] = [];
+        } else {
+          item.selectedDefault = false;
+        }
+
+        if (item.children) {
+          item.children.filter(item => {
+            let valueChildren = item.value;
+
+            // Has selected
+            if (existsParentSelected) {
+              let existsChildrenSelected =
+                vm.model[valueParent].indexOf(valueChildren) >= 0;
+
+              if (existsChildrenSelected) {
+                item.selectedDefault = true;
+                foundSelected[valueParent].push(valueChildren);
+              } else {
+                item.selectedDefault = false;
+              }
+            }
+          });
+        }
+
+        return item;
+      });
+
+      vm.$set(vm, "dataSelected", foundSelected);
+      vm.$set(vm, "dataList", reorder(vm, dataList));
+    },
+    prepareListLeft() {
+      let vm = this;
+
+      // Organiza a listLeft
+      this.listLeft = this.dataList.filter(item => {
+        item.visible = true;
+
+        if (item.children) {
+          item.children = item.children.map(children => {
+            if (vm.dataSelected[item.value] !== undefined) {
+              if (vm.dataSelected[item.value].indexOf(children.value) >= 0) {
+                children.selected = true;
+              } else {
+                children.selected = false;
+              }
+            }
+
+            return children;
+          });
+
+          return item.children;
+        }
+
+        return item;
+      });
     }
   },
   beforeMount() {
-    this.$set(this, "dataSelected", this.model);
-    this.$set(this, "dataList", this.list);
-
-    let vm = this;
-    let keyParentsSelected = Object.keys(vm.dataSelected);
-
-    let dataList = vm.dataList.filter(item => {
-      let valueParent = item.value;
-      let existsParentSelected = keyParentsSelected.indexOf(valueParent) >= 0;
-
-      if (existsParentSelected) {
-        item.selectedDefault = true;
-      } else {
-        item.selectedDefault = false;
-      }
-
-      if (item.children) {
-        item.children.filter(item => {
-          let valueChildren = item.value;
-
-          // Has selected
-          if (existsParentSelected) {
-            let existsChildrenSelected =
-              vm.dataSelected[valueParent].indexOf(valueChildren) >= 0;
-
-            if (existsChildrenSelected) {
-              item.selectedDefault = true;
-            } else {
-              item.selectedDefault = false;
-            }
-          }
-        });
-      }
-
-      return item;
-    });
-
-    this.$set(this, "dataList", reorder(vm, dataList));
+    this.prepareList();
   },
   mounted() {
-    let vm = this;
-
-    // Organiza a listLeft
-    this.listLeft = this.dataList.filter(item => {
-      item.visible = true;
-
-      if (item.children) {
-        item.children = item.children.map(children => {
-          if (vm.dataSelected[item.value] !== undefined) {
-            if (vm.dataSelected[item.value].indexOf(children.value) >= 0) {
-              children.selected = true;
-            } else {
-              children.selected = false;
-            }
-          }
-
-          return children;
-        });
-
-        return item.children;
-      }
-
-      return item;
-    });
+    this.prepareListLeft();
   },
   computed: {
     totalChildrenSelected() {
@@ -351,6 +368,7 @@ export default {
   data() {
     return {
       dataList: [],
+      dataListOriginal: [],
       dataSelected: {},
       listLeft: [],
       listRight: [],
