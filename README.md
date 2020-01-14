@@ -3,6 +3,18 @@
 </p>
 <h2 align="center">Vue Select Sides</h2>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-select-sides" target="_blank">
+    <img alt="npm" src="https://img.shields.io/npm/v/vue-select-sides?color=%23f57f1e">
+  </a>
+  <a href="https://www.npmjs.com/package/vue-select-sides" target="_blank">
+    <img alt="npm" src="https://img.shields.io/bundlephobia/minzip/vue-select-sides?color=%23f57f1e">
+  </a>
+  <a href="https://www.npmjs.com/package/vue-select-sides" target="_blank">
+    <img alt="npm" src="https://img.shields.io/npm/dw/vue-select-sides?color=%23f57f1e">
+  </a>
+</p>
+
 A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
 <p align="center">
