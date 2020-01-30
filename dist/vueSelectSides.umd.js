@@ -1181,6 +1181,7 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 var map = {
 	"./en_US.json": "59c8",
+	"./es_ES.json": "9152",
 	"./pt_BR.json": "0c31"
 };
 
@@ -1318,12 +1319,12 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4e700c4e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/core.vue?vue&type=template&id=1a077ba8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4e700c4e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/core.vue?vue&type=template&id=0cc84d67&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.getComponent(),{tag:"component",staticClass:"vss",attrs:{"lang":_vm.lang,"type":_vm.type,"list":_vm.listClone,"search":_vm.search,"total":_vm.total,"toggle-all":_vm.toggleAll,"order-by":_vm.orderBy,"placeholder-search-left":_vm.placeholderSearchLeft,"placeholder-search-right":_vm.placeholderSearchRight,"sort-selected-up":_vm.sortSelectedUp},on:{"update-selected":_vm.updateSelected},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v},expression:"model"}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/core.vue?vue&type=template&id=1a077ba8&
+// CONCATENATED MODULE: ./src/core.vue?vue&type=template&id=0cc84d67&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
 var es_array_index_of = __webpack_require__("c975");
@@ -3371,7 +3372,7 @@ var mirror = __webpack_require__("bcd4").default;
       }
     },
     selectLanguage: function selectLanguage(lang) {
-      var enabledLangs = ["pt_BR", "en_US"];
+      var enabledLangs = ["pt_BR", "en_US", "es_ES"];
 
       if (enabledLangs.indexOf(lang) >= 0) {
         this.$i18n.locale = lang;
@@ -4971,6 +4972,13 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
   return object;
 };
 
+
+/***/ }),
+
+/***/ "9152":
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"selectAll\":\"Seleccionar todos\",\"deselectAll\":\"Deseleccionar todos\",\"searchPlaceholder\":\"Buscar...\",\"searchNoResult\":\"Sin resultados...\",\"searchParentSelected\":\"Ningún elemento seleccionado...\",\"totalSelected\":\"Elementos seleccionados\"}");
 
 /***/ }),
 
