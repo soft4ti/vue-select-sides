@@ -186,7 +186,7 @@ These are all the props you can pass to the component:
 | toggle-all               | `Boolean`           | `true` or `false`                           | To show/hide toggle in footer. Default is visible (true)                                     |
 | sort-selected-up         | `Boolean`           | `true` or `false`                           | Show first the pre-selected. Default does not visible (false). _Available only grouped type_ |
 | order-by                 | `String`            | `asc` or `desc`                             | Show first the pre-selected. Default is natural order                                        |
-| lang                     | `String`            | `en_US` or `pt_BR`                          | Language default. Default is en_US                                                           |
+| lang                     | `String`            | `en_US`, `pt_BR` or `es_ES`                 | Language default. Default is en_US                                                           |
 | placeholder-search-left  | `String`            | "Yay! Search items..."                      | Placeholder on the left search field. Default is ""                                          |
 | placeholder-search-right | `String`            | "Or search children items..."               | Placeholder on the right search field. Default is ""                                         |
 
