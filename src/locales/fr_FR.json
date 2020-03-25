@@ -1,0 +1,8 @@
+{
+  "selectAll": "Ajouter tout",
+  "deselectAll": "Supprimer tout",
+  "searchPlaceholder": "Recherche...",
+  "searchNoResult": "Pas de résultat...",
+  "searchParentSelected": "Sélection vide...",
+  "totalSelected": "Éléments sélectionnés"
+}

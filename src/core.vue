@@ -101,7 +101,7 @@ export default {
       }
     },
     selectLanguage(lang) {
-      const enabledLangs = ["pt_BR", "en_US", "es_ES"];
+      const enabledLangs = ["pt_BR", "en_US", "es_ES", "fr_FR"];
 
       if (enabledLangs.indexOf(lang) >= 0) {
         this.$i18n.locale = lang;
