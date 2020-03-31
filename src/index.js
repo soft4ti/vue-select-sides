@@ -1,16 +1,10 @@
-import vueSelectSides from "./core.vue";
+import vueSelectSides from "./vue-select-sides.vue";
 
 function install(Vue, options) {
-  console.log(options);
-
   if (install.installed) return;
   install.installed = true;
-  Vue.component("vue-select-sides", vueSelectSides);
 
-  Vue.setDefault = value => {
-    console.log(value);
-    return value;
-  };
+  Vue.prototype.defaultOptions = options;
 }
 
 const plugin = {

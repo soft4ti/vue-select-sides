@@ -8,8 +8,10 @@ Vue.use(VueGtag, {
 });
 
 Vue.use(VueSelectSides, {
-  lang: true
+  locale: "en_US"
 });
+
+Vue.component("vue-select-sides", VueSelectSides);
 
 Vue.config.productionTip = false;
 

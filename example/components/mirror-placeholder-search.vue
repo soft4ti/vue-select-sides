@@ -15,12 +15,7 @@
 </template>
 
 <script>
-import vueSelectSides from "../../src/index";
-
 export default {
-  components: {
-    vueSelectSides
-  },
   data() {
     return {
       selected: ["sul", "sudeste"],
