@@ -1,9 +1,14 @@
 import Vue from "vue";
 import App from "./App.vue";
-import VueAnalytics from "vue-analytics";
+import VueGtag from "vue-gtag";
+import VueSelectSides from "../src/index";
 
-Vue.use(VueAnalytics, {
-  id: "UA-74950724-2"
+Vue.use(VueGtag, {
+  config: { id: "UA-74950724-2" }
+});
+
+Vue.use(VueSelectSides, {
+  lang: true
 });
 
 Vue.config.productionTip = false;

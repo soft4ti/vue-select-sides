@@ -220,6 +220,11 @@ export default {
     exampleGrouped06
   },
   methods: {
+    track() {
+      this.$gtag.pageview({
+        page_path: "/"
+      });
+    },
     scrolling() {
       if (window.scrollY >= 275) {
         this.affix = "affixed";

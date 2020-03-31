@@ -90,6 +90,9 @@ export default {
     event: "change"
   },
   methods: {
+    setDefault() {
+      console.log("eta");
+    },
     updateSelected(items) {
       this.$emit("change", items);
     },
