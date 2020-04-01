@@ -60,7 +60,6 @@
           <example-mirror-01></example-mirror-01>
         </div>
         <hr />
-
         <div id="mirror-with-selecteds" class="ex-section">
           <div class="ex-section-title">
             <h3>02) Mirror - with selecteds</h3>

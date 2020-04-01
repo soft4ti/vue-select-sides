@@ -5556,9 +5556,9 @@ module.exports = function (name) {
 
 
 function install(Vue, options) {
+  Vue.prototype.defaultOptions = options;
   if (install.installed) return;
   install.installed = true;
-  Vue.prototype.defaultOptions = options;
 }
 
 var plugin = {

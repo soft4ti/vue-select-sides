@@ -15,7 +15,17 @@
 </template>
 
 <script>
+import Vue from "vue";
+import vueSelectSides from "../../src/index";
+
+Vue.use(vueSelectSides, {
+  locale: "en_US"
+});
+
 export default {
+  components: {
+    vueSelectSides
+  },
   data() {
     return {
       selected: { sul: [], sudeste: [] },
