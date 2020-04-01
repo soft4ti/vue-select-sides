@@ -194,11 +194,11 @@ List of locales available for the plugin:
 ```javascript
 import vueSelectSides from "vue-select-sides";
 
-Vue.use(VueSelectSides, {
+Vue.use(vueSelectSides, {
   locale: "pt_BR"
 });
 
-Vue.component("vue-select-sides", VueSelectSides);
+Vue.component("vue-select-sides", vueSelectSides);
 ```
 
 ## Props
