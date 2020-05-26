@@ -12,11 +12,12 @@
   "unpkg": "dist/vueSelectSides.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve  --target lib --name vueSelectSides ./example/main.js ",
-    "build": "yarn run build:example && yarn run build:npm",
+    "build": "yarn build:example && yarn build:npm && yarn build:scss",
     "lint": "vue-cli-service lint",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "build:example": "vue-cli-service build --target lib --dest ./docs --formats umd --name vueSelectSides ./example/App.vue",
-    "build:npm": "vue-cli-service build --target lib --name vueSelectSides ./src/index.js"
+    "build:npm": "vue-cli-service build --target lib --name vueSelectSides ./src/index.js",
+    "build:scss": "./node_modules/.bin/node-sass styles/themes -o dist/css --output-style compressed"
   },
   "files": [
     "dist",
