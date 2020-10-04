@@ -1,7 +1,7 @@
 import vueSelectSides from "./vue-select-sides.vue";
 
 function install(Vue, options) {
-  Vue.prototype.defaultOptions = options;
+  Vue.prototype.defaultOptions = options && options.constructor.name === "Object" ? options : {};
   if (install.installed) return;
   install.installed = true;
 }
