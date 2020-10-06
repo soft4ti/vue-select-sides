@@ -44,8 +44,8 @@ import vueSelectSides from "vue-select-sides";
 
 export default {
   components: {
-    vueSelectSides
-  }
+    vueSelectSides,
+  },
 };
 ```
 
@@ -185,9 +185,10 @@ export default {
 List of locales available for the plugin:
 
 - `en_US` - [English] - Default
-- `pt_BR` - [Português Brasileiro] - Contributed by @juliorosseti
+- `pt_BR` - [Portuguese] - Contributed by @juliorosseti
 - `es_ES` - [Spanish] - Contributed by @etrepat
 - `fr_FR` - [French] - Contributed by @MajuTo
+- `tr_TR` - [Turkey] - Contributed by @Abdulsametileri
 
 ### Use global locale
 
@@ -195,7 +196,7 @@ List of locales available for the plugin:
 import vueSelectSides from "vue-select-sides";
 
 Vue.use(vueSelectSides, {
-  locale: "pt_BR"
+  locale: "pt_BR",
 });
 
 Vue.component("vue-select-sides", vueSelectSides);
