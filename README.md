@@ -53,7 +53,7 @@ Global component:
 
 ```javascript
 import vueSelectSides from "vue-select-sides";
-Vue.use(VueSelectSides, {});
+Vue.use(VueSelectSides);
 Vue.component("vue-select-sides", VueSelectSides);
 ```
 
