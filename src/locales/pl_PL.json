@@ -1,0 +1,8 @@
+{
+  "selectAll": "Wybierz wszystko",
+  "deselectAll": "Wyczyść zaznaczenie",
+  "searchPlaceholder": "Szukaj...",
+  "searchNoResult": "Brak wyników...",
+  "searchParentSelected": "Nie wybrano żadnych elementów...",
+  "totalSelected": "Liczba wybranych elementów"
+}
