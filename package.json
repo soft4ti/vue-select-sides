@@ -35,9 +35,7 @@
     "select 2 sides",
     "multiselect 2 sides"
   ],
-  "dependencies": {
-    "vue-gtag": "^1.6.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

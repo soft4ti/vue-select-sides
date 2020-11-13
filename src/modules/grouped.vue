@@ -113,7 +113,7 @@ export default {
       let vm = this;
 
       vm.listLeft.map(item => {
-        if (item.visible === true) {
+        if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, true);
         }
       });
@@ -122,7 +122,7 @@ export default {
       let vm = this;
 
       vm.listLeft.map(item => {
-        if (item.visible === true) {
+        if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, false);
         }
       });
@@ -132,7 +132,7 @@ export default {
 
       vm.listRight.map(item => {
         item.children.map(children => {
-          if (item.selected === true) {
+          if (item.selected === true && !item.disabled) {
             vm.updateItem(children, item, true);
           }
         });
@@ -143,7 +143,7 @@ export default {
 
       vm.listRight.map(item => {
         item.children.map(children => {
-          if (item.selected === true) {
+          if (item.selected === true && !item.disabled) {
             vm.updateItem(children, item, false);
           }
         });

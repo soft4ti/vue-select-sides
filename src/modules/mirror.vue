@@ -101,7 +101,7 @@ export default {
       let vm = this;
 
       vm.listLeft.map(item => {
-        if (item.visible === true) {
+        if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, true);
         }
       });
@@ -110,7 +110,7 @@ export default {
       let vm = this;
 
       vm.listRight.map(item => {
-        if (item.visible === true) {
+        if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, false);
         }
       });
