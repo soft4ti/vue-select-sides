@@ -162,8 +162,8 @@ export default {
       list: [
         {
           value: "afghanistan",
-          label: "Afghanistan"
-          disabled: true,
+          label: "Afghanistan",
+          disabled: true
         },
         {
           value: "brazil",
@@ -171,8 +171,8 @@ export default {
         },
         {
           value: "fiji",
-          label: "Fiji"
-          disabled: true,
+          label: "Fiji",
+          disabled: true
         },
         {
           value: "ghana",
