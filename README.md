@@ -108,8 +108,8 @@ export default {
           children: [
             {
               value: "santa-catarina",
-              label: "Santa Catarina"
-              disabled: false,
+              label: "Santa Catarina",
+              disabled: false
             },
             {
               ...
@@ -123,8 +123,8 @@ export default {
           children: [
             {
               value: "minas-gerais",
-              label: "Minas Gerais"
-              disabled: false,
+              label: "Minas Gerais",
+              disabled: false
             },
             {
               ...
