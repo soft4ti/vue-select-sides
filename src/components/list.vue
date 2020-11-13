@@ -121,6 +121,10 @@ export default {
         output.push("active");
       }
 
+      if (item.disabled) {
+        output.push("is-disabled");
+      }
+
       return output;
     },
     totalItems(o) {
@@ -134,6 +138,10 @@ export default {
       }).length;
     },
     toggleItem(item, parent, isSelected) {
+      if (item.disabled == true) {
+        return false;
+      }
+
       this.$emit("updated-item", item, parent, !isSelected);
     }
   },

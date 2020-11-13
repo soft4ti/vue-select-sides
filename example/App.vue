@@ -26,6 +26,11 @@
                   05) Placeholder search
                 </a>
               </li>
+              <li>
+                <a href="#mirror-with-disabled">
+                  06) With disabled
+                </a>
+              </li>
             </ul>
           </ul>
           <ul>
@@ -45,6 +50,7 @@
                   06) Placeholder search
                 </a>
               </li>
+              <li><a href="#grouped-with-disabled">07) With disabled</a></li>
             </ul>
           </ul>
         </div>
@@ -101,6 +107,20 @@
             <h3>05) Mirror - placeholder search</h3>
             <a
               :href="`${repoExamples}mirror-placeholder-search.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-mirror-05></example-mirror-05>
+        </div>
+        <hr />
+
+        <div id="mirror-with-disabled" class="ex-section">
+          <div class="ex-section-title">
+            <h3>06) Mirror - with disabled</h3>
+            <a
+              :href="`${repoExamples}mirror-with-disabled.vue`"
               target="_blank"
             >
               View source
@@ -169,6 +189,7 @@
           </div>
           <example-grouped-05></example-grouped-05>
         </div>
+        <hr />
 
         <div id="grouped-placeholder-search" class="ex-section">
           <div class="ex-section-title">
@@ -182,6 +203,20 @@
           </div>
           <example-grouped-06></example-grouped-06>
         </div>
+        <hr />
+
+        <div id="grouped-with-disabled" class="ex-section">
+          <div class="ex-section-title">
+            <h3>07) Grouped - placeholder search</h3>
+            <a
+              :href="`${repoExamples}grouped-with-disabled.vue`"
+              target="_blank"
+            >
+              View source
+            </a>
+          </div>
+          <example-grouped-07></example-grouped-07>
+        </div>
       </section>
     </div>
   </div>
@@ -192,7 +227,8 @@ import exampleMirror01 from "./components/mirror-basic.vue";
 import exampleMirror02 from "./components/mirror-with-selecteds.vue";
 import exampleMirror03 from "./components/mirror-only-list.vue";
 import exampleMirror04 from "./components/mirror-sort-list.vue";
-import exampleMirror06 from "./components/mirror-placeholder-search.vue";
+import exampleMirror05 from "./components/mirror-placeholder-search.vue";
+import exampleMirror06 from "./components/mirror-with-disabled.vue";
 
 import exampleGrouped01 from "./components/grouped-basic.vue";
 import exampleGrouped02 from "./components/grouped-with-selecteds.vue";
@@ -200,6 +236,7 @@ import exampleGrouped03 from "./components/grouped-only-list.vue";
 import exampleGrouped04 from "./components/grouped-sort-list.vue";
 import exampleGrouped05 from "./components/grouped-sort-selected-first.vue";
 import exampleGrouped06 from "./components/grouped-placeholder-search.vue";
+import exampleGrouped07 from "./components/grouped-with-disabled.vue";
 
 const repo = require("../package.json").repository.url;
 const repoExamples = repo + `/blob/master/example/components/`;
@@ -210,20 +247,17 @@ export default {
     exampleMirror02,
     exampleMirror03,
     exampleMirror04,
+    exampleMirror05,
     exampleMirror06,
     exampleGrouped01,
     exampleGrouped02,
     exampleGrouped03,
     exampleGrouped04,
     exampleGrouped05,
-    exampleGrouped06
+    exampleGrouped06,
+    exampleGrouped07
   },
   methods: {
-    track() {
-      this.$gtag.pageview({
-        page_path: "/"
-      });
-    },
     scrolling() {
       if (window.scrollY >= 275) {
         this.affix = "affixed";

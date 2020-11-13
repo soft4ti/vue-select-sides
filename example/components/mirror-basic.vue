@@ -34,7 +34,8 @@ export default {
         },
         {
           value: "akrotiri",
-          label: "Akrotiri"
+          label: "Akrotiri",
+          disabled: true
         },
         {
           value: "albania",

@@ -60,6 +60,20 @@
             border-color: transparent;
           }
 
+          &.is-disabled:not(.is-parent) > span {
+            background-color: darken($gray, 5);
+            color: $default-item-color-selected;
+            color: $default-text-color;
+            cursor: default;
+            border-color: transparent;
+          }
+
+          &.is-disabled.active:not(.is-parent) > span {
+            background-color: lighten($default-item-background-selected, 20);
+            color: $default-item-color-selected;
+            // background-color: darken($gray, 2);
+          }
+
           &:not(.is-parent) > span {
             cursor: pointer;
             background-color: $default-item-background;
