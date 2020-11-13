@@ -195,6 +195,7 @@ List of locales available for the plugin:
 - `es_ES` - [Spanish] - Contributed by @etrepat
 - `fr_FR` - [French] - Contributed by @MajuTo
 - `tr_TR` - [Turkey] - Contributed by @Abdulsametileri
+- `pl_PL` - [Polish] - Contributed by @jzapal
 
 ### Use global locale
 
