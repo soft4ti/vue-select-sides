@@ -96,23 +96,23 @@ export default {
     vSearch,
     vSeparator,
     vList,
-    vTotal
+    vTotal,
   },
   props: {
     list: {
       required: true,
-      type: [Array, Object]
+      type: [Array, Object],
     },
     model: {
       type: Object,
-      default: undefined
-    }
+      default: undefined,
+    },
   },
   methods: {
     updateLeftSelectAll() {
       let vm = this;
 
-      vm.listLeft.map(item => {
+      vm.listLeft.map((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, true);
         }
@@ -121,7 +121,7 @@ export default {
     updateLeftDeselectAll() {
       let vm = this;
 
-      vm.listLeft.map(item => {
+      vm.listLeft.map((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, false);
         }
@@ -130,8 +130,8 @@ export default {
     updateRightSelectAll() {
       let vm = this;
 
-      vm.listRight.map(item => {
-        item.children.map(children => {
+      vm.listRight.map((item) => {
+        item.children.map((children) => {
           if (item.selected === true && !item.disabled) {
             vm.updateItem(children, item, true);
           }
@@ -141,8 +141,8 @@ export default {
     updateRightDeselectAll() {
       let vm = this;
 
-      vm.listRight.map(item => {
-        item.children.map(children => {
+      vm.listRight.map((item) => {
+        item.children.map((children) => {
           if (item.selected === true && !item.disabled) {
             vm.updateItem(children, item, false);
           }
@@ -183,14 +183,14 @@ export default {
         }
       }
 
-      this.$set(this, "dataSelected", dataSelected);
+      this.dataSelected = dataSelected;
     },
 
     prepareList() {
       let vm = this;
       let foundSelected = {};
 
-      vm.$set(vm, "dataListOriginal", clone(vm.list));
+      vm.dataListOriginal = clone(vm.list);
 
       // let foundSelected = vm.list
       //   .map(item => {
@@ -200,7 +200,7 @@ export default {
 
       let keyParentsSelected = Object.keys(vm.model);
 
-      let dataList = vm.list.filter(item => {
+      let dataList = vm.list.filter((item) => {
         let valueParent = item.value;
         let existsParentSelected = keyParentsSelected.indexOf(valueParent) >= 0;
 
@@ -212,7 +212,7 @@ export default {
         }
 
         if (item.children) {
-          item.children.filter(item => {
+          item.children.filter((item) => {
             let valueChildren = item.value;
 
             // Has selected
@@ -233,18 +233,18 @@ export default {
         return item;
       });
 
-      vm.$set(vm, "dataSelected", foundSelected);
-      vm.$set(vm, "dataList", reorder(vm, dataList));
+      vm.dataSelected = foundSelected;
+      vm.dataList = reorder(vm, dataList);
     },
     prepareListLeft() {
       let vm = this;
 
       // Organiza a listLeft
-      this.listLeft = this.dataList.filter(item => {
+      this.listLeft = this.dataList.filter((item) => {
         item.visible = true;
 
         if (item.children) {
-          item.children = item.children.map(children => {
+          item.children = item.children.map((children) => {
             if (vm.dataSelected[item.value] !== undefined) {
               if (vm.dataSelected[item.value].indexOf(children.value) >= 0) {
                 children.selected = true;
@@ -261,7 +261,7 @@ export default {
 
         return item;
       });
-    }
+    },
   },
   beforeMount() {
     this.prepareList();
@@ -272,7 +272,7 @@ export default {
   computed: {
     totalChildrenSelected() {
       return Object.keys(this.dataSelected)
-        .map(ab => {
+        .map((ab) => {
           return this.dataSelected[ab].length;
         })
         .reduce((a, b) => a + b, 0);
@@ -284,7 +284,7 @@ export default {
 
       let listLeft = clone(this.listLeft);
 
-      listLeft = listLeft.filter(item => {
+      listLeft = listLeft.filter((item) => {
         let label = normalizeText(item.label);
 
         // Has selected
@@ -302,7 +302,7 @@ export default {
         }
 
         if (item.children) {
-          item.children = item.children.map(children => {
+          item.children = item.children.map((children) => {
             children.selected = false;
             if (vm.dataSelected[item.value] !== undefined) {
               if (vm.dataSelected[item.value].indexOf(children.value) >= 0) {
@@ -314,7 +314,7 @@ export default {
             return children;
           });
 
-          item.totalChildrenSelected = item.children.filter(function(a) {
+          item.totalChildrenSelected = item.children.filter(function (a) {
             return a.selected === true;
           }).length;
 
@@ -324,7 +324,7 @@ export default {
         return item;
       });
 
-      this.$set(this, "listLeft", listLeft);
+      this.listLeft = listLeft;
 
       return listLeft;
     },
@@ -334,7 +334,7 @@ export default {
 
       let listRight = vm.listLeft.filter(function sub(item) {
         if (item.children) {
-          item.children = item.children.map(children => {
+          item.children = item.children.map((children) => {
             let label = normalizeText(children.label);
 
             if (label.includes(search)) {
@@ -360,10 +360,10 @@ export default {
         return item;
       });
 
-      this.$set(this, "listRight", listRight);
+      this.listRight = listRight;
 
       return this.listRight;
-    }
+    },
   },
   data() {
     return {
@@ -373,8 +373,8 @@ export default {
       listLeft: [],
       listRight: [],
       searchL: "",
-      searchR: ""
+      searchR: "",
     };
-  }
+  },
 };
 </script>

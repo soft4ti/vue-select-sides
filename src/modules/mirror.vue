@@ -84,23 +84,23 @@ export default {
     vSearch,
     vSeparator,
     vList,
-    vTotal
+    vTotal,
   },
   props: {
     list: {
       required: true,
-      type: [Array, Object]
+      type: [Array, Object],
     },
     model: {
       type: Array,
-      default: undefined
-    }
+      default: undefined,
+    },
   },
   methods: {
     updateLeftSelectAll() {
       let vm = this;
 
-      vm.listLeft.map(item => {
+      vm.listLeft.map((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, true);
         }
@@ -109,7 +109,7 @@ export default {
     updateRightDeselectAll() {
       let vm = this;
 
-      vm.listRight.map(item => {
+      vm.listRight.map((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, false);
         }
@@ -124,15 +124,15 @@ export default {
         dataSelected = removeItemArray(dataSelected, item.value);
       }
 
-      this.$set(this, "dataSelected", dataSelected);
+      this.dataSelected = dataSelected;
     },
 
     prepareList() {
-      this.$set(this, "dataListOriginal", clone(this.list));
+      this.dataListOriginal = clone(this.list);
 
       let vm = this;
       let foundSelected = [];
-      let dataList = vm.list.filter(item => {
+      let dataList = vm.list.filter((item) => {
         let value = item.value;
 
         if (vm.model.indexOf(value) >= 0) {
@@ -145,16 +145,16 @@ export default {
         return item;
       });
 
-      vm.$set(vm, "dataSelected", foundSelected);
-      vm.$set(vm, "dataList", reorder(vm, dataList));
+      vm.dataSelected = foundSelected;
+      vm.dataList = reorder(vm, dataList);
     },
 
     prepareListLeft() {
-      this.listLeft = this.dataList.filter(item => {
+      this.listLeft = this.dataList.filter((item) => {
         item.visible = true;
         return item;
       });
-    }
+    },
   },
   beforeMount() {
     this.prepareList();
@@ -168,7 +168,7 @@ export default {
       let selected = this.dataSelected;
       let listLeft = clone(this.listLeft);
 
-      listLeft = listLeft.filter(item => {
+      listLeft = listLeft.filter((item) => {
         let label = normalizeText(item.label);
 
         // Has selected
@@ -190,7 +190,7 @@ export default {
         return item;
       });
 
-      this.$set(this, "listLeft", listLeft);
+      this.listLeft = listLeft;
 
       return listLeft;
     },
@@ -200,7 +200,7 @@ export default {
       let selected = this.dataSelected;
       let listRight = clone(vm.listLeft);
 
-      listRight = listRight.filter(item => {
+      listRight = listRight.filter((item) => {
         let label = normalizeText(item.label);
 
         // Has selected
@@ -222,10 +222,10 @@ export default {
         return item;
       });
 
-      this.$set(this, "listRight", listRight);
+      this.listRight = listRight;
 
       return listRight;
-    }
+    },
   },
   data() {
     return {
@@ -235,8 +235,8 @@ export default {
       listLeft: [],
       listRight: [],
       searchL: "",
-      searchR: ""
+      searchR: "",
     };
-  }
+  },
 };
 </script>

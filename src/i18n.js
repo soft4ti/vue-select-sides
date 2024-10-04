@@ -1,7 +1,7 @@
-import Vue from "vue";
-import VueI18n from "vue-i18n";
+import { createApp } from "vue";
+import { createI18n } from "vue-i18n";
 
-Vue.use(VueI18n);
+const app = createApp(App);
 
 function loadLocaleMessages() {
   const locales = require.context(
@@ -10,7 +10,7 @@ function loadLocaleMessages() {
     /[A-Za-z0-9-_,\s]+\.json$/i
   );
   const messages = {};
-  locales.keys().forEach(key => {
+  locales.keys().forEach((key) => {
     const matched = key.match(/([A-Za-z0-9-_]+)\./i);
     if (matched && matched.length > 1) {
       const locale = matched[1];
@@ -20,8 +20,12 @@ function loadLocaleMessages() {
   return messages;
 }
 
-export default new VueI18n({
+const i18n = createI18n({
   locale: process.env.VUE_APP_I18N_LOCALE || "en_US",
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en_US",
-  messages: loadLocaleMessages()
+  messages: loadLocaleMessages(),
 });
+
+app.use(i18n);
+
+export default i18n;

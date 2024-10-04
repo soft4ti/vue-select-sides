@@ -9,21 +9,21 @@ export default {
   props: ["value", "placeholder"],
   beforeMount() {
     if (this.placeholder) {
-      this.$set(this, "thePlaceholder", this.placeholder);
+      this.thePlaceholder = this.placeholder;
     } else {
-      this.$set(this, "thePlaceholder", this.$t("searchPlaceholder"));
+      this.thePlaceholder = this.$t("searchPlaceholder");
     }
   },
   watch: {
     inputVal(val) {
       this.$emit("input", val);
-    }
+    },
   },
   data() {
     return {
       inputVal: this.value,
-      thePlaceholder: ""
+      thePlaceholder: "",
     };
-  }
+  },
 };
 </script>
