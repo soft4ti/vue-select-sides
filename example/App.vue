@@ -27,9 +27,7 @@
                 </a>
               </li>
               <li>
-                <a href="#mirror-with-disabled">
-                  06) With disabled
-                </a>
+                <a href="#mirror-with-disabled"> 06) With disabled </a>
               </li>
             </ul>
           </ul>
@@ -238,7 +236,9 @@ import exampleGrouped05 from "./components/grouped-sort-selected-first.vue";
 import exampleGrouped06 from "./components/grouped-placeholder-search.vue";
 import exampleGrouped07 from "./components/grouped-with-disabled.vue";
 
-const repo = require("../package.json").repository.url;
+import { repository } from "../package.json";
+
+const repo = repository.url;
 const repoExamples = repo + `/blob/master/example/components/`;
 
 export default {
@@ -255,7 +255,7 @@ export default {
     exampleGrouped04,
     exampleGrouped05,
     exampleGrouped06,
-    exampleGrouped07
+    exampleGrouped07,
   },
   methods: {
     scrolling() {
@@ -264,18 +264,18 @@ export default {
       } else {
         this.affix = "";
       }
-    }
+    },
   },
   data() {
     return {
       affix: "",
       repoExamples: repoExamples,
-      repo: repo
+      repo: repo,
     };
   },
   mounted() {
     window.addEventListener("scroll", this.scrolling);
-  }
+  },
 };
 </script>
 

@@ -36,8 +36,10 @@
 </template>
 
 <script>
-const vNoResults = require("./noResults.vue").default;
-const vNoSelection = require("./noSelection.vue").default;
+import noResults from "./noResults.vue";
+import noSelection from "./noSelection.vue";
+const vNoResults = noResults.default;
+const vNoSelection = noSelection.default;
 
 export default {
   name: "v-list",
@@ -45,25 +47,25 @@ export default {
   mounted() {},
   components: {
     vNoResults,
-    vNoSelection
+    vNoSelection,
   },
   props: {
     hasChildren: {
-      type: Boolean
+      type: Boolean,
     },
     items: {
-      type: Array
+      type: Array,
     },
     enableCounter: {
       type: Boolean,
-      default: true
+      default: true,
     },
     type: {
-      type: String
+      type: String,
     },
     side: {
-      type: String
-    }
+      type: String,
+    },
   },
   methods: {
     showNoResultParent(items) {
@@ -128,12 +130,12 @@ export default {
       return output;
     },
     totalItems(o) {
-      return o.filter(function(a) {
+      return o.filter(function (a) {
         return a.visible === true;
       }).length;
     },
     totalParentSelected(o) {
-      return o.filter(function(a) {
+      return o.filter(function (a) {
         return a.selected === true;
       }).length;
     },
@@ -143,10 +145,10 @@ export default {
       }
 
       this.$emit("updated-item", item, parent, !isSelected);
-    }
+    },
   },
   data() {
     return {};
-  }
+  },
 };
 </script>

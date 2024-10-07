@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/logo.png" />
+  <img alt="Vue Select Sides" src="https://raw.githubusercontent.com/soft4ti/vue-select-sides/master/static/logo.png" />
 </p>
 <h2 align="center">Vue Select Sides</h2>
 
@@ -18,10 +18,10 @@
 A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
 <p align="center">
-  <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/juliorosseti/vue-select-sides/master/static/demo.gif" />
+  <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/soft4ti/vue-select-sides/master/static/demo.gif" />
 </p>
 
-## [Live DEMO](https://juliorosseti.github.io/vue-select-sides/demo.html?v=20201113113940)
+## [Live DEMO](https://soft4ti.github.io/vue-select-sides/demo.html?v=20201113113940)
 
 ## Installation
 

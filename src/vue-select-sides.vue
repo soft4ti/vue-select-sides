@@ -1,7 +1,7 @@
 <template>
   <component
     class="vss"
-    v-model="modelProp"
+    v-model:teste="modelProp"
     :is="getComponent()"
     :type="params.type"
     :list="listClone"
@@ -18,17 +18,19 @@
 </template>
 
 <script>
-import i18n from "./i18n";
+// import i18n from "./i18n";
 import { clone } from "./utils";
+import grouped from "./modules/grouped.vue";
+import mirror from "./modules/mirror.vue";
 
-const grouped = require("./modules/grouped").default;
-const mirror = require("./modules/mirror").default;
+const vGrouped = grouped.default;
+const vMirror = mirror.default;
 
 export default {
-  i18n,
+  // i18n,
   name: "core-select-sides",
   display: "Core select sides",
-  components: { mirror, grouped },
+  components: { vMirror, vGrouped },
   props: {
     list: {
       required: true,
@@ -102,7 +104,7 @@ export default {
   },
   model: {
     prop: "model",
-    event: "change",
+    event: "update",
   },
   methods: {
     updateSelected(items) {

@@ -65,19 +65,26 @@
 
 <script>
 import { normalizeText, clone, reorder, removeItemArray } from "../utils";
+import selectAll from "../components/selectAll.vue";
+import deselectAll from "../components/deselectAll.vue";
+import search from "../components/search.vue";
+import list from "../components/list.vue";
+import separator from "../components/separator.vue";
+import total from "../components/total.vue";
+import mixin from "../mixin";
 
-const vSelectAll = require("../components/selectAll.vue").default;
-const vDeselectAll = require("../components/deselectAll.vue").default;
-const vSearch = require("../components/search.vue").default;
-const vList = require("../components/list.vue").default;
-const vSeparator = require("../components/separator.vue").default;
-const vTotal = require("../components/total.vue").default;
-const mixin = require("../mixin").default;
+const vSelectAll = selectAll.default;
+const vDeselectAll = deselectAll.default;
+const vSearch = search.default;
+const vList = list.default;
+const vSeparator = separator.default;
+const vTotal = total.default;
+const vmixin = mixin.default;
 
 export default {
   name: "mirror-select-sides",
   display: "Mirror select sides",
-  mixins: [mixin],
+  mixins: [vmixin],
   components: {
     vSelectAll,
     vDeselectAll,

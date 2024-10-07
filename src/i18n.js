@@ -1,31 +1,27 @@
-import { createApp } from "vue";
 import { createI18n } from "vue-i18n";
 
-const app = createApp(App);
-
-function loadLocaleMessages() {
-  const locales = require.context(
-    "./locales",
-    true,
-    /[A-Za-z0-9-_,\s]+\.json$/i
-  );
-  const messages = {};
-  locales.keys().forEach((key) => {
-    const matched = key.match(/([A-Za-z0-9-_]+)\./i);
-    if (matched && matched.length > 1) {
-      const locale = matched[1];
-      messages[locale] = locales(key);
-    }
+async function loadLocaleMessages() {
+  const locales = import.meta.glob("./locales/*.json", {
+    eager: true,
+    import: "default",
   });
+  const messages = {};
+
+  for (const path in locales) {
+    const matched = path.match(/([A-Za-z0-9-_]+)(?=\.)/i)[0];
+
+    if (matched && matched.length > 1) {
+      const locale = matched;
+      messages[locale] = locales[path];
+    }
+  }
   return messages;
 }
 
 const i18n = createI18n({
-  locale: process.env.VUE_APP_I18N_LOCALE || "en_US",
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en_US",
+  locale: import.meta.env.VUE_APP_I18N_LOCALE || "en_US",
+  fallbackLocale: import.meta.env.VUE_APP_I18N_FALLBACK_LOCALE || "en_US",
   messages: loadLocaleMessages(),
 });
-
-app.use(i18n);
 
 export default i18n;

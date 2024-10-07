@@ -16,16 +16,14 @@
 </template>
 
 <script>
-import Vue from "vue";
+// import Vue from "vue";
 import vueSelectSides from "../../src/index";
 
-Vue.use(vueSelectSides, {
-  locale: "en_US"
-});
+// vueSelectSides.install({ locale: "en_US" });
 
 export default {
   components: {
-    vueSelectSides
+    vueSelectSides,
   },
   data() {
     return {
@@ -40,17 +38,17 @@ export default {
           children: [
             {
               value: "santa-catarina",
-              label: "Santa Catarina"
+              label: "Santa Catarina",
             },
             {
               value: "rio-grande-do-sul",
-              label: "Rio Grande do Sul"
+              label: "Rio Grande do Sul",
             },
             {
               value: "parana",
-              label: "Paraná"
-            }
-          ]
+              label: "Paraná",
+            },
+          ],
         },
         {
           value: "sudeste",
@@ -58,21 +56,21 @@ export default {
           children: [
             {
               value: "minas-gerais",
-              label: "Minas Gerais"
+              label: "Minas Gerais",
             },
             {
               value: "sao-paulo",
-              label: "São Paulo"
+              label: "São Paulo",
             },
             {
               value: "espirito-santo",
-              label: "Espírito Santo"
+              label: "Espírito Santo",
             },
             {
               value: "rio-de-janeiro",
-              label: "Rio de Janeiro"
-            }
-          ]
+              label: "Rio de Janeiro",
+            },
+          ],
         },
         {
           value: "norte",
@@ -80,33 +78,33 @@ export default {
           children: [
             {
               value: "acre",
-              label: "Acre"
+              label: "Acre",
             },
             {
               value: "amapa",
-              label: "Amapá"
+              label: "Amapá",
             },
             {
               value: "roraima",
-              label: "Roraima"
+              label: "Roraima",
             },
             {
               value: "tocantins",
-              label: "Tocantins"
+              label: "Tocantins",
             },
             {
               value: "para",
-              label: "Pará"
+              label: "Pará",
             },
             {
               value: "rondonia",
-              label: "Rondônia"
+              label: "Rondônia",
             },
             {
               value: "amazonas",
-              label: "Amazonas"
-            }
-          ]
+              label: "Amazonas",
+            },
+          ],
         },
         {
           value: "centro-oeste",
@@ -114,21 +112,21 @@ export default {
           children: [
             {
               value: "mato-grosso",
-              label: "Mato Grosso"
+              label: "Mato Grosso",
             },
             {
               value: "mato-grosso-do-sul",
-              label: "Mato Grosso do Sul"
+              label: "Mato Grosso do Sul",
             },
             {
               value: "goias",
-              label: "Goiás"
+              label: "Goiás",
             },
             {
               value: "distrito-federal",
-              label: "Distrito Federal"
-            }
-          ]
+              label: "Distrito Federal",
+            },
+          ],
         },
         {
           value: "nordeste",
@@ -136,60 +134,60 @@ export default {
           children: [
             {
               value: "bahia",
-              label: "Bahia"
+              label: "Bahia",
             },
             {
               value: "sergipe",
-              label: "Sergipe"
+              label: "Sergipe",
             },
             {
               value: "alagoas",
-              label: "Alagoas"
+              label: "Alagoas",
             },
             {
               value: "paraiba",
-              label: "Paraíba"
+              label: "Paraíba",
             },
             {
               value: "pernambuco",
-              label: "Pernambuco"
+              label: "Pernambuco",
             },
             {
               value: "rio-grande-do-norte",
-              label: "Rio Grande do Norte"
+              label: "Rio Grande do Norte",
             },
             {
               value: "ceara",
-              label: "Ceará"
+              label: "Ceará",
             },
             {
               value: "piaui",
-              label: "Piauí"
+              label: "Piauí",
             },
             {
               value: "maranhao",
-              label: "Maranhão"
+              label: "Maranhão",
             },
             {
               value: "mato-grosso",
-              label: "Mato Grosso"
+              label: "Mato Grosso",
             },
             {
               value: "mato-grosso-do-sul",
-              label: "Mato Grosso do Sul"
+              label: "Mato Grosso do Sul",
             },
             {
               value: "goias",
-              label: "Goiás"
+              label: "Goiás",
             },
             {
               value: "distrito-federal",
-              label: "Distrito Federal"
-            }
-          ]
-        }
-      ]
+              label: "Distrito Federal",
+            },
+          ],
+        },
+      ],
     };
-  }
+  },
 };
 </script>

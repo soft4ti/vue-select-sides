@@ -1,4 +1,6 @@
+import mirror from "./modules/mirror.vue";
+import grouped from "./modules/grouped.vue";
 export default {
-  mirror: require("./modules/mirror.vue").default,
-  grouped: require("./modules/grouped.vue").default
+  mirror: mirror.default,
+  grouped: grouped.default,
 };
