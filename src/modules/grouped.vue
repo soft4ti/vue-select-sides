@@ -86,25 +86,17 @@ import separator from "../components/separator.vue";
 import total from "../components/total.vue";
 import mixin from "../mixin";
 
-const vSelectAll = selectAll.default;
-const vDeselectAll = deselectAll.default;
-const vSearch = search.default;
-const vList = list.default;
-const vSeparator = separator.default;
-const vTotal = total.default;
-const vmixin = mixin.default;
-
 export default {
   name: "grouped-select-sides",
   display: "Grouped select sides",
-  mixins: [vmixin],
+  mixins: [mixin],
   components: {
-    vSelectAll,
-    vDeselectAll,
-    vSearch,
-    vSeparator,
-    vList,
-    vTotal,
+    "v-select-all": selectAll.default,
+    "v-deselect-all": deselectAll.default,
+    "v-search": search.default,
+    "v-separator": list.default,
+    "v-list": separator.default,
+    "v-total": total.default,
   },
   props: {
     list: {
@@ -113,7 +105,7 @@ export default {
     },
     model: {
       type: Object,
-      default: undefined,
+      default: () => ({}),
     },
   },
   methods: {
@@ -148,7 +140,6 @@ export default {
     },
     updateRightDeselectAll() {
       let vm = this;
-
       vm.listRight.map((item) => {
         item.children.map((children) => {
           if (item.selected === true && !item.disabled) {
@@ -159,14 +150,12 @@ export default {
     },
     updateItem(item, parent, selected) {
       let dataSelected = clone(this.dataSelected);
-
       if (Object.keys(parent).length > 0) {
         if (dataSelected[parent.value] === undefined) {
           if (parent.visible) {
             dataSelected[parent.value] = [];
           }
         }
-
         if (selected) {
           if (item.visible) {
             if (dataSelected[parent.value].indexOf(item.value) === -1) {
@@ -190,24 +179,14 @@ export default {
           delete dataSelected[item.value];
         }
       }
-
       this.dataSelected = dataSelected;
     },
 
     prepareList() {
       let vm = this;
       let foundSelected = {};
-
       vm.dataListOriginal = clone(vm.list);
-
-      // let foundSelected = vm.list
-      //   .map(item => {
-      //     return vm.model.indexOf(item.value) >= 0 ? item.value : false;
-      //   })
-      //   .filter(Boolean);
-
       let keyParentsSelected = Object.keys(vm.model);
-
       let dataList = vm.list.filter((item) => {
         let valueParent = item.value;
         let existsParentSelected = keyParentsSelected.indexOf(valueParent) >= 0;
@@ -218,7 +197,6 @@ export default {
         } else {
           item.selectedDefault = false;
         }
-
         if (item.children) {
           item.children.filter((item) => {
             let valueChildren = item.value;
@@ -237,10 +215,8 @@ export default {
             }
           });
         }
-
         return item;
       });
-
       vm.dataSelected = foundSelected;
       vm.dataList = reorder(vm, dataList);
     },
@@ -250,7 +226,6 @@ export default {
       // Organiza a listLeft
       this.listLeft = this.dataList.filter((item) => {
         item.visible = true;
-
         if (item.children) {
           item.children = item.children.map((children) => {
             if (vm.dataSelected[item.value] !== undefined) {
@@ -260,13 +235,10 @@ export default {
                 children.selected = false;
               }
             }
-
             return children;
           });
-
           return item.children;
         }
-
         return item;
       });
     },
@@ -321,19 +293,14 @@ export default {
             }
             return children;
           });
-
           item.totalChildrenSelected = item.children.filter(function (a) {
             return a.selected === true;
           }).length;
-
           return item.children;
         }
-
         return item;
       });
-
-      this.listLeft = listLeft;
-
+      // this.listLeft = listLeft;
       return listLeft;
     },
     filteredListR() {
@@ -358,19 +325,15 @@ export default {
                 children.selected = false;
               }
             }
-
             return children;
           });
-
           return item.children;
         }
 
         return item;
       });
-
-      this.listRight = listRight;
-
-      return this.listRight;
+      // this.listRight = listRight;
+      return listRight;
     },
   },
   data() {

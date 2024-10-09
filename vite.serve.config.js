@@ -21,6 +21,7 @@ export default defineConfig({
     },
   },
   server: {
+    sourcemap: true,
     open: "/docs/index.html", // Abre o navegador automaticamente
   },
 });

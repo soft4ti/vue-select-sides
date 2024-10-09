@@ -73,25 +73,17 @@ import separator from "../components/separator.vue";
 import total from "../components/total.vue";
 import mixin from "../mixin";
 
-const vSelectAll = selectAll.default;
-const vDeselectAll = deselectAll.default;
-const vSearch = search.default;
-const vList = list.default;
-const vSeparator = separator.default;
-const vTotal = total.default;
-const vmixin = mixin.default;
-
 export default {
   name: "mirror-select-sides",
   display: "Mirror select sides",
-  mixins: [vmixin],
+  mixins: [mixin],
   components: {
-    vSelectAll,
-    vDeselectAll,
-    vSearch,
-    vSeparator,
-    vList,
-    vTotal,
+    "v-select-all": selectAll.default,
+    "v-deselect-all": deselectAll.default,
+    "v-search": search.default,
+    "v-separator": list.default,
+    "v-list": separator.default,
+    "v-total": total.default,
   },
   props: {
     list: {
@@ -100,7 +92,7 @@ export default {
     },
     model: {
       type: Array,
-      default: undefined,
+      default: () => [],
     },
   },
   methods: {
@@ -197,7 +189,7 @@ export default {
         return item;
       });
 
-      this.listLeft = listLeft;
+      // this.listLeft = listLeft;
 
       return listLeft;
     },
@@ -229,7 +221,7 @@ export default {
         return item;
       });
 
-      this.listRight = listRight;
+      // this.listRight = listRight;
 
       return listRight;
     },

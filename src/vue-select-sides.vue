@@ -23,14 +23,14 @@ import { clone } from "./utils";
 import grouped from "./modules/grouped.vue";
 import mirror from "./modules/mirror.vue";
 
-const vGrouped = grouped;
-const vMirror = mirror;
-
 export default {
   // i18n,
   name: "vue-select-sides",
   display: "Core select sides",
-  components: { vMirror, vGrouped },
+  components: {
+    "mirror-select-sides": mirror,
+    "grouped-select-sides": grouped,
+  },
   props: {
     list: {
       required: true,
@@ -109,10 +109,19 @@ export default {
   },
   methods: {
     updateSelected(items) {
+      console.log("Updated selected value:", items);
       this.$emit("change", items);
     },
     getComponent() {
-      return this.params.type;
+      console.log(
+        "Selected component:",
+        this.params.type == "mirror"
+          ? "mirror-select-sides"
+          : "grouped-select-sides"
+      );
+      return this.params.type == "mirror"
+        ? "mirror-select-sides"
+        : "grouped-select-sides";
     },
     selectLocale(locale) {
       if (this.enabledLocales.indexOf(locale) >= 0) {
