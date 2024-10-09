@@ -1,7 +1,7 @@
 <template>
   <component
     class="vss"
-    v-model:teste="modelProp"
+    v-model="modelProp"
     :is="getComponent()"
     :type="params.type"
     :list="listClone"

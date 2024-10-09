@@ -3125,8 +3125,8 @@ function go(e, t, n, s, r, i) {
   }, null, 40, ["modelValue", "type", "list", "search", "total", "toggle-all", "order-by", "placeholder-search-left", "placeholder-search-right", "sort-selected-up", "onUpdateSelected"]);
 }
 const _o = /* @__PURE__ */ z(ho, [["render", go]]), vo = {
-  install: (e, t) => {
-    e.component("vueSelectSides", _o);
+  install(e, t) {
+    e.component("vueSelectSides", _o.default), console.trace("install component: src/index.js");
   }
 };
 export {

@@ -8,9 +8,10 @@ export default defineConfig({
   build: {
     sourcemap: true,
     lib: {
-      entry: path.resolve(__dirname, "example/App.vue"),
-      name: "vueSelectSides",
-      fileName: (format) => `vueSelectSides.${format}.js`,
+      // entry: path.resolve(__dirname, "example/App.vue"),
+      entry: path.resolve(__dirname, "example/main.js"),
+      name: "vueSelectSidesExample",
+      fileName: (format) => `vueSelectSidesExample.${format}.js`,
       formats: ["umd"],
     },
     outDir: "docs",
@@ -23,7 +24,7 @@ export default defineConfig({
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === "style.css") {
-            return "vueSelectSides.css";
+            return "vueSelectSidesExample.css";
           }
           return assetInfo.name;
         },

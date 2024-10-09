@@ -274,6 +274,7 @@ export default {
     };
   },
   mounted() {
+    console.log("example/app.vue mounted");
     window.addEventListener("scroll", this.scrolling);
   },
 };

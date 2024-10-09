@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import vueSelectSides from "../../src/index";
+import vueSelectSides from "../src/index";
+
 const app = createApp(App);
-app.use(vueSelectSides);
+app.component(vueSelectSides);
 app.mount("#app");

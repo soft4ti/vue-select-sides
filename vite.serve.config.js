@@ -21,6 +21,6 @@ export default defineConfig({
     },
   },
   server: {
-    open: true, // Abre o navegador automaticamente
+    open: "/docs/index.html", // Abre o navegador automaticamente
   },
 });
