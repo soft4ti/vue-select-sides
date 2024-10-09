@@ -1,7 +1,6 @@
 <template>
   <component
     class="vss"
-    v-model="modelProp"
     :is="getComponent()"
     :type="params.type"
     :list="listClone"
@@ -12,6 +11,7 @@
     :placeholder-search-left="params.placeholderSearchLeft"
     :placeholder-search-right="params.placeholderSearchRight"
     :sort-selected-up="params.sortSelectedUp"
+    v-model="modelProp"
     @update-selected="updateSelected"
   >
   </component>
@@ -23,12 +23,12 @@ import { clone } from "./utils";
 import grouped from "./modules/grouped.vue";
 import mirror from "./modules/mirror.vue";
 
-const vGrouped = grouped.default;
-const vMirror = mirror.default;
+const vGrouped = grouped;
+const vMirror = mirror;
 
 export default {
   // i18n,
-  name: "core-select-sides",
+  name: "vue-select-sides",
   display: "Core select sides",
   components: { vMirror, vGrouped },
   props: {
@@ -75,6 +75,7 @@ export default {
   },
   watch: {
     list(newVal) {
+      console.log("abacaxi", newVal);
       this.listClone = clone(newVal);
     },
     type(newVal) {

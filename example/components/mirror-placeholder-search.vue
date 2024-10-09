@@ -15,15 +15,15 @@
 </template>
 
 <script>
-import Vue from "vue";
-import vueSelectSides from "../../src/index";
+// import Vue from "vue";
+// import vueSelectSides from "../../src/index";
 
 // vueSelectSides.install({ locale: "en_US" });
 
 export default {
-  components: {
-    vueSelectSides,
-  },
+  // components: {
+  //   vueSelectSides,
+  // },
   data() {
     return {
       selected: ["sul", "sudeste"],

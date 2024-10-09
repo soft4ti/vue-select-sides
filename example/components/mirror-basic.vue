@@ -13,11 +13,14 @@
 </template>
 
 <script>
-// import { /*createApp,*/ defineComponent } from "vue";
+import { /*createApp,*/ defineComponent } from "vue";
 // import vueSelectSides from "../../src/vue-select-sides.vue";
 // createApp().use("vueSelectSides", vueSelectSides);
 
-export default {
+export default defineComponent({
+  // components: {
+  //   "vue-select-sides": vueSelectSides.default,
+  // },
   data() {
     return {
       selected: [],
@@ -1053,5 +1056,5 @@ export default {
       ],
     };
   },
-};
+});
 </script>

@@ -471,7 +471,7 @@ const mt = /* @__PURE__ */ new WeakMap(), ue = Symbol(
 ), xe = Symbol(
   process.env.NODE_ENV !== "production" ? "Array iterate" : ""
 );
-function V(e, t, n) {
+function A(e, t, n) {
   if (W && b) {
     let s = mt.get(e);
     s || mt.set(e, s = /* @__PURE__ */ new Map());
@@ -525,10 +525,10 @@ function ie(e, t, n, s, r, i) {
 }
 function ge(e) {
   const t = m(e);
-  return t === e ? t : (V(t, "iterate", xe), T(e) ? t : t.map(I));
+  return t === e ? t : (A(t, "iterate", xe), T(e) ? t : t.map(I));
 }
 function st(e) {
-  return V(e = m(e), "iterate", xe), e;
+  return A(e = m(e), "iterate", xe), e;
 }
 const Rs = {
   __proto__: null,
@@ -653,7 +653,7 @@ function Ht(e, t, n, s) {
 }
 function ut(e, t, n) {
   const s = m(e);
-  V(s, "iterate", xe);
+  A(s, "iterate", xe);
   const r = s[t](...n);
   return (r === -1 || r === !1) && Je(n[0]) ? (n[0] = m(n[0]), s[t](...n)) : r;
 }
@@ -662,13 +662,13 @@ function Se(e, t, n = []) {
   const s = m(e)[t].apply(e, n);
   return Dt(), nt(), s;
 }
-const Vs = /* @__PURE__ */ as("__proto__,__v_isRef,__isVue"), Sn = new Set(
+const As = /* @__PURE__ */ as("__proto__,__v_isRef,__isVue"), Sn = new Set(
   /* @__PURE__ */ Object.getOwnPropertyNames(Symbol).filter((e) => e !== "arguments" && e !== "caller").map((e) => Symbol[e]).filter(he)
 );
-function As(e) {
+function Vs(e) {
   he(e) || (e = String(e));
   const t = m(this);
-  return V(t, "has", e), t.hasOwnProperty(e);
+  return A(t, "has", e), t.hasOwnProperty(e);
 }
 class bn {
   constructor(t = !1, n = !1) {
@@ -692,7 +692,7 @@ class bn {
       if (o && (c = Rs[n]))
         return c;
       if (n === "hasOwnProperty")
-        return As;
+        return Vs;
     }
     const l = Reflect.get(
       t,
@@ -702,7 +702,7 @@ class bn {
       // its class methods
       M(t) ? t : s
     );
-    return (he(n) ? Sn.has(n) : Vs(n)) || (r || V(t, "get", n), i) ? l : M(l) ? o && Ot(n) ? l : l.value : C(l) ? r ? xn(l) : Rn(l) : l;
+    return (he(n) ? Sn.has(n) : As(n)) || (r || A(t, "get", n), i) ? l : M(l) ? o && Ot(n) ? l : l.value : C(l) ? r ? xn(l) : Rn(l) : l;
   }
 }
 class Cs extends bn {
@@ -730,10 +730,10 @@ class Cs extends bn {
   }
   has(t, n) {
     const s = Reflect.has(t, n);
-    return (!he(n) || !Sn.has(n)) && V(t, "has", n), s;
+    return (!he(n) || !Sn.has(n)) && A(t, "has", n), s;
   }
   ownKeys(t) {
-    return V(
+    return A(
       t,
       "iterate",
       E(t) ? "length" : ue
@@ -761,7 +761,7 @@ const Ls = /* @__PURE__ */ new Cs(), $s = /* @__PURE__ */ new En(), Is = /* @__P
 function Le(e, t, n = !1, s = !1) {
   e = e.__v_raw;
   const r = m(e), i = m(t);
-  n || (pe(t, i) && V(r, "get", t), V(r, "get", i));
+  n || (pe(t, i) && A(r, "get", t), A(r, "get", i));
   const { has: o } = rt(r), l = s ? xt : n ? Ct : I;
   if (o.call(r, t))
     return l(e.get(t));
@@ -771,10 +771,10 @@ function Le(e, t, n = !1, s = !1) {
 }
 function $e(e, t = !1) {
   const n = this.__v_raw, s = m(n), r = m(e);
-  return t || (pe(e, r) && V(s, "has", e), V(s, "has", r)), e === r ? n.has(e) : n.has(e) || n.has(r);
+  return t || (pe(e, r) && A(s, "has", e), A(s, "has", r)), e === r ? n.has(e) : n.has(e) || n.has(r);
 }
 function Ie(e, t = !1) {
-  return e = e.__v_raw, !t && V(m(e), "iterate", ue), Reflect.get(e, "size", e);
+  return e = e.__v_raw, !t && A(m(e), "iterate", ue), Reflect.get(e, "size", e);
 }
 function jt(e, t = !1) {
   !t && !T(e) && !le(e) && (e = m(e));
@@ -803,13 +803,13 @@ function zt() {
 function Pe(e, t) {
   return function(s, r) {
     const i = this, o = i.__v_raw, l = m(o), c = t ? xt : e ? Ct : I;
-    return !e && V(l, "iterate", ue), o.forEach((p, h) => s.call(r, c(p), c(h), i));
+    return !e && A(l, "iterate", ue), o.forEach((p, h) => s.call(r, c(p), c(h), i));
   };
 }
 function Te(e, t, n) {
   return function(...s) {
     const r = this.__v_raw, i = m(r), o = ae(i), l = e === "entries" || e === Symbol.iterator && o, c = e === "keys" && o, p = r[e](...s), h = n ? xt : t ? Ct : I;
-    return !t && V(
+    return !t && A(
       i,
       "iterate",
       c ? yt : ue
@@ -927,7 +927,7 @@ const [
   Us,
   Fs
 ] = /* @__PURE__ */ Ps();
-function Vt(e, t) {
+function At(e, t) {
   const n = t ? e ? Fs : Us : e ? Ms : Ts;
   return (s, r, i) => r === "__v_isReactive" ? !e : r === "__v_isReadonly" ? e : r === "__v_raw" ? s : Reflect.get(
     D(n, r) && r in s ? n : s,
@@ -936,11 +936,11 @@ function Vt(e, t) {
   );
 }
 const Bs = {
-  get: /* @__PURE__ */ Vt(!1, !1)
+  get: /* @__PURE__ */ At(!1, !1)
 }, Hs = {
-  get: /* @__PURE__ */ Vt(!0, !1)
+  get: /* @__PURE__ */ At(!0, !1)
 }, js = {
-  get: /* @__PURE__ */ Vt(!0, !0)
+  get: /* @__PURE__ */ At(!0, !0)
 };
 function On(e, t, n) {
   const s = m(n);
@@ -970,7 +970,7 @@ function zs(e) {
   return e.__v_skip || !Object.isExtensible(e) ? 0 : Ws(an(e));
 }
 function Rn(e) {
-  return le(e) ? e : At(
+  return le(e) ? e : Vt(
     e,
     !1,
     Ls,
@@ -979,7 +979,7 @@ function Rn(e) {
   );
 }
 function xn(e) {
-  return At(
+  return Vt(
     e,
     !0,
     $s,
@@ -988,7 +988,7 @@ function xn(e) {
   );
 }
 function Me(e) {
-  return At(
+  return Vt(
     e,
     !0,
     Is,
@@ -996,7 +996,7 @@ function Me(e) {
     Dn
   );
 }
-function At(e, t, n, s, r) {
+function Vt(e, t, n, s, r) {
   if (!C(e))
     return process.env.NODE_ENV !== "production" && oe(
       `value cannot be made ${t ? "readonly" : "reactive"}: ${String(
@@ -1244,13 +1244,13 @@ function nr({ vnode: e, recurseCount: t }) {
 function sr(e) {
   const t = [], n = Object.keys(e);
   return n.slice(0, 3).forEach((s) => {
-    t.push(...Vn(s, e[s]));
+    t.push(...An(s, e[s]));
   }), n.length > 3 && t.push(" ..."), t;
 }
-function Vn(e, t, n) {
-  return U(t) ? (t = JSON.stringify(t), n ? t : [`${e}=${t}`]) : typeof t == "number" || typeof t == "boolean" || t == null ? n ? t : [`${e}=${t}`] : M(t) ? (t = Vn(e, m(t.value), !0), n ? t : [`${e}=Ref<`, t, ">"]) : x(t) ? [`${e}=fn${t.name ? `<${t.name}>` : ""}`] : (t = m(t), n ? t : [`${e}=`, t]);
+function An(e, t, n) {
+  return U(t) ? (t = JSON.stringify(t), n ? t : [`${e}=${t}`]) : typeof t == "number" || typeof t == "boolean" || t == null ? n ? t : [`${e}=${t}`] : M(t) ? (t = An(e, m(t.value), !0), n ? t : [`${e}=Ref<`, t, ">"]) : x(t) ? [`${e}=fn${t.name ? `<${t.name}>` : ""}`] : (t = m(t), n ? t : [`${e}=`, t]);
 }
-const An = {
+const Vn = {
   sp: "serverPrefetch hook",
   bc: "beforeCreate hook",
   c: "created hook",
@@ -1310,7 +1310,7 @@ function Lt(e, t, n, s = !0) {
   const r = t ? t.vnode : null, { errorHandler: i, throwUnhandledErrorInProduction: o } = t && t.appContext.config || F;
   if (t) {
     let l = t.parent;
-    const c = t.proxy, p = process.env.NODE_ENV !== "production" ? An[n] : `https://vuejs.org/error-reference/#runtime-${n}`;
+    const c = t.proxy, p = process.env.NODE_ENV !== "production" ? Vn[n] : `https://vuejs.org/error-reference/#runtime-${n}`;
     for (; l; ) {
       const h = l.ec;
       if (h) {
@@ -1333,7 +1333,7 @@ function Lt(e, t, n, s = !0) {
 }
 function rr(e, t, n, s = !0, r = !1) {
   if (process.env.NODE_ENV !== "production") {
-    const i = An[t];
+    const i = Vn[t];
     if (n && Zs(n), w(`Unhandled error${i ? ` during execution of ${i}` : ""}`), n && ks(), s)
       throw e;
     console.error(e);
@@ -1357,16 +1357,16 @@ function or(e) {
 function lr(e) {
   let t = X + 1, n = B.length;
   for (; t < n; ) {
-    const s = t + n >>> 1, r = B[s], i = Ve(r);
+    const s = t + n >>> 1, r = B[s], i = Ae(r);
     i < e || i === e && r.flags & 2 ? t = s + 1 : n = s;
   }
   return t;
 }
 function $t(e) {
   if (!(e.flags & 1)) {
-    const t = Ve(e), n = B[B.length - 1];
+    const t = Ae(e), n = B[B.length - 1];
     !n || // fast path when the job id is larger than the tail
-    !(e.flags & 2) && t >= Ve(n) ? B.push(e) : B.splice(lr(t), 0, e), e.flags |= 1, $n();
+    !(e.flags & 2) && t >= Ae(n) ? B.push(e) : B.splice(lr(t), 0, e), e.flags |= 1, $n();
   }
 }
 function $n() {
@@ -1378,7 +1378,7 @@ function In(e) {
 function cr(e) {
   if (ye.length) {
     const t = [...new Set(ye)].sort(
-      (n, s) => Ve(n) - Ve(s)
+      (n, s) => Ae(n) - Ae(s)
     );
     if (ye.length = 0, ne) {
       ne.push(...t);
@@ -1391,7 +1391,7 @@ function cr(e) {
     ne = null, _e = 0;
   }
 }
-const Ve = (e) => e.id == null ? e.flags & 2 ? -1 : 1 / 0 : e.id;
+const Ae = (e) => e.id == null ? e.flags & 2 ? -1 : 1 / 0 : e.id;
 function Pn(e) {
   process.env.NODE_ENV !== "production" && (e = e || /* @__PURE__ */ new Map());
   const t = process.env.NODE_ENV !== "production" ? (n) => Tn(e, n) : me;
@@ -1513,7 +1513,7 @@ function hr(e) {
   return U(e) ? Hn(Fn, e, !1) || e : e || Bn;
 }
 function Hn(e, t, n = !0, s = !1) {
-  const r = Ae;
+  const r = Ve;
   if (r) {
     const i = r.type;
     {
@@ -1637,7 +1637,7 @@ const St = (e) => e ? Fr(e) ? Br(e) : St(e.parent) : null, De = (
     const h = De[t];
     let a, f;
     if (h)
-      return t === "$attrs" ? (V(e.attrs, "get", ""), process.env.NODE_ENV !== "production" && void 0) : process.env.NODE_ENV !== "production" && t === "$slots" && V(e, "get", t), h(e);
+      return t === "$attrs" ? (A(e.attrs, "get", ""), process.env.NODE_ENV !== "production" && void 0) : process.env.NODE_ENV !== "production" && t === "$slots" && A(e, "get", t), h(e);
     if (
       // css module (injected by vue-loader)
       (a = l.__cssModules) && (a = a[t])
@@ -1790,7 +1790,7 @@ function Sr(e, t) {
 }
 let br = null;
 function Er(e, t, n = !1) {
-  const s = Ae || k;
+  const s = Ve || k;
   if (s || br) {
     const r = s ? s.parent == null ? s.vnode.appContext && s.vnode.appContext.provides : s.parent.provides : void 0;
     if (r && e in r)
@@ -1831,7 +1831,7 @@ function Rr(e, t, n = F) {
       };
       return f.stop = me, f.resume = me, f.pause = me, f;
     }
-  const p = Ae;
+  const p = Ve;
   l.call = (f, g, u) => Cn(f, p, g, u);
   let h = !1;
   i === "post" ? l.scheduler = (f) => {
@@ -1845,13 +1845,13 @@ function Rr(e, t, n = F) {
   return c && c.push(a), a;
 }
 function xr(e, t, n) {
-  const s = this.proxy, r = U(e) ? e.includes(".") ? Vr(s, e) : () => s[e] : e.bind(s, s);
+  const s = this.proxy, r = U(e) ? e.includes(".") ? Ar(s, e) : () => s[e] : e.bind(s, s);
   let i;
   x(t) ? i = t : (i = t.handler, n = t);
   const o = Ur(this), l = Rr(r, i.bind(s), n);
   return o(), l;
 }
-function Vr(e, t) {
+function Ar(e, t) {
   const n = t.split(".");
   return () => {
     let s = e;
@@ -1860,7 +1860,7 @@ function Vr(e, t) {
     return s;
   };
 }
-const Ar = (e) => e.__isSuspense;
+const Vr = (e) => e.__isSuspense;
 function Cr(e, t) {
   t && t.pendingBranch ? E(e) ? t.effects.push(...e) : t.effects.push(e) : In(e);
 }
@@ -1966,7 +1966,7 @@ function zn(e, t = null, n = null, s = 0, r = null, i = !1) {
     let { class: l, style: c } = t;
     l && !U(l) && (t.class = Re(l)), C(c) && (Je(c) && !E(c) && (c = j({}, c)), t.style = wt(c));
   }
-  const o = U(e) ? 1 : Ar(e) ? 128 : pr(e) ? 64 : C(e) ? 4 : x(e) ? 2 : 0;
+  const o = U(e) ? 1 : Vr(e) ? 128 : pr(e) ? 64 : C(e) ? 4 : x(e) ? 2 : 0;
   return process.env.NODE_ENV !== "production" && o & 4 && Je(e) && (e = m(e), w(
     "Vue received a Component that was made a reactive object. This can lead to unnecessary performance overhead and should be avoided by marking the component with `markRaw` or using `shallowRef` instead of `ref`.",
     `
@@ -2042,7 +2042,7 @@ function Jn(e) {
 function qn(e = " ", t = 0) {
   return H(Lr, null, e, t);
 }
-function A(e = "", t = !1) {
+function V(e = "", t = !1) {
   return t ? (v(), $(bt, null, e)) : H(bt, null, e);
 }
 function It(e, t) {
@@ -2081,7 +2081,7 @@ function Mr(...e) {
   }
   return t;
 }
-let Ae = null, Et;
+let Ve = null, Et;
 {
   const e = dn(), t = (n, s) => {
     let r;
@@ -2091,14 +2091,14 @@ let Ae = null, Et;
   };
   Et = t(
     "__VUE_INSTANCE_SETTERS__",
-    (n) => Ae = n
+    (n) => Ve = n
   ), t(
     "__VUE_SSR_SETTERS__",
     (n) => Yn = n
   );
 }
 const Ur = (e) => {
-  const t = Ae;
+  const t = Ve;
   return Et(e), e.scope.on(), () => {
     e.scope.off(), Et(t);
   };
@@ -2505,7 +2505,7 @@ function Si(e, t, n, s, r, i) {
     }, [
       O("span", _i, [
         qn(ee(c.label) + " ", 1),
-        i.showCounter(c) ? (v(), R("small", vi, ee(c.totalChildrenSelected), 1)) : A("", !0)
+        i.showCounter(c) ? (v(), R("small", vi, ee(c.totalChildrenSelected), 1)) : V("", !0)
       ]),
       n.hasChildren ? (v(), R("ul", mi, [
         (v(!0), R(Ze, null, Yt(c.children, (h, a) => Y((v(), R("li", {
@@ -2520,7 +2520,7 @@ function Si(e, t, n, s, r, i) {
         Y(H(o, null, null, 512), [
           [G, i.totalItems(c.children) === 0]
         ])
-      ])) : A("", !0)
+      ])) : V("", !0)
     ], 10, gi)), [
       [G, i.showParent(c)]
     ])), 128)),
@@ -2598,16 +2598,16 @@ const ss = /* @__PURE__ */ z(wi, [["render", Di]]), rs = {
       type: Boolean
     }
   }
-}, Ri = Zn.default, xi = kn.default, Vi = es.default, Ai = ts.default, Ci = ns.default, Li = ss.default, $i = rs.default, Ii = {
+}, Ri = Zn.default, xi = kn.default, Ai = es.default, Vi = ts.default, Ci = ns.default, Li = ss.default, $i = rs.default, Ii = {
   name: "grouped-select-sides",
   display: "Grouped select sides",
   mixins: [$i],
   components: {
     vSelectAll: Ri,
     vDeselectAll: xi,
-    vSearch: Vi,
+    vSearch: Ai,
     vSeparator: Ci,
-    vList: Ai,
+    vList: Vi,
     vTotal: Li
   },
   props: {
@@ -2728,7 +2728,7 @@ function zi(e, t, n, s, r, i) {
           class: "vss-list-search",
           modelValue: r.searchL,
           "onUpdate:modelValue": t[0] || (t[0] = (f) => r.searchL = f)
-        }, null, 8, ["placeholder", "modelValue"])) : A("", !0),
+        }, null, 8, ["placeholder", "modelValue"])) : V("", !0),
         H(l, {
           "has-children": !1,
           type: e.type,
@@ -2742,18 +2742,18 @@ function zi(e, t, n, s, r, i) {
                 key: 0,
                 items: r.listLeft,
                 onUpdateSelectAll: i.updateLeftSelectAll
-              }, null, 8, ["items", "onUpdateSelectAll"])) : A("", !0),
-              e.toggleAll ? (v(), R("div", Fi, "/")) : A("", !0),
+              }, null, 8, ["items", "onUpdateSelectAll"])) : V("", !0),
+              e.toggleAll ? (v(), R("div", Fi, "/")) : V("", !0),
               e.toggleAll ? (v(), $(p, {
                 key: 2,
                 items: r.listLeft,
                 onUpdateDeselectAll: i.updateLeftDeselectAll
-              }, null, 8, ["items", "onUpdateDeselectAll"])) : A("", !0)
+              }, null, 8, ["items", "onUpdateDeselectAll"])) : V("", !0)
             ]),
             e.total ? (v(), $(h, {
               key: 0,
               value: Object.keys(r.dataSelected).length
-            }, null, 8, ["value"])) : A("", !0)
+            }, null, 8, ["value"])) : V("", !0)
           ])
         ], 512), [
           [G, e.toggleAll || e.total]
@@ -2769,7 +2769,7 @@ function zi(e, t, n, s, r, i) {
           class: "vss-list-search",
           modelValue: r.searchR,
           "onUpdate:modelValue": t[1] || (t[1] = (f) => r.searchR = f)
-        }, null, 8, ["placeholder", "modelValue"])) : A("", !0),
+        }, null, 8, ["placeholder", "modelValue"])) : V("", !0),
         H(l, {
           "has-children": !0,
           type: e.type,
@@ -2783,18 +2783,18 @@ function zi(e, t, n, s, r, i) {
                 key: 0,
                 items: r.listRight,
                 onUpdateSelectAll: i.updateRightSelectAll
-              }, null, 8, ["items", "onUpdateSelectAll"])) : A("", !0),
-              e.toggleAll ? (v(), R("div", Wi, "/")) : A("", !0),
+              }, null, 8, ["items", "onUpdateSelectAll"])) : V("", !0),
+              e.toggleAll ? (v(), R("div", Wi, "/")) : V("", !0),
               e.toggleAll ? (v(), $(p, {
                 key: 2,
                 items: r.listRight,
                 onUpdateDeselectAll: i.updateRightDeselectAll
-              }, null, 8, ["items", "onUpdateDeselectAll"])) : A("", !0)
+              }, null, 8, ["items", "onUpdateDeselectAll"])) : V("", !0)
             ]),
             e.total ? (v(), $(h, {
               key: 0,
               value: i.totalChildrenSelected
-            }, null, 8, ["value"])) : A("", !0)
+            }, null, 8, ["value"])) : V("", !0)
           ])
         ], 512), [
           [G, e.toggleAll || e.total]
@@ -2899,7 +2899,7 @@ function ao(e, t, n, s, r, i) {
           class: "vss-list-search",
           modelValue: r.searchL,
           "onUpdate:modelValue": t[0] || (t[0] = (f) => r.searchL = f)
-        }, null, 8, ["placeholder", "modelValue"])) : A("", !0),
+        }, null, 8, ["placeholder", "modelValue"])) : V("", !0),
         H(l, {
           "enable-counter": !1,
           "has-children": !1,
@@ -2915,12 +2915,12 @@ function ao(e, t, n, s, r, i) {
                 key: 0,
                 items: r.listLeft,
                 onUpdateSelectAll: i.updateLeftSelectAll
-              }, null, 8, ["items", "onUpdateSelectAll"])) : A("", !0)
+              }, null, 8, ["items", "onUpdateSelectAll"])) : V("", !0)
             ]),
             e.total ? (v(), $(p, {
               key: 0,
               value: r.dataSelected.length
-            }, null, 8, ["value"])) : A("", !0)
+            }, null, 8, ["value"])) : V("", !0)
           ])
         ], 512), [
           [G, e.toggleAll || e.total]
@@ -2936,7 +2936,7 @@ function ao(e, t, n, s, r, i) {
           class: "vss-list-search",
           modelValue: r.searchR,
           "onUpdate:modelValue": t[1] || (t[1] = (f) => r.searchR = f)
-        }, null, 8, ["placeholder", "modelValue"])) : A("", !0),
+        }, null, 8, ["placeholder", "modelValue"])) : V("", !0),
         H(l, {
           "enable-counter": !1,
           "has-children": !1,
@@ -2952,7 +2952,7 @@ function ao(e, t, n, s, r, i) {
                 key: 0,
                 items: r.listRight,
                 onUpdateDeselectAll: i.updateRightDeselectAll
-              }, null, 8, ["items", "onUpdateDeselectAll"])) : A("", !0)
+              }, null, 8, ["items", "onUpdateDeselectAll"])) : V("", !0)
             ])
           ])
         ], 512), [
@@ -2962,9 +2962,9 @@ function ao(e, t, n, s, r, i) {
     ])
   ]);
 }
-const uo = /* @__PURE__ */ z(eo, [["render", ao]]), fo = Ji.default, po = uo.default, ho = {
+const uo = /* @__PURE__ */ z(eo, [["render", ao]]), fo = Ji, po = uo, ho = {
   // i18n,
-  name: "core-select-sides",
+  name: "vue-select-sides",
   display: "Core select sides",
   components: { vMirror: po, vGrouped: fo },
   props: {
@@ -3018,7 +3018,7 @@ const uo = /* @__PURE__ */ z(eo, [["render", ao]]), fo = Ji.default, po = uo.def
   },
   watch: {
     list(e) {
-      this.listClone = Z(e);
+      console.log("abacaxi", e), this.listClone = Z(e);
     },
     type(e) {
       this.params.type = e;
@@ -3110,8 +3110,6 @@ const uo = /* @__PURE__ */ z(eo, [["render", ao]]), fo = Ji.default, po = uo.def
 function go(e, t, n, s, r, i) {
   return v(), $(hr(i.getComponent()), {
     class: "vss",
-    modelValue: i.modelProp,
-    "onUpdate:modelValue": t[0] || (t[0] = (o) => i.modelProp = o),
     type: r.params.type,
     list: r.listClone,
     search: r.params.search,
@@ -3121,12 +3119,14 @@ function go(e, t, n, s, r, i) {
     "placeholder-search-left": r.params.placeholderSearchLeft,
     "placeholder-search-right": r.params.placeholderSearchRight,
     "sort-selected-up": r.params.sortSelectedUp,
+    modelValue: i.modelProp,
+    "onUpdate:modelValue": t[0] || (t[0] = (o) => i.modelProp = o),
     onUpdateSelected: i.updateSelected
-  }, null, 40, ["modelValue", "type", "list", "search", "total", "toggle-all", "order-by", "placeholder-search-left", "placeholder-search-right", "sort-selected-up", "onUpdateSelected"]);
+  }, null, 40, ["type", "list", "search", "total", "toggle-all", "order-by", "placeholder-search-left", "placeholder-search-right", "sort-selected-up", "modelValue", "onUpdateSelected"]);
 }
 const _o = /* @__PURE__ */ z(ho, [["render", go]]), vo = {
   install(e, t) {
-    e.component("vueSelectSides", _o.default), console.trace("install component: src/index.js");
+    e.config.globalProperties.defaultOptions = t && t.constructor.name === "Object" ? t : {}, e.component("vueSelectSides", _o), console.trace("install component: src/index.js");
   }
 };
 export {

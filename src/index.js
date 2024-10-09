@@ -1,11 +1,10 @@
-import coreSelectSides from "./vue-select-sides.vue";
+import vueSelectSides from "./vue-select-sides.vue";
 
 export default {
   install(app, options) {
-    app.component("vueSelectSides", coreSelectSides.default);
+    app.config.globalProperties.defaultOptions =
+      options && options.constructor.name === "Object" ? options : {};
+    app.component("vueSelectSides", vueSelectSides);
     console.trace("install component: src/index.js");
-    // if (options && options.locale) {
-    //   vueSelectSides.install({ locale: options.locale });
-    // }
   },
 };
