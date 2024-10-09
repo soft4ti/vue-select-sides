@@ -78,12 +78,12 @@ export default {
   display: "Mirror select sides",
   mixins: [mixin],
   components: {
-    "v-select-all": selectAll.default,
-    "v-deselect-all": deselectAll.default,
-    "v-search": search.default,
-    "v-separator": list.default,
-    "v-list": separator.default,
-    "v-total": total.default,
+    "v-select-all": selectAll,
+    "v-deselect-all": deselectAll,
+    "v-search": search,
+    "v-separator": list,
+    "v-list": separator,
+    "v-total": total,
   },
   props: {
     list: {
