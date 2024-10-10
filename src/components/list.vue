@@ -36,18 +36,16 @@
 </template>
 
 <script>
-import noResults from "./noResults.vue";
-import noSelection from "./noSelection.vue";
-const vNoResults = noResults.default;
-const vNoSelection = noSelection.default;
+import vNoResults from "./noResults.vue";
+import vNoSelection from "./noSelection.vue";
 
 export default {
   name: "v-list",
   display: "List",
   mounted() {},
   components: {
-    vNoResults,
-    vNoSelection,
+    "v-no-results": vNoResults,
+    "v-no-selection": vNoSelection,
   },
   props: {
     hasChildren: {

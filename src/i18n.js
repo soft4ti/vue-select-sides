@@ -1,6 +1,6 @@
 import { createI18n } from "vue-i18n";
 
-async function loadLocaleMessages() {
+function loadLocaleMessages() {
   const locales = import.meta.glob("./locales/*.json", {
     eager: true,
     import: "default",

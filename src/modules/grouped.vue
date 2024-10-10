@@ -94,8 +94,8 @@ export default {
     "v-select-all": selectAll.default,
     "v-deselect-all": deselectAll.default,
     "v-search": search.default,
-    "v-separator": list.default,
-    "v-list": separator.default,
+    "v-separator": separator.default,
+    "v-list": list.default,
     "v-total": total.default,
   },
   props: {
