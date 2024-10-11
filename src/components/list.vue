@@ -17,7 +17,7 @@
       <ul v-if="hasChildren">
         <li
           v-for="(children, indexChild) in item.children"
-          :key="index + indexChild"
+          :key="`${index}-${indexChild}`"
           @click="toggleItem(children, item, children.selected)"
           v-show="children.visible"
           :class="liClass(children, false)"

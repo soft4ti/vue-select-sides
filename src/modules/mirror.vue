@@ -107,7 +107,8 @@ export default {
     },
     updateRightDeselectAll() {
       let vm = this;
-
+      this.dataSelected = [];
+      console.log("updateRightDeselectAll", vm.listRight.length);
       vm.listRight.map((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, false);
@@ -122,7 +123,10 @@ export default {
       } else {
         dataSelected = removeItemArray(dataSelected, item.value);
       }
-
+      console.log("remove item", {
+        "this.dataSelected": this.dataSelected,
+        dataSelected: dataSelected,
+      });
       this.dataSelected = dataSelected;
     },
 

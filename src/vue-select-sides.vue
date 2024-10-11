@@ -110,15 +110,15 @@ export default {
   methods: {
     updateSelected(items) {
       console.log("Updated selected value:", items);
-      this.$emit("change", items);
+      this.$emit("update:model-value", items);
     },
     getComponent() {
-      console.log(
-        "Selected component:",
-        this.params.type == "mirror"
-          ? "mirror-select-sides"
-          : "grouped-select-sides"
-      );
+      // console.log(
+      //   "Selected component:",
+      //   this.params.type == "mirror"
+      //     ? "mirror-select-sides"
+      //     : "grouped-select-sides"
+      // );
       return this.params.type == "mirror"
         ? "mirror-select-sides"
         : "grouped-select-sides";
@@ -165,7 +165,7 @@ export default {
         return this.model;
       },
       set(value) {
-        this.$emit("update:model", value);
+        this.$emit("update:model-value", value);
       },
     },
   },
