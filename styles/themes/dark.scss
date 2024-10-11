@@ -2,6 +2,6 @@
 
 $selected-color: $dark;
 $default-item-background-selected: $selected-color;
-$badge-background: lighten($selected-color, 15%);
+$badge-background: adjust-color($selected-color, $lightness: 15%);
 
 @import "../global.scss";
