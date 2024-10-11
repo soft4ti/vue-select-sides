@@ -3,7 +3,7 @@ import { reorder } from "./utils";
 export default {
   emits: ["update-selected"],
   watch: {
-    model(newItems, oldItems) {
+    modelValue(newItems, oldItems) {
       if (JSON.stringify(newItems) !== JSON.stringify(oldItems)) {
         this.dataSelected = newItems;
       }
@@ -21,10 +21,6 @@ export default {
         this.prepareListLeft();
       }
     },
-  },
-  model: {
-    prop: "model",
-    event: "change",
   },
   props: {
     placeholderSearchLeft: {

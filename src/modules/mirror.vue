@@ -90,7 +90,7 @@ export default {
       required: true,
       type: [Array, Object],
     },
-    model: {
+    modelValue: {
       type: Array,
       default: () => [],
     },
@@ -138,7 +138,7 @@ export default {
       let dataList = vm.list.filter((item) => {
         let value = item.value;
 
-        if (vm.model.indexOf(value) >= 0) {
+        if (vm.modelValue.indexOf(value) >= 0) {
           item.selectedDefault = true;
           foundSelected.push(value);
         } else {

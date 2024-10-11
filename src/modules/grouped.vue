@@ -103,7 +103,7 @@ export default {
       required: true,
       type: [Array, Object],
     },
-    model: {
+    modelValue: {
       type: Object,
       default: () => ({}),
     },
@@ -186,7 +186,7 @@ export default {
       let vm = this;
       let foundSelected = {};
       vm.dataListOriginal = clone(vm.list);
-      let keyParentsSelected = Object.keys(vm.model);
+      let keyParentsSelected = Object.keys(vm.modelValue);
       let dataList = vm.list.filter((item) => {
         let valueParent = item.value;
         let existsParentSelected = keyParentsSelected.indexOf(valueParent) >= 0;
@@ -204,7 +204,7 @@ export default {
             // Has selected
             if (existsParentSelected) {
               let existsChildrenSelected =
-                vm.model[valueParent].indexOf(valueChildren) >= 0;
+                vm.modelValue[valueParent].indexOf(valueChildren) >= 0;
 
               if (existsChildrenSelected) {
                 item.selectedDefault = true;

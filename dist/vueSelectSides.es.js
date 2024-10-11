@@ -2754,7 +2754,7 @@ function kc(e, t, n, s, l, r) {
 const yo = /* @__PURE__ */ $e(wc, [["render", kc]]), Io = {
   emits: ["update-selected"],
   watch: {
-    model(e, t) {
+    modelValue(e, t) {
       JSON.stringify(e) !== JSON.stringify(t) && (this.dataSelected = e);
     },
     dataSelected(e, t) {
@@ -2766,10 +2766,6 @@ const yo = /* @__PURE__ */ $e(wc, [["render", kc]]), Io = {
     list(e) {
       JSON.stringify(e) !== JSON.stringify(this.dataListOriginal) && (this.prepareList(), this.prepareListLeft());
     }
-  },
-  model: {
-    prop: "model",
-    event: "change"
   },
   props: {
     placeholderSearchLeft: {
@@ -2814,7 +2810,7 @@ const yo = /* @__PURE__ */ $e(wc, [["render", kc]]), Io = {
       required: !0,
       type: [Array, Object]
     },
-    model: {
+    modelValue: {
       type: Object,
       default: () => ({})
     }
@@ -2858,11 +2854,11 @@ const yo = /* @__PURE__ */ $e(wc, [["render", kc]]), Io = {
     prepareList() {
       let e = this, t = {};
       e.dataListOriginal = ze(e.list);
-      let n = Object.keys(e.model), s = e.list.filter((l) => {
+      let n = Object.keys(e.modelValue), s = e.list.filter((l) => {
         let r = l.value, o = n.indexOf(r) >= 0;
         return o ? (l.selectedDefault = !0, t[r] = []) : l.selectedDefault = !1, l.children && l.children.filter((a) => {
           let i = a.value;
-          o && (e.model[r].indexOf(i) >= 0 ? (a.selectedDefault = !0, t[r].push(i)) : a.selectedDefault = !1);
+          o && (e.modelValue[r].indexOf(i) >= 0 ? (a.selectedDefault = !0, t[r].push(i)) : a.selectedDefault = !1);
         }), l;
       });
       e.dataSelected = t, e.dataList = xn(e, s);
@@ -3019,7 +3015,7 @@ const Xc = /* @__PURE__ */ $e(Fc, [["render", Kc]]), Jc = {
       required: !0,
       type: [Array, Object]
     },
-    model: {
+    modelValue: {
       type: Array,
       default: () => []
     }
@@ -3048,7 +3044,7 @@ const Xc = /* @__PURE__ */ $e(Fc, [["render", Kc]]), Jc = {
       this.dataListOriginal = ze(this.list);
       let e = this, t = [], n = e.list.filter((s) => {
         let l = s.value;
-        return e.model.indexOf(l) >= 0 ? (s.selectedDefault = !0, t.push(l)) : s.selectedDefault = !1, s;
+        return e.modelValue.indexOf(l) >= 0 ? (s.selectedDefault = !0, t.push(l)) : s.selectedDefault = !1, s;
       });
       e.dataSelected = t, e.dataList = xn(e, n);
     },
@@ -3216,11 +3212,12 @@ const lu = /* @__PURE__ */ $e(Jc, [["render", ru]]), ou = {
       default: void 0
       // true
     },
-    model: {
+    modelValue: {
       type: [Object, Array],
       default: void 0
     }
   },
+  emits: ["update:model-value"],
   watch: {
     list(e) {
       console.log("abacaxi", e), this.listClone = ze(e);
@@ -3249,10 +3246,6 @@ const lu = /* @__PURE__ */ $e(Jc, [["render", ru]]), ou = {
     sortSelectedUp(e) {
       this.params.sortSelectedUp = e;
     }
-  },
-  model: {
-    prop: "model",
-    event: "update"
   },
   methods: {
     updateSelected(e) {
@@ -3284,7 +3277,7 @@ const lu = /* @__PURE__ */ $e(Jc, [["render", ru]]), ou = {
   computed: {
     modelProp: {
       get() {
-        return this.model;
+        return this.modelValue;
       },
       set(e) {
         this.$emit("update:model-value", e);

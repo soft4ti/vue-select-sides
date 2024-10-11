@@ -68,11 +68,12 @@ export default {
       type: Boolean,
       default: undefined, // true
     },
-    model: {
+    modelValue: {
       type: [Object, Array],
       default: undefined,
     },
   },
+  emits: ["update:model-value"],
   watch: {
     list(newVal) {
       console.log("abacaxi", newVal);
@@ -102,10 +103,6 @@ export default {
     sortSelectedUp(newVal) {
       this.params.sortSelectedUp = newVal;
     },
-  },
-  model: {
-    prop: "model",
-    event: "update",
   },
   methods: {
     updateSelected(items) {
@@ -162,7 +159,7 @@ export default {
   computed: {
     modelProp: {
       get() {
-        return this.model;
+        return this.modelValue;
       },
       set(value) {
         this.$emit("update:model-value", value);
