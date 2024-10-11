@@ -135,7 +135,7 @@
               View source
             </a>
           </div>
-          <!-- <example-grouped-01></example-grouped-01> -->
+          <example-grouped-01></example-grouped-01>
         </div>
         <hr />
 

@@ -91,12 +91,12 @@ export default {
   display: "Grouped select sides",
   mixins: [mixin],
   components: {
-    "v-select-all": selectAll.default,
-    "v-deselect-all": deselectAll.default,
-    "v-search": search.default,
-    "v-separator": separator.default,
-    "v-list": list.default,
-    "v-total": total.default,
+    "v-select-all": selectAll,
+    "v-deselect-all": deselectAll,
+    "v-search": search,
+    "v-separator": separator,
+    "v-list": list,
+    "v-total": total,
   },
   props: {
     list: {

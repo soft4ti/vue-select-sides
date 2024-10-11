@@ -2798,12 +2798,12 @@ const yo = /* @__PURE__ */ $e(wc, [["render", kc]]), Io = {
   display: "Grouped select sides",
   mixins: [Io],
   components: {
-    "v-select-all": bo.default,
-    "v-deselect-all": Oo.default,
-    "v-search": To.default,
-    "v-separator": Lo.default,
-    "v-list": So.default,
-    "v-total": yo.default
+    "v-select-all": bo,
+    "v-deselect-all": Oo,
+    "v-search": To,
+    "v-separator": Lo,
+    "v-list": So,
+    "v-total": yo
   },
   props: {
     list: {
