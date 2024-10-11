@@ -307,7 +307,9 @@ export default {
       let vm = this;
       let search = normalizeText(vm.searchR);
 
-      let listRight = vm.listLeft.filter(function sub(item) {
+      let listRight = clone(this.listLeft);
+
+      listRight = vm.listRight.filter(function sub(item) {
         if (item.children) {
           item.children = item.children.map((children) => {
             let label = normalizeText(children.label);
