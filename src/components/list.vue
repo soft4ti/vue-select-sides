@@ -65,6 +65,7 @@ export default {
       type: String,
     },
   },
+  emits: ["updated-item"],
   methods: {
     showNoResultParent(items) {
       if (this.type === "grouped") {
