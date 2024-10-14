@@ -2894,6 +2894,11 @@ const yo = /* @__PURE__ */ $e(wc, [["render", kc]]), Io = {
       }), n;
     }
   },
+  watch: {
+    filteredListL(e) {
+      this.listRight = e;
+    }
+  },
   data() {
     return {
       dataList: [],

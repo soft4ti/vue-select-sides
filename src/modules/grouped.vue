@@ -300,7 +300,7 @@ export default {
         }
         return item;
       });
-      // this.listLeft = listLeft;
+
       return listLeft;
     },
     filteredListR() {
@@ -334,8 +334,13 @@ export default {
 
         return item;
       });
-      // this.listRight = listRight;
+
       return listRight;
+    },
+  },
+  watch: {
+    filteredListL(newValue) {
+      this.listRight = newValue;
     },
   },
   data() {
