@@ -76,7 +76,6 @@ export default {
   emits: ["update:model-value"],
   watch: {
     list(newVal) {
-      console.log("abacaxi", newVal);
       this.listClone = clone(newVal);
     },
     type(newVal) {
@@ -106,16 +105,9 @@ export default {
   },
   methods: {
     updateSelected(items) {
-      console.log("Updated selected value:", items);
       this.$emit("update:model-value", items);
     },
     getComponent() {
-      // console.log(
-      //   "Selected component:",
-      //   this.params.type == "mirror"
-      //     ? "mirror-select-sides"
-      //     : "grouped-select-sides"
-      // );
       return this.params.type == "mirror"
         ? "mirror-select-sides"
         : "grouped-select-sides";
