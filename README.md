@@ -17,11 +17,13 @@
 
 A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
+From version v2.0.0 it is only compatible with Vue 3
+
 <p align="center">
   <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/soft4ti/vue-select-sides/master/static/demo.gif" />
 </p>
 
-## [Live DEMO](https://soft4ti.github.io/vue-select-sides/demo.html?v=20201113113940)
+## [Live DEMO](https://soft4ti.github.io/vue-select-sides/index.html?v=20201113113945)
 
 ## Installation
 
@@ -44,8 +46,8 @@ import vueSelectSides from "vue-select-sides";
 
 export default {
   components: {
-    vueSelectSides
-  }
+    vueSelectSides,
+  },
 };
 ```
 
@@ -203,7 +205,7 @@ List of locales available for the plugin:
 import vueSelectSides from "vue-select-sides";
 
 Vue.use(vueSelectSides, {
-  locale: "pt_BR"
+  locale: "pt_BR",
 });
 
 Vue.component("vue-select-sides", vueSelectSides);
