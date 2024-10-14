@@ -2570,13 +2570,14 @@ function uc(e, t, n, s, l, r) {
 const Oo = /* @__PURE__ */ $e(cc, [["render", uc]]), fc = {
   name: "v-search",
   display: "Search",
-  props: ["value", "placeholder"],
+  props: ["modelValue", "placeholder"],
+  emits: ["update:modelValue"],
   beforeMount() {
     this.placeholder ? this.thePlaceholder = this.placeholder : this.thePlaceholder = this.$t("searchPlaceholder");
   },
   watch: {
     inputVal(e) {
-      this.$emit("input", e);
+      this.$emit("update:modelValue", e);
     }
   },
   data() {

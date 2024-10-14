@@ -6,7 +6,8 @@
 export default {
   name: "v-search",
   display: "Search",
-  props: ["value", "placeholder"],
+  props: ["modelValue", "placeholder"],
+  emits: ["update:modelValue"],
   beforeMount() {
     if (this.placeholder) {
       this.thePlaceholder = this.placeholder;
@@ -16,7 +17,7 @@ export default {
   },
   watch: {
     inputVal(val) {
-      this.$emit("input", val);
+      this.$emit("update:modelValue", val);
     },
   },
   data() {
