@@ -3034,16 +3034,13 @@ const Xc = /* @__PURE__ */ $e(Fc, [["render", Kc]]), Jc = {
     },
     updateRightDeselectAll() {
       let e = this;
-      this.dataSelected = [], console.log("updateRightDeselectAll", e.listRight.length), e.listRight.map((t) => {
+      this.dataSelected = [], e.listRight.map((t) => {
         t.visible === !0 && !t.disabled && e.updateItem(t, {}, !1);
       });
     },
     updateItem(e, t, n) {
       let s = Ge(this.dataSelected);
-      n ? s.push(e.value) : s = Tl(s, e.value), console.log("remove item", {
-        "this.dataSelected": this.dataSelected,
-        dataSelected: s
-      }), this.dataSelected = s;
+      n ? s.push(e.value) : s = Tl(s, e.value), this.dataSelected = s;
     },
     prepareList() {
       this.dataListOriginal = Ge(this.list);
@@ -3225,7 +3222,7 @@ const lu = /* @__PURE__ */ $e(Jc, [["render", ru]]), ou = {
   emits: ["update:model-value"],
   watch: {
     list(e) {
-      console.log("abacaxi", e), this.listClone = Ge(e);
+      this.listClone = Ge(e);
     },
     type(e) {
       this.params.type = e;
@@ -3254,7 +3251,7 @@ const lu = /* @__PURE__ */ $e(Jc, [["render", ru]]), ou = {
   },
   methods: {
     updateSelected(e) {
-      console.log("Updated selected value:", e), this.$emit("update:model-value", e);
+      this.$emit("update:model-value", e);
     },
     getComponent() {
       return this.params.type == "mirror" ? "mirror-select-sides" : "grouped-select-sides";
