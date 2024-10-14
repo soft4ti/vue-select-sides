@@ -8,9 +8,10 @@
 export default {
   name: "v-deselect-all",
   display: "Deselect all",
+  emits: ["update-deselect-all"],
   props: {
     click: Function,
-    items: Array
-  }
+    items: Array,
+  },
 };
 </script>

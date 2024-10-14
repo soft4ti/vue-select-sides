@@ -8,6 +8,6 @@
 export default {
   name: "v-no-results",
   display: "No results",
-  methods: {}
+  methods: {},
 };
 </script>

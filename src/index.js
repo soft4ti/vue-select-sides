@@ -1,26 +1,12 @@
 import vueSelectSides from "./vue-select-sides.vue";
+import i18n from "./i18n";
 
-function install(Vue, options) {
-  Vue.prototype.defaultOptions = options && options.constructor.name === "Object" ? options : {};
-  if (install.installed) return;
-  install.installed = true;
-}
+export default {
+  install(app, options) {
+    app.config.globalProperties.defaultOptions =
+      options && options.constructor.name === "Object" ? options : {};
 
-const plugin = {
-  install
+    app.use(i18n);
+    app.component("vueSelectSides", vueSelectSides);
+  },
 };
-
-let GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.vue;
-}
-
-if (GlobalVue) {
-  GlobalVue.use(plugin);
-}
-
-vueSelectSides.install = install;
-
-export default vueSelectSides;

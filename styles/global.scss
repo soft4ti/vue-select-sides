@@ -19,7 +19,7 @@
       .vss-list-search {
         border: none;
         padding: 12px 14px;
-        border-bottom: 2px solid lighten($gray, 7%);
+        border-bottom: 2px solid adjust-color($gray, $lightness: 7%);
         border-top-left-radius: $border-radius-base;
         border-top-right-radius: $border-radius-base;
         outline: none;
@@ -61,7 +61,7 @@
           }
 
           &.is-disabled:not(.is-parent) > span {
-            background-color: darken($gray, 5);
+            background-color: adjust-color($gray, $lightness: -5%);
             color: $default-item-color-selected;
             color: $default-text-color;
             cursor: default;
@@ -69,15 +69,14 @@
           }
 
           &.is-disabled.active:not(.is-parent) > span {
-            background-color: lighten($default-item-background-selected, 20);
+            background-color: adjust-color($default-item-background-selected, $lightness: 20%);
             color: $default-item-color-selected;
-            // background-color: darken($gray, 2);
           }
 
           &:not(.is-parent) > span {
             cursor: pointer;
             background-color: $default-item-background;
-            border: 1px solid darken($default-item-background, 2%);
+            border: 1px solid adjust-color($default-item-background, $lightness: -2%);
           }
 
           &.no-results > span,
@@ -131,7 +130,7 @@
             font-size: $font-size-base - 0.3;
             font-weight: bold;
             color: $default-footer-text-color;
-            background-color: lighten($default-footer-background, 15);
+            background-color: adjust-color($default-footer-background, $lightness: 15%);
             padding: 1px 6px 0px 6px;
             border-radius: 20px;
             min-width: 14px;

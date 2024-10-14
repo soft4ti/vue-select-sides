@@ -24,17 +24,7 @@
 </template>
 
 <script>
-import Vue from "vue";
-import vueSelectSides from "../../src/index";
-
-Vue.use(vueSelectSides, {
-  locale: "en_US"
-});
-
 export default {
-  components: {
-    vueSelectSides
-  },
   data() {
     return {
       order: "asc",
@@ -42,27 +32,27 @@ export default {
       list: [
         {
           value: "norte",
-          label: "Norte"
+          label: "Norte",
         },
         {
           value: "sul",
-          label: "Sul"
+          label: "Sul",
         },
         {
           value: "centro-oeste",
-          label: "Centro Oeste"
+          label: "Centro Oeste",
         },
         {
           value: "sudeste",
-          label: "Sudeste"
+          label: "Sudeste",
         },
         {
           value: "nordeste",
-          label: "Nordeste"
-        }
-      ]
+          label: "Nordeste",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

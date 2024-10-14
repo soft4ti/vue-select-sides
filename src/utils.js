@@ -1,8 +1,8 @@
-const sortBy = require("sort-by");
+import sortBy from "sort-by";
 
-const clone = json => JSON.parse(JSON.stringify(json));
+const clone = (json) => JSON.parse(JSON.stringify(json));
 
-const normalizeText = text => {
+const normalizeText = (text) => {
   return text
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -26,7 +26,7 @@ const reorder = (vm, data) => {
     }
   }
 
-  data.sort(sortBy(...orderBy)).map(item => {
+  data.sort(sortBy(...orderBy)).map((item) => {
     if (item.children) item.children.sort(sortBy(...orderBy));
     return item;
   });
@@ -35,7 +35,7 @@ const reorder = (vm, data) => {
 };
 
 const removeItemArray = (array, value) => {
-  return array.filter(e => String(e) !== String(value));
+  return array.filter((e) => String(e) !== String(value));
 };
 
 export { normalizeText, clone, reorder, removeItemArray };

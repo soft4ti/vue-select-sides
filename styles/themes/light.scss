@@ -4,10 +4,10 @@ $selected-color: $gray;
 
 $default-text-color: #222;
 $default-item-background: #fafafa;
-$default-item-color-selected: lighten($default-text-color, 30%);
-$default-item-background-selected: lighten($gray, 3%);
+$default-item-color-selected: adjust-color($default-text-color, $lightness: 30%);
+$default-item-background-selected: adjust-color($gray, $lightness: 3%);
 
-$default-footer-text-color: lighten($default-text-color, 15%);
-$default-footer-background: darken($default-item-background, 5%);
+$default-footer-text-color: adjust-color($default-text-color, $lightness: 15%);
+$default-footer-background: adjust-color($default-item-background, $lightness: -5%);
 
 @import "../global.scss";

@@ -65,42 +65,41 @@
 
 <script>
 import { normalizeText, clone, reorder, removeItemArray } from "../utils";
-
-const vSelectAll = require("../components/selectAll.vue").default;
-const vDeselectAll = require("../components/deselectAll.vue").default;
-const vSearch = require("../components/search.vue").default;
-const vList = require("../components/list.vue").default;
-const vSeparator = require("../components/separator.vue").default;
-const vTotal = require("../components/total.vue").default;
-const mixin = require("../mixin").default;
+import selectAll from "../components/selectAll.vue";
+import deselectAll from "../components/deselectAll.vue";
+import search from "../components/search.vue";
+import list from "../components/list.vue";
+import separator from "../components/separator.vue";
+import total from "../components/total.vue";
+import mixin from "../mixin";
 
 export default {
   name: "mirror-select-sides",
   display: "Mirror select sides",
   mixins: [mixin],
   components: {
-    vSelectAll,
-    vDeselectAll,
-    vSearch,
-    vSeparator,
-    vList,
-    vTotal
+    "v-select-all": selectAll,
+    "v-deselect-all": deselectAll,
+    "v-search": search,
+    "v-separator": separator,
+    "v-list": list,
+    "v-total": total,
   },
   props: {
     list: {
       required: true,
-      type: [Array, Object]
+      type: [Array, Object],
     },
-    model: {
+    modelValue: {
       type: Array,
-      default: undefined
-    }
+      default: () => [],
+    },
   },
   methods: {
     updateLeftSelectAll() {
       let vm = this;
 
-      vm.listLeft.map(item => {
+      vm.listLeft.map((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, true);
         }
@@ -108,8 +107,8 @@ export default {
     },
     updateRightDeselectAll() {
       let vm = this;
-
-      vm.listRight.map(item => {
+      this.dataSelected = [];
+      vm.listRight.map((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, false);
         }
@@ -123,19 +122,18 @@ export default {
       } else {
         dataSelected = removeItemArray(dataSelected, item.value);
       }
-
-      this.$set(this, "dataSelected", dataSelected);
+      this.dataSelected = dataSelected;
     },
 
     prepareList() {
-      this.$set(this, "dataListOriginal", clone(this.list));
+      this.dataListOriginal = clone(this.list);
 
       let vm = this;
       let foundSelected = [];
-      let dataList = vm.list.filter(item => {
+      let dataList = vm.list.filter((item) => {
         let value = item.value;
 
-        if (vm.model.indexOf(value) >= 0) {
+        if (vm.modelValue.indexOf(value) >= 0) {
           item.selectedDefault = true;
           foundSelected.push(value);
         } else {
@@ -145,16 +143,16 @@ export default {
         return item;
       });
 
-      vm.$set(vm, "dataSelected", foundSelected);
-      vm.$set(vm, "dataList", reorder(vm, dataList));
+      vm.dataSelected = foundSelected;
+      vm.dataList = reorder(vm, dataList);
     },
 
     prepareListLeft() {
-      this.listLeft = this.dataList.filter(item => {
+      this.listLeft = this.dataList.filter((item) => {
         item.visible = true;
         return item;
       });
-    }
+    },
   },
   beforeMount() {
     this.prepareList();
@@ -168,7 +166,7 @@ export default {
       let selected = this.dataSelected;
       let listLeft = clone(this.listLeft);
 
-      listLeft = listLeft.filter(item => {
+      listLeft = listLeft.filter((item) => {
         let label = normalizeText(item.label);
 
         // Has selected
@@ -190,7 +188,7 @@ export default {
         return item;
       });
 
-      this.$set(this, "listLeft", listLeft);
+      // this.listLeft = listLeft;
 
       return listLeft;
     },
@@ -200,7 +198,7 @@ export default {
       let selected = this.dataSelected;
       let listRight = clone(vm.listLeft);
 
-      listRight = listRight.filter(item => {
+      listRight = listRight.filter((item) => {
         let label = normalizeText(item.label);
 
         // Has selected
@@ -222,10 +220,10 @@ export default {
         return item;
       });
 
-      this.$set(this, "listRight", listRight);
+      // this.listRight = listRight;
 
       return listRight;
-    }
+    },
   },
   data() {
     return {
@@ -235,8 +233,8 @@ export default {
       listLeft: [],
       listRight: [],
       searchL: "",
-      searchR: ""
+      searchR: "",
     };
-  }
+  },
 };
 </script>

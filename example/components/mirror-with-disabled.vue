@@ -13,45 +13,35 @@
 </template>
 
 <script>
-import Vue from "vue";
-import vueSelectSides from "../../src/index";
-
-Vue.use(vueSelectSides, {
-  locale: "en_US"
-});
-
 export default {
-  components: {
-    vueSelectSides
-  },
   data() {
     return {
       selected: ["sudeste", "centro-oeste"],
       list: [
         {
           value: "sul",
-          label: "Sul"
+          label: "Sul",
         },
         {
           value: "sudeste",
           label: "Sudeste",
-          disabled: true
+          disabled: true,
         },
         {
           value: "norte",
-          label: "Norte"
+          label: "Norte",
         },
         {
           value: "centro-oeste",
-          label: "Centro Oeste"
+          label: "Centro Oeste",
         },
         {
           value: "nordeste",
           label: "Nordeste",
-          disabled: true
-        }
-      ]
+          disabled: true,
+        },
+      ],
     };
-  }
+  },
 };
 </script>

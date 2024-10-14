@@ -17,7 +17,7 @@
       <ul v-if="hasChildren">
         <li
           v-for="(children, indexChild) in item.children"
-          :key="index + indexChild"
+          :key="`${index}-${indexChild}`"
           @click="toggleItem(children, item, children.selected)"
           v-show="children.visible"
           :class="liClass(children, false)"
@@ -36,35 +36,36 @@
 </template>
 
 <script>
-const vNoResults = require("./noResults.vue").default;
-const vNoSelection = require("./noSelection.vue").default;
+import vNoResults from "./noResults.vue";
+import vNoSelection from "./noSelection.vue";
 
 export default {
   name: "v-list",
   display: "List",
   mounted() {},
   components: {
-    vNoResults,
-    vNoSelection
+    "v-no-results": vNoResults,
+    "v-no-selection": vNoSelection,
   },
   props: {
     hasChildren: {
-      type: Boolean
+      type: Boolean,
     },
     items: {
-      type: Array
+      type: Array,
     },
     enableCounter: {
       type: Boolean,
-      default: true
+      default: true,
     },
     type: {
-      type: String
+      type: String,
     },
     side: {
-      type: String
-    }
+      type: String,
+    },
   },
+  emits: ["updated-item"],
   methods: {
     showNoResultParent(items) {
       if (this.type === "grouped") {
@@ -128,12 +129,12 @@ export default {
       return output;
     },
     totalItems(o) {
-      return o.filter(function(a) {
+      return o.filter(function (a) {
         return a.visible === true;
       }).length;
     },
     totalParentSelected(o) {
-      return o.filter(function(a) {
+      return o.filter(function (a) {
         return a.selected === true;
       }).length;
     },
@@ -143,10 +144,10 @@ export default {
       }
 
       this.$emit("updated-item", item, parent, !isSelected);
-    }
+    },
   },
   data() {
     return {};
-  }
+  },
 };
 </script>

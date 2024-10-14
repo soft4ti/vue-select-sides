@@ -1,7 +1,6 @@
 <template>
   <component
     class="vss"
-    v-model="model"
     :is="getComponent()"
     :type="params.type"
     :list="listClone"
@@ -12,104 +11,106 @@
     :placeholder-search-left="params.placeholderSearchLeft"
     :placeholder-search-right="params.placeholderSearchRight"
     :sort-selected-up="params.sortSelectedUp"
+    v-model="modelProp"
     @update-selected="updateSelected"
   >
   </component>
 </template>
 
 <script>
-import i18n from "./i18n";
+// import i18n from "./i18n";
 import { clone } from "./utils";
-
-const grouped = require("./modules/grouped").default;
-const mirror = require("./modules/mirror").default;
+import grouped from "./modules/grouped.vue";
+import mirror from "./modules/mirror.vue";
 
 export default {
-  i18n,
-  name: "core-select-sides",
+  // i18n,
+  name: "vue-select-sides",
   display: "Core select sides",
-  components: { mirror, grouped },
+  components: {
+    "mirror-select-sides": mirror,
+    "grouped-select-sides": grouped,
+  },
   props: {
     list: {
       required: true,
-      type: [Array, Object]
+      type: [Array, Object],
     },
     type: {
       type: String,
-      default: undefined // "grouped"
+      default: undefined, // "grouped"
     },
     orderBy: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     placeholderSearchLeft: {
       type: [String, Boolean],
-      default: undefined // false
+      default: undefined, // false
     },
     placeholderSearchRight: {
       type: [String, Boolean],
-      default: undefined // false
+      default: undefined, // false
     },
     sortSelectedUp: {
       type: Boolean,
-      default: undefined // false
+      default: undefined, // false
     },
     search: {
       type: Boolean,
-      default: undefined // true
+      default: undefined, // true
     },
     total: {
       type: Boolean,
-      default: undefined // true
+      default: undefined, // true
     },
     toggleAll: {
       type: Boolean,
-      default: undefined // true
+      default: undefined, // true
     },
-    model: {
+    modelValue: {
       type: [Object, Array],
-      default: undefined
-    }
+      default: undefined,
+    },
   },
+  emits: ["update:model-value"],
   watch: {
     list(newVal) {
-      this.$set(this, "listClone", clone(newVal));
+      this.listClone = clone(newVal);
     },
     type(newVal) {
-      this.$set(this.params, "type", newVal);
+      this.params.type = newVal;
     },
     search(newVal) {
-      this.$set(this.params, "search", newVal);
+      this.params.search = newVal;
     },
     total(newVal) {
-      this.$set(this.params, "total", newVal);
+      this.params.total = newVal;
     },
     toggleAll(newVal) {
-      this.$set(this.params, "toggleAll", newVal);
+      this.params.toggleAll = newVal;
     },
     orderBy(newVal) {
-      this.$set(this.params, "orderBy", newVal);
+      this.params.orderBy = newVal;
     },
     placeholderSearchLeft(newVal) {
-      this.$set(this.params, "placeholderSearchLeft", newVal);
+      this.params.placeholderSearchLeft = newVal;
     },
     placeholderSearchRight(newVal) {
-      this.$set(this.params, "placeholderSearchRight", newVal);
+      this.params.placeholderSearchRight = newVal;
     },
     sortSelectedUp(newVal) {
-      this.$set(this.params, "sortSelectedUp", newVal);
-    }
-  },
-  model: {
-    prop: "model",
-    event: "change"
+      this.params.sortSelectedUp = newVal;
+    },
   },
   methods: {
     updateSelected(items) {
-      this.$emit("change", items);
+      this.$emit("update:model-value", items);
     },
     getComponent() {
-      return this.params.type;
+      return this.params.type == "mirror"
+        ? "mirror-select-sides"
+        : "grouped-select-sides";
     },
     selectLocale(locale) {
       if (this.enabledLocales.indexOf(locale) >= 0) {
@@ -127,29 +128,39 @@ export default {
         sortSelectedUp: vm.sortSelectedUp,
         search: vm.search,
         total: vm.total,
-        toggleAll: vm.toggleAll
+        toggleAll: vm.toggleAll,
       };
 
-      Object.keys(items).forEach(key => {
+      Object.keys(items).forEach((key) => {
         let value = items[key];
 
         if (value === undefined) {
           if (vm.defaultOptions[key] !== undefined) {
-            vm.$set(vm.params, key, vm.defaultOptions[key]);
+            vm.params[key] = vm.defaultOptions[key];
           }
         } else {
-          vm.$set(vm.params, key, value);
+          vm.params[key] = value;
         }
       });
 
       if (vm.defaultOptions.locale !== undefined) {
         vm.selectLocale(vm.defaultOptions.locale);
       }
-    }
+    },
+  },
+  computed: {
+    modelProp: {
+      get() {
+        return this.modelValue;
+      },
+      set(value) {
+        this.$emit("update:model-value", value);
+      },
+    },
   },
   beforeMount() {
     this.setDefaultParams();
-    this.$set(this, "listClone", clone(this.list));
+    this.listClone = clone(this.list);
   },
   data() {
     return {
@@ -164,9 +175,9 @@ export default {
         sortSelectedUp: false,
         search: true,
         total: true,
-        toggleAll: true
-      }
+        toggleAll: true,
+      },
     };
-  }
+  },
 };
 </script>

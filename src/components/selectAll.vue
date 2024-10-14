@@ -8,8 +8,9 @@
 export default {
   name: "v-select-all",
   display: "Select all",
+  emits: ["update-select-all"],
   props: {
-    items: Array
-  }
+    items: Array,
+  },
 };
 </script>

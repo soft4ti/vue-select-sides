@@ -6,24 +6,25 @@
 export default {
   name: "v-search",
   display: "Search",
-  props: ["value", "placeholder"],
+  props: ["modelValue", "placeholder"],
+  emits: ["update:modelValue"],
   beforeMount() {
     if (this.placeholder) {
-      this.$set(this, "thePlaceholder", this.placeholder);
+      this.thePlaceholder = this.placeholder;
     } else {
-      this.$set(this, "thePlaceholder", this.$t("searchPlaceholder"));
+      this.thePlaceholder = this.$t("searchPlaceholder");
     }
   },
   watch: {
     inputVal(val) {
-      this.$emit("input", val);
-    }
+      this.$emit("update:modelValue", val);
+    },
   },
   data() {
     return {
       inputVal: this.value,
-      thePlaceholder: ""
+      thePlaceholder: "",
     };
-  }
+  },
 };
 </script>
