@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
-import vueDevTools from "vite-plugin-vue-devtools";
+import envCompatible from "vite-plugin-env-compatible";
 
 export default defineConfig({
-  plugins: [vue(), vueDevTools()],
+  plugins: [vue(), envCompatible()],
   build: {
     sourcemap: true,
     lib: {
