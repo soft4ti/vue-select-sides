@@ -1,14 +1,17 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
-import envCompatible from "vite-plugin-env-compatible";
 
 export default defineConfig({
-  plugins: [vue(), envCompatible()],
+  plugins: [vue()],
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("production"),
+    "process.env.VUE_APP_I18N_LOCALE": JSON.stringify("en_US"),
+    "process.env.VUE_APP_I18N_FALLBACK_LOCALE": JSON.stringify("en_US"),
+  },
   build: {
-    sourcemap: true,
+    sourcemap: false,
     lib: {
-      // entry: path.resolve(__dirname, "example/App.vue"),
       entry: path.resolve(__dirname, "example/main.js"),
       name: "vueSelectSidesExample",
       fileName: (format) => `vueSelectSidesExample.${format}.js`,

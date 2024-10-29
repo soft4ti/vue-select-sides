@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
-import envCompatible from "vite-plugin-env-compatible";
 
 export default defineConfig({
-  plugins: [vue(), envCompatible()],
+  plugins: [vue()],
   build: {
     lib: {
       entry: path.resolve(__dirname, "example/main.js"),
