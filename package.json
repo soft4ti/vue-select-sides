@@ -1,6 +1,6 @@
 {
   "name": "vue-select-sides",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "select sides component for vue",
   "license": "MIT",
   "private": false,
@@ -8,15 +8,15 @@
     "type": "git",
     "url": "https://github.com/soft4ti/vue-select-sides"
   },
-  "main": "dist/vueSelectSides.umd.js",
-  "module": "dist/vueSelectSides.es.js",
+  "main": "dist/vue-select-sides.umd.js",
+  "module": "dist/vue-select-sides.es.js",
   "exports": {
     ".": {
-      "import": "./dist/vueSelectSides.es.js",
-      "require": "./dist/vueSelectSides.udm.js"
+      "import": "./dist/vue-select-sides.es.js",
+      "require": "./dist/vue-select-sides.umd.js"
     }
   },
-  "unpkg": "dist/vueSelectSides.umd.min.js",
+  "unpkg": "dist/vue-select-sides.umd.js",
   "scripts": {
     "serve": "vite --config vite.serve.config.js",
     "build": "yarn build:example && yarn build:npm && yarn build:scss",
