@@ -13,8 +13,7 @@
     :sort-selected-up="params.sortSelectedUp"
     v-model="modelProp"
     @update-selected="updateSelected"
-  >
-  </component>
+  />
 </template>
 
 <script>

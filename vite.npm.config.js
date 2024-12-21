@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import path from 'path';
 
-const path = require("path");
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
@@ -14,17 +14,17 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
       name: "vueSelectSides",
-      fileName: (format) => `vueSelectSides.${format}.js`,
+      fileName: (format) => `vue-select-sides.${format}.js`,
     },
-  },
-  rollupOptions: {
-    // Certifique-se de externalizar dependências que não devem ser incluídas no bundle
-    external: ["vue"],
-    output: {
-      // Forneça variáveis globais para usar no build UMD
-      globals: {
-        vue: "Vue",
+    rollupOptions: {
+      // Certifique-se de externalizar dependências que não devem ser incluídas no bundle
+      external: ["vue"],
+      output: {
+        // Forneça variáveis globais para usar no build UMD
+        globals: {
+          vue: "Vue",
+        },
       },
     },
-  },
+  }
 });
