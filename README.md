@@ -17,7 +17,8 @@
 
 A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
-From version v2.0.0 it is only compatible with Vue 3
+From version v2.0.0 it is only compatible with Vue 3.
+For Vue 2, see version v1.1.6.
 
 <p align="center">
   <img alt="Demo - Vue Select Sides" src="https://raw.githubusercontent.com/soft4ti/vue-select-sides/master/static/demo.gif" />
@@ -59,10 +60,10 @@ Vue.use(VueSelectSides);
 Vue.component("vue-select-sides", VueSelectSides);
 ```
 
-Or if you wish to include it in a `script` tag, just include the `vueSelectSides.umd.min.js` file located in the `dist` folder as so:
+Or if you wish to include it in a `script` tag, just include the `vueSelectSides.umd.js` file located in the `dist` folder as so:
 
 ```html
-<script src="dist/vueSelectSides.umd.min.js"></script>
+<script src="dist/vueSelectSides.umd.js"></script>
 ```
 
 ## Usage
@@ -196,8 +197,10 @@ List of locales available for the plugin:
 - `pt_BR` - [Portuguese] - Contributed by @juliorosseti
 - `es_ES` - [Spanish] - Contributed by @etrepat
 - `fr_FR` - [French] - Contributed by @MajuTo
-- `tr_TR` - [Turkey] - Contributed by @Abdulsametileri
+- `tr_TR` - [Turkish] - Contributed by @Abdulsametileri
 - `pl_PL` - [Polish] - Contributed by @jzapal
+- `cz_CZ` - [Czech] - Contributed by @DuchVladimir
+- `sk_SK` - [Slovak] - Contributed by @DuchVladimir
 
 ### Use global locale
 

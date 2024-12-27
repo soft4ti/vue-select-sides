@@ -165,7 +165,16 @@ export default {
     return {
       listClone: [],
       locale: "en_US",
-      enabledLocales: ["pt_BR", "en_US", "es_ES", "fr_FR", "tr_TR", "pl_PL"],
+      enabledLocales: [
+        "pt_BR",
+        "en_US",
+        "es_ES",
+        "fr_FR",
+        "tr_TR",
+        "pl_PL",
+        "cz_CZ",
+        "sk_SK",
+      ],
       params: {
         type: "mirror",
         orderBy: undefined,
