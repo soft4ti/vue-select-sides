@@ -1,6 +1,6 @@
 {
   "name": "vue-select-sides",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "select sides component for vue",
   "license": "MIT",
   "private": false,
@@ -14,7 +14,9 @@
     ".": {
       "import": "./dist/vue-select-sides.es.js",
       "require": "./dist/vue-select-sides.umd.js"
-    }
+    },
+    "./dist/css/*": "./dist/css/*",
+    "./styles/themes/*": "./styles/themes/*"
   },
   "unpkg": "dist/vue-select-sides.umd.js",
   "scripts": {
