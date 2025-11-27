@@ -26,7 +26,10 @@ export default defineConfig({
           vue: "Vue",
         },
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === "style.css") {
+          if (
+            assetInfo.names?.includes("style.css") ||
+            assetInfo.names?.includes("vue-select-sides.css")
+          ) {
             return "vueSelectSidesExample.css";
           }
           return assetInfo.name;
