@@ -26,7 +26,8 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "build:example": "vite build --config vite.example.config.js",
     "build:npm": "vite build --config vite.npm.config.js",
-    "build:scss": "sass styles/themes:dist/css --style=compressed --no-source-map"
+    "build:scss": "sass styles/themes:dist/css --style=compressed --no-source-map",
+    "test": "vitest"
   },
   "files": [
     "dist",
@@ -51,8 +52,8 @@
     "eslint": "^8.57.1",
     "eslint-plugin-vue": "^8.7.1",
     "sass-embedded": "^1.93.3",
-    "sort-by": "^1.2.0",
     "vite": "^7.2.4",
+    "vitest": "^4.0.14",
     "vue": "^3.5.25",
     "vue-i18n": "^9.14.5"
   },
