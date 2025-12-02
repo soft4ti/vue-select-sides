@@ -1,4 +1,4 @@
-import sortBy from "sort-by";
+import sortBy from "./sort-by";
 
 const clone = (json) => JSON.parse(JSON.stringify(json));
 

@@ -1,76 +1,48 @@
-var objectPath = require("./object-path");
-var sortBy;
-var sort;
-var type;
-
 /**
- * Filters args based on their type
- * @param  {String} type Type of property to filter by
- * @return {Function}
+ * Função que replica o comportamento do sort-by
+ * Suporta múltiplos critérios de ordenação e ordem reversa com "-"
+ * Suporta função de mapeamento opcional (último parâmetro)
  */
-type = function (type) {
-  return function (arg) {
-    return typeof arg === type;
-  };
-};
+const sortBy = (...args) => {
+  // Separa propriedades (strings) da função de mapeamento (function)
+  const properties = args.filter((arg) => typeof arg === "string");
+  const mapFn = args.find((arg) => typeof arg === "function");
 
-/**
- * Return a comparator function
- * @param  {String} property The key to sort by
- * @param  {Function} map Function to apply to each property
- * @return {Function}        Returns the comparator function
- */
-sort = function sort(property, map) {
-  var sortOrder = 1;
-  var apply =
-    map ||
-    function (_, value) {
-      return value;
-    };
+  return (a, b) => {
+    for (let property of properties) {
+      let sortOrder = 1;
 
-  if (property[0] === "-") {
-    sortOrder = -1;
-    property = property.substr(1);
-  }
+      // Se começar com "-", ordena decrescente
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substring(1);
+      }
 
-  return function fn(a, b) {
-    var result;
-    var am = apply(property, objectPath.get(a, property));
-    var bm = apply(property, objectPath.get(b, property));
-    if (am < bm) result = -1;
-    if (am > bm) result = 1;
-    if (am === bm) result = 0;
-    return result * sortOrder;
-  };
-};
+      // Pega o valor da propriedade (suporta nested objects)
+      let valueA = getNestedValue(a, property);
+      let valueB = getNestedValue(b, property);
 
-/**
- * Return a comparator function that sorts by multiple keys
- * @return {Function} Returns the comparator function
- */
-sortBy = function sortBy() {
-  var args = Array.prototype.slice.call(arguments);
-  var properties = args.filter(type("string"));
-  var map = args.filter(type("function"))[0];
+      // Aplica a função de mapeamento se existir
+      if (mapFn) {
+        valueA = mapFn(property, valueA);
+        valueB = mapFn(property, valueB);
+      }
 
-  return function fn(obj1, obj2) {
-    var numberOfProperties = properties.length,
-      result = 0,
-      i = 0;
-
-    /* try getting a different result from 0 (equal)
-     * as long as we have extra properties to compare
-     */
-    while (result === 0 && i < numberOfProperties) {
-      result = sort(properties[i], map)(obj1, obj2);
-      i++;
+      // Compara os valores
+      if (valueA < valueB) return -1 * sortOrder;
+      if (valueA > valueB) return 1 * sortOrder;
     }
-    return result;
+    return 0;
   };
 };
 
 /**
- * Expose `sortBy`
- * @type {Function}
+ * Pega valores de propriedades aninhadas (ex: "user.name")
  */
-module.exports = sortBy;
+const getNestedValue = (obj, path) => {
+  return path.split(".").reduce((current, prop) => {
+    return current?.[prop];
+  }, obj);
+};
+
+export default sortBy;
