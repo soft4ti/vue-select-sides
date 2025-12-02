@@ -1,7 +1,7 @@
-@import "../_variables.scss";
+@use "sass:color";
+@use "../_variables.scss";
 
-$selected-color: $dark;
-$default-item-background-selected: $selected-color;
-$badge-background: adjust-color($selected-color, $lightness: 15%);
-
-@import "../global.scss";
+$selected-color: variables.$dark;
+$default-item-background-selected: variables.$selected-color;
+$badge-background: color.adjust(variables.$selected-color, $lightness: 15%);
+@use "../global.scss";

@@ -1,13 +1,26 @@
-@import "../_variables.scss";
+@use "sass:color";
+@use "../_variables.scss";
 
-$selected-color: $gray;
+$selected-color: variables.$gray;
 
 $default-text-color: #222;
 $default-item-background: #fafafa;
-$default-item-color-selected: adjust-color($default-text-color, $lightness: 30%);
-$default-item-background-selected: adjust-color($gray, $lightness: 3%);
+$default-item-color-selected: color.adjust(
+  variables.$default-text-color,
+  $lightness: 30%
+);
+$default-item-background-selected: color.adjust(
+  variables.$gray,
+  $lightness: 3%
+);
 
-$default-footer-text-color: adjust-color($default-text-color, $lightness: 15%);
-$default-footer-background: adjust-color($default-item-background, $lightness: -5%);
+$default-footer-text-color: color.adjust(
+  variables.$default-text-color,
+  $lightness: 15%
+);
+$default-footer-background: color.adjust(
+  variables.$default-item-background,
+  $lightness: -5%
+);
 
-@import "../global.scss";
+@use "../global.scss";
