@@ -28,9 +28,19 @@ const sortBy = (...args) => {
         valueB = mapFn(property, valueB);
       }
 
+      // Trata undefined/null: undefined vai pro final, null é menor que tudo
+      const aIsUndefined = valueA === undefined;
+      const bIsUndefined = valueB === undefined;
+
+      if (aIsUndefined && bIsUndefined) continue; // ambos undefined, próximo critério
+      if (aIsUndefined) return 1; // A vai pro final
+      if (bIsUndefined) return -1; // B vai pro final
+
       // Compara os valores
       if (valueA < valueB) return -1 * sortOrder;
       if (valueA > valueB) return 1 * sortOrder;
+
+      // Se forem iguais, continua pro próximo critério
     }
     return 0;
   };
