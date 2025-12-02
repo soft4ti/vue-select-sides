@@ -1,12 +1,17 @@
 // dark.scss - Tema escuro
 @use "sass:color";
 
+// Define as cores base diretamente (valores hardcoded do _variables.scss)
+$selected-color: #242934;
+$default-item-background-selected: $selected-color;
+$badge-background: color.adjust($selected-color, $lightness: 15%);
+
 // Configura as variáveis ANTES de importar o global
 // Passa as configurações direto pro _variables.scss
 @forward "../_variables.scss" with (
-  $selected-color: #242934,
-  $default-item-background-selected: #242934,
-  $badge-background: rgba(#242934, 0.3)
+  $selected-color: $selected-color,
+  $default-item-background-selected: $default-item-background-selected,
+  $badge-background: $badge-background
 );
 
 // Importa o global normalmente
