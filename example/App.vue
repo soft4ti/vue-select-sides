@@ -280,7 +280,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/themes/soft.scss";
+@use "../styles/_variables.scss";
+@use "../styles/themes/soft.scss";
 
 $default-height: 300px;
 
@@ -306,7 +307,7 @@ header {
   }
 
   a {
-    color: $selected-color;
+    color: variables.$selected-color;
     text-decoration: none;
   }
 }
@@ -330,8 +331,8 @@ header {
 
   nav {
     margin-top: 30px;
-    background-color: $default-item-background;
-    border-radius: $border-radius-base;
+    background-color: variables.$default-item-background;
+    border-radius: variables.$border-radius-base;
     width: 15rem;
     height: calc(100vh - 60px);
     overflow-y: auto;
@@ -349,10 +350,10 @@ header {
 
         a {
           text-decoration: none;
-          color: $dark;
+          color: variables.$dark;
 
           &:hover {
-            color: $selected-color;
+            color: variables.$selected-color;
           }
         }
       }
@@ -392,11 +393,11 @@ header {
 
       a {
         text-decoration: none;
-        background-color: $selected-color;
+        background-color: variables.$selected-color;
         padding: 10px;
-        border-radius: $border-radius-base;
-        color: $white;
-        font-size: $font-size-base;
+        border-radius: variables.$border-radius-base;
+        color: variables.$white;
+        font-size: variables.$font-size-base;
       }
     }
 
