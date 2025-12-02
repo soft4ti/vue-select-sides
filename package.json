@@ -27,7 +27,8 @@
     "build:example": "vite build --config vite.example.config.js",
     "build:npm": "vite build --config vite.npm.config.js",
     "build:scss": "sass styles/themes:dist/css --style=compressed --no-source-map",
-    "test": "vitest"
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "files": [
     "dist",
@@ -47,6 +48,7 @@
   ],
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.2",
+    "@vitest/coverage-v8": "4.0.14",
     "@vue/compiler-sfc": "^3.5.25",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.57.1",
