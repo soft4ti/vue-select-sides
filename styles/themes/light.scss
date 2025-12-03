@@ -1,13 +1,36 @@
-@import "../_variables.scss";
+// light.scss - Tema claro
+@use "sass:color";
 
-$selected-color: $gray;
+$selected-color: #e1e1e1;
 
 $default-text-color: #222;
 $default-item-background: #fafafa;
-$default-item-color-selected: adjust-color($default-text-color, $lightness: 30%);
-$default-item-background-selected: adjust-color($gray, $lightness: 3%);
+$default-item-color-selected: color.adjust(
+  $default-text-color,
+  $lightness: 30%
+);
+$default-item-background-selected: color.adjust(
+  $selected-color,
+  $lightness: 3%
+);
 
-$default-footer-text-color: adjust-color($default-text-color, $lightness: 15%);
-$default-footer-background: adjust-color($default-item-background, $lightness: -5%);
+$default-footer-text-color: color.adjust($default-text-color, $lightness: 15%);
+$default-footer-background: color.adjust(
+  $default-item-background,
+  $lightness: -5%
+);
 
-@import "../global.scss";
+// Configura o _variables.scss com os valores calculados
+@forward "../_variables.scss" with (
+  $selected-color: $selected-color,
+  $default-text-color: $default-text-color,
+  $default-item-background: $default-item-background,
+  $default-item-color-selected: $default-item-color-selected,
+  $default-item-background-selected: $default-item-background-selected,
+  $default-footer-text-color: $default-footer-text-color,
+  $default-footer-background: $default-footer-background
+);
+
+// Importa o global normalmente
+@forward "../global.scss";
+@use "../global.scss" as *;

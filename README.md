@@ -17,7 +17,7 @@
 
 A component for Vue.js to select double-sided data. The customer can select one or more items and ship them from side to side. Values can be displayed grouped or ungrouped.
 
-From version v2.0.0 it is only compatible with Vue 3.
+**From version v2.0.0 it is only compatible with Vue 3.**  
 For Vue 2, see version v1.1.6.
 
 <p align="center">
@@ -40,7 +40,27 @@ or
 yarn add vue-select-sides
 ```
 
-Then you can either use it as a component:
+## Usage with Vue 3
+
+### Component Registration
+
+**Local component:**
+
+```js
+<script setup>
+import vueSelectSides from "vue-select-sides";
+</script>
+
+<template>
+  <vue-select-sides
+    type="mirror"
+    v-model="selected"
+    :list="list"
+  ></vue-select-sides>
+</template>
+```
+
+Or using Options API:
 
 ```js
 import vueSelectSides from "vue-select-sides";
@@ -52,144 +72,173 @@ export default {
 };
 ```
 
-Global component:
+**Global component:**
 
 ```javascript
+// main.js
+import { createApp } from "vue";
+import App from "./App.vue";
 import vueSelectSides from "vue-select-sides";
-Vue.use(VueSelectSides);
-Vue.component("vue-select-sides", VueSelectSides);
+
+const app = createApp(App);
+
+// Optional: Set global locale
+app.use(vueSelectSides, {
+  locale: "en_US", // Default locale
+});
+
+app.component("vue-select-sides", vueSelectSides);
+app.mount("#app");
 ```
 
-Or if you wish to include it in a `script` tag, just include the `vueSelectSides.umd.js` file located in the `dist` folder as so:
+**Script tag (UMD):**
 
 ```html
-<script src="dist/vueSelectSides.umd.js"></script>
+<script src="dist/vue-select-sides.umd.js"></script>
 ```
 
-## Usage
+### Import a Theme
+
+You have three pre-built themes available:
+
+**Using SCSS (recommended):**
+
+```scss
+// Soft theme (default - orange accent)
+@use "vue-select-sides/styles/themes/soft.scss" as *;
+
+// Dark theme
+@use "vue-select-sides/styles/themes/dark.scss" as *;
+
+// Light theme
+@use "vue-select-sides/styles/themes/light.scss" as *;
+```
+
+**Customizing the Soft theme:**
+
+```scss
+// Override default variables
+@use "vue-select-sides/styles/themes/soft.scss" with (
+  $selected-color: #ff0000,
+  $default-item-background: #f0f0f0,
+  $border-radius-base: 0.5rem
+) as *;
+```
+
+**Using CSS (pre-compiled):**
+
+```js
+// In your main.js or component
+import "vue-select-sides/dist/css/soft.css";
+// or
+import "vue-select-sides/dist/css/dark.css";
+// or
+import "vue-select-sides/dist/css/light.css";
+```
+
+## Component Types
 
 The component has support for two types: `mirror` and `grouped`.
 
-#### Import a theme
-
-```scss
-// modern
-@import "/node_modules/vue-select-sides/styles/themes/soft.scss";
-// or dark
-@import "/node_modules/vue-select-sides/styles/themes/dark.scss";
-// or light
-@import "/node_modules/vue-select-sides/styles/themes/light.scss";
-```
-
-#### Grouped
+### Grouped
 
 Warning: `v-model` must be of type `Object`
 
-```html
-<vue-select-sides
-  type="grouped"
-  v-model="selected"
-  :list="list"
-></vue-select-sides>
-```
+```js
+<template>
+  <vue-select-sides
+    type="grouped"
+    v-model="selected"
+    :list="list"
+  ></vue-select-sides>
+</template>
 
-```javascript
+<script setup>
+import { ref } from "vue";
 import vueSelectSides from "vue-select-sides";
 
-export default {
-  components: {
-    vueSelectSides
+const selected = ref({});
+const list = ref([
+  {
+    value: "sul",
+    label: "Sul",
+    disabled: false,
+    children: [
+      {
+        value: "santa-catarina",
+        label: "Santa Catarina",
+        disabled: false,
+      },
+      {
+        value: "parana",
+        label: "Paraná",
+        disabled: false,
+      },
+    ],
   },
-  data() {
-    return {
-      selected: {},
-      list: [
-        {
-          value: "sul",
-          label: "Sul",
-          disabled: false,
-          children: [
-            {
-              value: "santa-catarina",
-              label: "Santa Catarina",
-              disabled: false
-            },
-            {
-              ...
-            }
-          ]
-        },
-        {
-          value: "sudeste",
-          label: "Sudeste",
-          disabled: false,
-          children: [
-            {
-              value: "minas-gerais",
-              label: "Minas Gerais",
-              disabled: false
-            },
-            {
-              ...
-            }
-          ]
-        }
-      ]
-    };
-  }
-};
+  {
+    value: "sudeste",
+    label: "Sudeste",
+    disabled: false,
+    children: [
+      {
+        value: "minas-gerais",
+        label: "Minas Gerais",
+        disabled: false,
+      },
+      {
+        value: "sao-paulo",
+        label: "São Paulo",
+        disabled: false,
+      },
+    ],
+  },
+]);
+</script>
 ```
 
-#### Mirror
+### Mirror
 
 Warning: `v-model` must be of type `Array`
 
-```html
-<vue-select-sides
-  type="mirror"
-  v-model="selected"
-  :list="list"
-></vue-select-sides>
-```
+```js
+<template>
+  <vue-select-sides
+    type="mirror"
+    v-model="selected"
+    :list="list"
+  ></vue-select-sides>
+</template>
 
-```javascript
+<script setup>
+import { ref } from "vue";
 import vueSelectSides from "vue-select-sides";
 
-export default {
-  components: {
-    vueSelectSides
+const selected = ref([]);
+const list = ref([
+  {
+    value: "afghanistan",
+    label: "Afghanistan",
+    disabled: true,
   },
-  data() {
-    return {
-      selected: [],
-      list: [
-        {
-          value: "afghanistan",
-          label: "Afghanistan",
-          disabled: true
-        },
-        {
-          value: "brazil",
-          label: "Brazil"
-        },
-        {
-          value: "fiji",
-          label: "Fiji",
-          disabled: true
-        },
-        {
-          value: "ghana",
-          label: "Ghana"
-        },
-        {
-          ...
-        }
-    ];
-  }
-};
+  {
+    value: "brazil",
+    label: "Brazil",
+  },
+  {
+    value: "fiji",
+    label: "Fiji",
+    disabled: true,
+  },
+  {
+    value: "ghana",
+    label: "Ghana",
+  },
+]);
+</script>
 ```
 
-## Language/locales
+## Language/Locales
 
 List of locales available for the plugin:
 
@@ -202,16 +251,20 @@ List of locales available for the plugin:
 - `cz_CZ` - [Czech] - Contributed by @DuchVladimir
 - `sk_SK` - [Slovak] - Contributed by @DuchVladimir
 
-### Use global locale
+### Set Global Locale
 
 ```javascript
+// main.js
+import { createApp } from "vue";
 import vueSelectSides from "vue-select-sides";
 
-Vue.use(vueSelectSides, {
+const app = createApp(App);
+
+app.use(vueSelectSides, {
   locale: "pt_BR",
 });
 
-Vue.component("vue-select-sides", vueSelectSides);
+app.component("vue-select-sides", vueSelectSides);
 ```
 
 ## Props
@@ -228,11 +281,41 @@ These are all the props you can pass to the component:
 | toggle-all                    | `Boolean`           | `true` or `false`                                                 | To show/hide toggle in footer. Default is visible (true)                                     |
 | sort-selected-up              | `Boolean`           | `true` or `false`                                                 | Show first the pre-selected. Default does not visible (false). _Available only grouped type_ |
 | order-by                      | `String`            | `asc` or `desc`                                                   | Show first the pre-selected. Default is natural order                                        |
-| ~~lang~~ (deprecated in v1.1) | ~~`String`~~        | ~~`en_US`, `pt_BR`, `es_ES` or `fr_FR`~~                          | ~~Language default. Default is en_US~~<br>Use `Use global locale`                            |
+| ~~lang~~ (deprecated in v1.1) | ~~`String`~~        | ~~`en_US`, `pt_BR`, `es_ES` or `fr_FR`~~                          | ~~Language default. Default is en_US~~<br>Use `Set Global Locale`                            |
 | placeholder-search-left       | `String`            | "Yay! Search items..."                                            | Placeholder on the left search field. Default is ""                                          |
 | placeholder-search-right      | `String`            | "Or search children items..."                                     | Placeholder on the right search field. Default is ""                                         |
 
-## Bugs and feature requests
+## Available SCSS Variables for Customization
+
+When using `@use` with the soft theme, you can override these variables:
+
+```scss
+$font-size-base: 0.9rem;
+$border-radius-base: 0.25rem;
+$selected-color: #f57f1e;
+$white: #fff;
+$gray: #e1e1e1;
+$dark: #242934;
+$default-item-background: #fafafa;
+$default-item-color-selected: $white;
+$default-item-background-selected: $selected-color;
+$default-text-color: $dark;
+$default-footer-text-color: $white;
+$default-footer-background: $dark;
+$badge-background: rgba($dark, 0.15);
+```
+
+Example:
+
+```scss
+@use "vue-select-sides/styles/themes/soft.scss" with (
+  $selected-color: #3498db,
+  $border-radius-base: 8px,
+  $font-size-base: 1rem
+) as *;
+```
+
+## Bugs and Feature Requests
 
 If your problem or idea is not <a href="https://github.com/juliorosseti/vue-select-sides/issues" target="_blank">addressed</a> yet, <a href="https://github.com/juliorosseti/vue-select-sides/issues/new" target="_blank">please open a new issue</a>.
 
@@ -244,22 +327,28 @@ If your problem or idea is not <a href="https://github.com/juliorosseti/vue-sele
 
 ## Contribution / Development
 
-#### Install dependencies
+### Install Dependencies
 
-```
+```bash
 yarn install
 ```
 
-#### Devserver
+### Dev Server
 
-```
+```bash
 yarn run serve
 ```
 
-#### Bundling
+### Build
 
-```
+```bash
 yarn run build
+```
+
+### Run Tests
+
+```bash
+yarn test
 ```
 
 ## Donate
@@ -268,4 +357,4 @@ You can help with a donation on <a href="https://www.paypal.com/cgi-bin/webscr?c
 
 ## License
 
-Vue select sides is open-sourced software licensed under the the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a>.
+Vue select sides is open-sourced software licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a>.

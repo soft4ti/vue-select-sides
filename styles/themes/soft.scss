@@ -1,1 +1,3 @@
-@import "../global.scss";
+@forward "../_variables.scss";
+@forward "../global.scss";
+@use "../global.scss" as *;

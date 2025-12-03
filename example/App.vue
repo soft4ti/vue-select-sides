@@ -280,7 +280,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/themes/soft.scss";
+@use "../styles/themes/soft.scss" as *;
 
 $default-height: 300px;
 
