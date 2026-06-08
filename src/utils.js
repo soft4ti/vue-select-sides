@@ -26,8 +26,11 @@ const reorder = (vm, data) => {
     }
   }
 
-  data.sort(sortBy(...orderBy)).map((item) => {
-    if (item.children) item.children.sort(sortBy(...orderBy));
+  const labelNormalizer = (prop, val) =>
+    prop === "label" && typeof val === "string" ? normalizeText(val) : val;
+
+  data.sort(sortBy(...orderBy, labelNormalizer)).map((item) => {
+    if (item.children) item.children.sort(sortBy(...orderBy, labelNormalizer));
     return item;
   });
 

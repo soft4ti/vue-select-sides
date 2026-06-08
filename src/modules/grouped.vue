@@ -166,7 +166,7 @@ export default {
           if (item.visible) {
             dataSelected[parent.value] = removeItemArray(
               dataSelected[parent.value],
-              item.value
+              item.value,
             );
           }
         }
@@ -218,7 +218,10 @@ export default {
         return item;
       });
       vm.dataSelected = foundSelected;
-      vm.dataList = reorder(vm, dataList);
+      vm.dataList = reorder(
+        { sortSelectedUp: true, orderBy: vm.orderBy || "asc" },
+        dataList,
+      );
     },
     prepareListLeft() {
       let vm = this;
