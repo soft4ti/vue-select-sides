@@ -48,14 +48,14 @@
   ],
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.2",
-    "@vitest/coverage-v8": "4.1.5",
+    "@vitest/coverage-v8": "4.1.11",
     "@vue/compiler-sfc": "^3.5.25",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.57.1",
     "eslint-plugin-vue": "^8.7.1",
     "sass-embedded": "^1.93.3",
     "vite": "7.3.6",
-    "vitest": "4.1.10",
+    "vitest": "4.1.11",
     "vue": "^3.5.25",
     "vue-i18n": "^9.14.5"
   },
@@ -76,5 +76,8 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "resolutions": {
+    "postcss-selector-parser": "^7.1.6"
+  }
 }
