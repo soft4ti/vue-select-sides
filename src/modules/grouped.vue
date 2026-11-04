@@ -128,22 +128,18 @@ export default {
       });
     },
     updateRightSelectAll() {
-      let vm = this;
-
-      vm.listRight.map((item) => {
-        item.children.map((children) => {
-          if (item.selected === true && !item.disabled) {
-            vm.updateItem(children, item, true);
-          }
-        });
-      });
+      this.toggleRightChildren(true);
     },
     updateRightDeselectAll() {
-      let vm = this;
-      vm.listRight.map((item) => {
-        item.children.map((children) => {
-          if (item.selected === true && !item.disabled) {
-            vm.updateItem(children, item, false);
+      this.toggleRightChildren(false);
+    },
+    toggleRightChildren(selected) {
+      this.listRight.forEach((parent) => {
+        if (parent.selected !== true) return;
+
+        (parent.children || []).forEach((child) => {
+          if (!child.disabled) {
+            this.updateItem(child, parent, selected);
           }
         });
       });

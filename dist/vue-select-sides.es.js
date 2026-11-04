@@ -319,18 +319,15 @@ const ml = /* @__PURE__ */ Le(js, [["render", Xs]]), pl = {
       });
     },
     updateRightSelectAll() {
-      let e = this;
-      e.listRight.map((t) => {
-        t.children.map((n) => {
-          t.selected === !0 && !t.disabled && e.updateItem(n, t, !0);
-        });
-      });
+      this.toggleRightChildren(!0);
     },
     updateRightDeselectAll() {
-      let e = this;
-      e.listRight.map((t) => {
-        t.children.map((n) => {
-          t.selected === !0 && !t.disabled && e.updateItem(n, t, !1);
+      this.toggleRightChildren(!1);
+    },
+    toggleRightChildren(e) {
+      this.listRight.forEach((t) => {
+        t.selected === !0 && (t.children || []).forEach((n) => {
+          n.disabled || this.updateItem(n, t, e);
         });
       });
     },
