@@ -17,7 +17,8 @@ export default {
   data() {
     return {
       selected: {
-        sudeste: ["minas-gerais"],
+        sul: ["santa-catarina"],
+        sudeste: ["minas-gerais", "sao-paulo"],
         norte: ["acre", "roraima"],
       },
       list: [
@@ -29,6 +30,7 @@ export default {
             {
               value: "santa-catarina",
               label: "Santa Catarina",
+              disabled: true,
             },
             {
               value: "rio-grande-do-sul",
@@ -51,6 +53,7 @@ export default {
             {
               value: "sao-paulo",
               label: "São Paulo",
+              disabled: true,
             },
             {
               value: "espirito-santo",
