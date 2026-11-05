@@ -32,7 +32,7 @@ export default defineConfig({
           ) {
             return "vueSelectSidesExample.css";
           }
-          return "[name][extname]";
+          return assetInfo.names[0];
         },
       },
     },
