@@ -307,10 +307,10 @@ var Be = /*#__PURE__*/ k(Le, [["render", ze]]), Ve = {
 			}), r;
 		},
 		filteredListR() {
-			let e = this, t = O(e.searchR), n = D(this.listLeft);
-			return n = e.listRight.filter(function(n) {
+			let e = this, t = O(e.searchR);
+			return e.listRight.filter(function(n) {
 				return n.children ? (n.children = n.children.map((r) => (r.visible = !!O(r.label).includes(t), e.dataSelected[n.value] !== void 0 && (r.selected = e.dataSelected[n.value].indexOf(r.value) >= 0), r)), n.children) : n;
-			}), n;
+			});
 		}
 	},
 	watch: { filteredListL(e) {
