@@ -3887,6 +3887,7 @@ function Ko() {
 	return t;
 }
 var qo = No({
+	legacy: !1,
 	locale: "en_US",
 	fallbackLocale: "en_US",
 	messages: Ko()
