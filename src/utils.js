@@ -41,4 +41,19 @@ const removeItemArray = (array, value) => {
   return array.filter((e) => String(e) !== String(value));
 };
 
-export { normalizeText, clone, reorder, removeItemArray };
+const addUniqueValues = (array, values) => {
+  const output = [...array];
+  const existing = new Set(array.map((e) => String(e)));
+
+  values.forEach((value) => {
+    const key = String(value);
+    if (!existing.has(key)) {
+      existing.add(key);
+      output.push(value);
+    }
+  });
+
+  return output;
+};
+
+export { normalizeText, clone, reorder, removeItemArray, addUniqueValues };

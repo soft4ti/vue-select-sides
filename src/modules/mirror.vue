@@ -64,7 +64,13 @@
 </template>
 
 <script>
-import { normalizeText, clone, reorder, removeItemArray } from "../utils";
+import {
+  normalizeText,
+  clone,
+  reorder,
+  removeItemArray,
+  addUniqueValues,
+} from "../utils";
 import selectAll from "../components/selectAll.vue";
 import deselectAll from "../components/deselectAll.vue";
 import search from "../components/search.vue";
@@ -97,13 +103,15 @@ export default {
   },
   methods: {
     updateLeftSelectAll() {
-      let vm = this;
+      const values = this.listLeft
+        .filter((item) => !item.disabled)
+        .map((item) => item.value);
 
-      vm.listLeft.map((item) => {
-        if (item.visible === true && !item.disabled) {
-          vm.updateItem(item, {}, true);
-        }
-      });
+      const dataSelected = addUniqueValues(this.dataSelected, values);
+
+      if (dataSelected.length !== this.dataSelected.length) {
+        this.dataSelected = dataSelected;
+      }
     },
     updateRightDeselectAll() {
       let vm = this;
@@ -118,7 +126,7 @@ export default {
       let dataSelected = clone(this.dataSelected);
 
       if (selected) {
-        dataSelected.push(item.value);
+        dataSelected = addUniqueValues(dataSelected, [item.value]);
       } else {
         dataSelected = removeItemArray(dataSelected, item.value);
       }
