@@ -16,7 +16,7 @@ export default defineConfig({
       name: "vueSelectSides",
       fileName: (format) => `vue-select-sides.${format}.js`,
     },
-    rollupOptions: {
+    rolldownOptions: {
       // Certifique-se de externalizar dependências que não devem ser incluídas no bundle
       external: ["vue"],
       output: {
