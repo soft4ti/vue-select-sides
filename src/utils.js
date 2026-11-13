@@ -56,4 +56,16 @@ const addUniqueValues = (array, values) => {
   return output;
 };
 
-export { normalizeText, clone, reorder, removeItemArray, addUniqueValues };
+const removeValues = (array, values) => {
+  const toRemove = new Set(values.map((e) => String(e)));
+  return array.filter((e) => !toRemove.has(String(e)));
+};
+
+export {
+  normalizeText,
+  clone,
+  reorder,
+  removeItemArray,
+  addUniqueValues,
+  removeValues,
+};

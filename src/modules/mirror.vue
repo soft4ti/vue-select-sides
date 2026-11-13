@@ -70,6 +70,7 @@ import {
   reorder,
   removeItemArray,
   addUniqueValues,
+  removeValues,
 } from "../utils";
 import selectAll from "../components/selectAll.vue";
 import deselectAll from "../components/deselectAll.vue";
@@ -103,8 +104,9 @@ export default {
   },
   methods: {
     updateLeftSelectAll() {
-      const values = this.listLeft
-        .filter((item) => !item.disabled)
+      // filteredListL: visible = não selecionado e compatível com a busca
+      const values = this.filteredListL
+        .filter((item) => item.visible === true && !item.disabled)
         .map((item) => item.value);
 
       const dataSelected = addUniqueValues(this.dataSelected, values);
@@ -114,13 +116,16 @@ export default {
       }
     },
     updateRightDeselectAll() {
-      let vm = this;
-      this.dataSelected = [];
-      vm.listRight.map((item) => {
-        if (item.visible === true && !item.disabled) {
-          vm.updateItem(item, {}, false);
-        }
-      });
+      // filteredListR: visible = selecionado e compatível com a busca
+      const values = this.filteredListR
+        .filter((item) => item.visible === true)
+        .map((item) => item.value);
+
+      const dataSelected = removeValues(this.dataSelected, values);
+
+      if (dataSelected.length !== this.dataSelected.length) {
+        this.dataSelected = dataSelected;
+      }
     },
     updateItem(item, parent, selected) {
       let dataSelected = clone(this.dataSelected);
