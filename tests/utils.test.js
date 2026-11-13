@@ -1,5 +1,26 @@
 import { describe, it, expect } from "vitest";
-import { addUniqueValues } from "../src/utils";
+import { addUniqueValues, removeValues } from "../src/utils";
+
+describe("removeValues()", () => {
+  it("removes given values and keeps the others", () => {
+    expect(removeValues(["a", "b", "c"], ["a", "c"])).toEqual(["b"]);
+  });
+
+  it("removes every occurrence of a value", () => {
+    expect(removeValues(["a", "b", "a"], ["a"])).toEqual(["b"]);
+  });
+
+  it("treats number and string representations as equal", () => {
+    expect(removeValues([1, 2, 3], ["1", 3])).toEqual([2]);
+  });
+
+  it("does not mutate the original array", () => {
+    const original = ["a", "b"];
+    removeValues(original, ["a"]);
+
+    expect(original).toEqual(["a", "b"]);
+  });
+});
 
 describe("addUniqueValues()", () => {
   it("adds new values", () => {
