@@ -19,7 +19,7 @@ export default defineConfig({
     },
     outDir: "docs",
     emptyOutDir: false,
-    rollupOptions: {
+    rolldownOptions: {
       external: ["vue"],
       output: {
         globals: {
@@ -32,7 +32,7 @@ export default defineConfig({
           ) {
             return "vueSelectSidesExample.css";
           }
-          return assetInfo.name;
+          return assetInfo.names[0];
         },
       },
     },

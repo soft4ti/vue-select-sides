@@ -11,7 +11,7 @@ export default defineConfig({
       fileName: (format) => `vueSelectSides.${format}.js`,
       formats: ["umd"],
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: ["vue"],
       output: {
         globals: {
@@ -21,7 +21,6 @@ export default defineConfig({
     },
   },
   server: {
-    sourcemap: true,
     open: "/docs/index.html", // Abre o navegador automaticamente
   },
 });
