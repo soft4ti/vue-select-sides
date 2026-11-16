@@ -112,7 +112,8 @@ export default {
     updateLeftSelectAll() {
       let vm = this;
 
-      vm.listLeft.map((item) => {
+      // filteredListL: visible reflete a busca da esquerda
+      vm.filteredListL.forEach((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, true);
         }
@@ -121,7 +122,8 @@ export default {
     updateLeftDeselectAll() {
       let vm = this;
 
-      vm.listLeft.map((item) => {
+      // filteredListL: visible reflete a busca da esquerda
+      vm.filteredListL.forEach((item) => {
         if (item.visible === true && !item.disabled) {
           vm.updateItem(item, {}, false);
         }
