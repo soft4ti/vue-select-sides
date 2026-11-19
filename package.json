@@ -1,6 +1,6 @@
 {
   "name": "vue-select-sides",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "description": "select sides component for vue",
   "license": "MIT",
   "private": false,
@@ -48,24 +48,21 @@
   ],
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@vitejs/plugin-vue": "^6.0.10",
+    "@vitejs/plugin-vue": "^6.0.11",
     "@vitest/coverage-v8": "5.1.0",
     "@vue/compiler-sfc": "^3.5.45",
-    "eslint": "^10.14.0",
-    "eslint-plugin-vue": "^10.12.0",
+    "eslint": "^10.15.0",
+    "eslint-plugin-vue": "^10.12.1",
     "globals": "^17.14.0",
-    "sass-embedded": "^1.107.1",
+    "sass-embedded": "^1.108.2",
     "vite": "8.3.6",
     "vitest": "5.1.0",
     "vue": "^3.5.45",
-    "vue-eslint-parser": "^10.4.1",
-    "vue-i18n": "^11.4.18"
+    "vue-eslint-parser": "^10.4.2",
+    "vue-i18n": "^11.4.22"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ],
-  "resolutions": {
-    "postcss-selector-parser": "^7.1.7"
-  }
+  ]
 }
